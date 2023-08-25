@@ -1,4 +1,5 @@
 export * from './AboutUs'
 export * from './Contact'
+export * from './NavBar'
 export * from './Services'
 export * from './Sessions'

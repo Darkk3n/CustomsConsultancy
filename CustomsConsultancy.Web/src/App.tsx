@@ -1,18 +1,14 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { AboutUs, Contact, NavBar, Services, Sessions } from './components'
+import { AboutUs, Contact, Home, Services, Sessions, Title } from './components'
 
 
 export const App = () => {
   return (
     <>
-      <h1>I.C. Aduanal</h1>
-      {/* <Link to='/about'>Nosotros</Link>
-      <Link to='/services'>Servicios</Link>
-      <Link to='/sessions'>Sesiones</Link>
-      <Link to='/contact'>Contacto</Link> */}
-      <NavBar />
+      <Title />
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/about' element={<AboutUs />} />
         <Route path='/services' element={<Services />} />
         <Route path='/sessions' element={<Sessions />} />

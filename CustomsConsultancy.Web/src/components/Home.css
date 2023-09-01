@@ -1,0 +1,19 @@
+.back {
+   background: url(../assets/img/Home2.png) no-repeat;
+   background-size: cover;
+   width: 100%;
+   height: 90%;
+   display: flex;
+}
+
+.home-text {
+   display: flex;
+   flex-direction: column;
+   align-self: center;
+   border: 2px solid white;
+   width: 40rem;
+   word-break: break-all;
+   margin-left: 6rem;
+   font-family: 'Andika', sans-serif;
+   font-size: 23px;
+}

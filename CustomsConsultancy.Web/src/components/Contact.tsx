@@ -1,14 +1,14 @@
-import { Col, Image, Row } from 'react-bootstrap'
+import { Col, Container, Image, Row } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import './Contact.css'
 
 export const Contact = () => {
    return (
-      <div className="background-contact">
+      <Container fluid className='background-contact'>
          <Row>
-            <Col md={4}>
+            <Col md>
                <div className='contact-info'>
-                  <p className='contact-info-header'>Contacto</p>
+                  <p className='contact-info-header'>Contacto:</p>
                   <p className='data-header'>Telefono</p>
                   <p className='data-info'>2294639014</p>
                </div>
@@ -28,11 +28,11 @@ export const Contact = () => {
                   </div>
                </div>
             </Col>
-            <Col md={4}>
+            <Col md style={{ color: 'white' }}>
                REGISTRO PARA RECIBIR INFORMACIÓN DE NUESTRAS SESIONES DE ESTUDIO ADUANAL.
             </Col>
-            <Col md={4}>Foo</Col>
+            <Col md>Foo</Col>
          </Row>
-      </div >
+      </Container>
    )
 }

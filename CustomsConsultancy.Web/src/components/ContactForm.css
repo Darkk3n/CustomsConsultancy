@@ -1,0 +1,7 @@
+.contact-form {
+   border: solid 2px;
+   display: flex;
+   flex-direction: column;
+   align-content: space-evenly;
+   height: 100%;
+}

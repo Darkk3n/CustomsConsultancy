@@ -1,5 +1,7 @@
 export * from './AboutUs'
 export * from './Contact'
+export * from './ContactForm'
+export * from './ContactInfo'
 export * from './Home'
 export * from './Services'
 export * from './Sessions'

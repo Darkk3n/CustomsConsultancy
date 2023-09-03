@@ -23,16 +23,21 @@ export const ContactForm = () => {
    const onSubmit = (values: any) => { alert(JSON.stringify(values)) }
 
    return (
-      <Container fluid>
-         <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
-            <input placeholder='Nombre' {...register('name')} />
-            <p>{errors.name?.message}</p>
-            <input placeholder='Correo Electronico' {...register('email')} />
-            <p>{errors.email?.message}</p>
-            <input placeholder='Telefono' {...register('phone')} type='number' />
-            <br />
-            <button type='submit'>Enviar</button>
-         </form>
-      </Container>
+      <>
+         <p style={{ marginTop: '40px', fontFamily: 'Abhaya Libre', fontSize: '1.5rem' }}>
+            REGISTRO PARA RECIBIR INFORMACIÓN DE NUESTRAS SESIONES DE ESTUDIO ADUANAL.
+         </p>
+         <Container fluid className='container-contact'>
+            <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
+               <input placeholder='Nombre' {...register('name')} />
+               <p>{errors.name?.message}</p>
+               <input placeholder='Correo Electronico' {...register('email')} />
+               <p>{errors.email?.message}</p>
+               <input placeholder='Telefono' {...register('phone')} type='number' />
+               <br />
+               <button type='submit'>Enviar</button>
+            </form>
+         </Container>
+      </>
    )
 }

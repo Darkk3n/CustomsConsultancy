@@ -10,7 +10,6 @@ export const Contact = () => {
                <ContactInfo />
             </Col>
             <Col md>
-               REGISTRO PARA RECIBIR INFORMACIÓN DE NUESTRAS SESIONES DE ESTUDIO ADUANAL.
                <ContactForm />
             </Col>
             <Col md></Col>

@@ -11,7 +11,8 @@ export const ContactForm = () => {
       company: yup.string().required('Se requiere un nombre de Empresa o Razón Social'),
       email: yup.string().email().required('Se requiere un correo electronico'),
       phone: yup.number().positive(),
-      mobilePhone: yup.number().positive()
+      mobilePhone: yup.number().positive(),
+      inquiry: yup.string().required()
    })
 
    const { register, handleSubmit, formState: { errors } } = useForm({
@@ -21,7 +22,8 @@ export const ContactForm = () => {
          company: '',
          email: '',
          phone: 0,
-         mobilePhone: 0
+         mobilePhone: 0,
+         inquiry: ''
       },
       resolver: yupResolver(schema)
    });
@@ -67,12 +69,17 @@ export const ContactForm = () => {
                      <p>{errors.mobilePhone?.message}</p>
                   </Col>
                </Row>
+               <Row>
+                  <Col md={12}>
+                     <textarea rows={5} style={{ width: '100%' }} placeholder='Mensaje' {...register('inquiry')} />
+                     <p>{errors.inquiry?.message}</p>
+                  </Col>
+               </Row>
                <br />
                <Row>
                   <Col md={12}>
                      <button type='submit'>Enviar</button>
                   </Col>
-
                </Row>
             </form>
          </Container>

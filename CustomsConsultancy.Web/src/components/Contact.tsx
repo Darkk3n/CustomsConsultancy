@@ -6,10 +6,10 @@ export const Contact = () => {
    return (
       <Container fluid className='background-contact'>
          <Row>
-            <Col md>
+            <Col md={3}>
                <ContactInfo />
             </Col>
-            <Col md>
+            <Col md={9}>
                <ContactForm />
             </Col>
             <Col md></Col>

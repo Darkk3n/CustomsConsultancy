@@ -1,7 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Col, Container, Row } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { PrivacyAgreement } from '.';
 import './ContactForm.css';
 
 export const ContactForm = () => {
@@ -30,8 +32,12 @@ export const ContactForm = () => {
 
    const onSubmit = (values: any) => { alert(JSON.stringify(values)) }
 
+   const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState<boolean>(false)
+   const [acceptedPolicy, setAcceptedPolicy] = useState<boolean>(false)
+
    return (
       <>
+         {displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
          <Row>
             <p style={{ marginTop: '20px', fontFamily: 'Abhaya Libre', fontSize: '1.5rem' }}>
                REGISTRO PARA RECIBIR INFORMACIÓN DE NUESTRAS SESIONES DE ESTUDIO ADUANAL.
@@ -71,14 +77,24 @@ export const ContactForm = () => {
                </Row>
                <Row>
                   <Col md={12}>
-                     <textarea style={{ resize: 'none' }} rows={7} className='w-100' placeholder='Mensaje' {...register('inquiry')} />
+                     <textarea style={{ resize: 'none' }} rows={5} className='w-100' placeholder='Mensaje' {...register('inquiry')} />
                      <p>{errors.inquiry?.message}</p>
                   </Col>
                </Row>
                <br />
                <Row>
+                  <Col md={3}>
+                     <Button className='btn btn-link' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
+                  </Col>
+               </Row>
+               <Row>
                   <Col md={12}>
-                     <button type='submit'>Enviar</button>
+                     <Button disabled={!acceptedPolicy} type='submit'>Enviar</Button>
+                  </Col>
+               </Row>
+               <Row>
+                  <Col md={4}>
+                     <input type='checkbox' onClick={() => setAcceptedPolicy(!acceptedPolicy)} value='Acepto la poltica de privacidad' />Acepto la poltica de privacidad
                   </Col>
                </Row>
             </form>

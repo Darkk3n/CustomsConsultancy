@@ -45,33 +45,33 @@ export const ContactForm = () => {
                      <p>{errors.name?.message}</p>
                   </Col>
                   <Col md={6}>
-                     <input style={{ width: '100%' }} placeholder='Apellido(s)' {...register('lastName')} />
+                     <input className='w-100' placeholder='Apellido(s)' {...register('lastName')} />
                      <p>{errors.lastName?.message}</p>
                   </Col>
                </Row >
                <Row>
                   <Col md={6}>
-                     <input style={{ width: '100%' }} placeholder='Empresa o Razón Social' {...register('company')} />
+                     <input className='w-100' placeholder='Empresa o Razón Social' {...register('company')} />
                      <p>{errors.company?.message}</p>
                   </Col>
                   <Col md={6}>
-                     <input style={{ width: '100%' }} placeholder='Correo Electronico' {...register('email')} />
+                     <input className='w-100' placeholder='Correo Electronico' {...register('email')} />
                      <p>{errors.email?.message}</p>
                   </Col>
                </Row>
                <Row>
                   <Col md={6}>
-                     <input style={{ width: '100%' }} placeholder='Telefono' {...register('phone')} type='number' />
+                     <input className='w-100' placeholder='Telefono' {...register('phone')} type='number' />
                      <p>{errors.phone?.message}</p>
                   </Col>
                   <Col md={6}>
-                     <input style={{ width: '100%' }} placeholder='WhatsApp' {...register('mobilePhone')} type='number' />
+                     <input className='w-100' placeholder='WhatsApp' {...register('mobilePhone')} type='number' />
                      <p>{errors.mobilePhone?.message}</p>
                   </Col>
                </Row>
                <Row>
                   <Col md={12}>
-                     <textarea rows={5} style={{ width: '100%' }} placeholder='Mensaje' {...register('inquiry')} />
+                     <textarea style={{ resize: 'none' }} rows={7} className='w-100' placeholder='Mensaje' {...register('inquiry')} />
                      <p>{errors.inquiry?.message}</p>
                   </Col>
                </Row>

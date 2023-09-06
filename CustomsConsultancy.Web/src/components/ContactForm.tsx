@@ -1,36 +1,36 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
+import { Controller, useForm } from 'react-hook-form';
+import { PatternFormat } from 'react-number-format';
 import { PrivacyAgreement } from '.';
 import './ContactForm.css';
 
+interface FormInput {
+   name: string;
+   lastName: string;
+   company: string;
+   email: string;
+   phone: string;
+   mobilePhone: string;
+   inquiry: string;
+}
 export const ContactForm = () => {
-   const schema = yup.object({
-      name: yup.string().required('Se requiere un nombre'),
-      lastName: yup.string().required('Se requiere por lo menos un apellido'),
-      company: yup.string().required('Se requiere un nombre de Empresa o Razón Social'),
-      email: yup.string().email().required('Se requiere un correo electronico'),
-      phone: yup.number().positive(),
-      mobilePhone: yup.number().positive(),
-      inquiry: yup.string().required()
-   })
+   // const schema = yup.object({
+   //    name: yup.string().required('Se requiere un nombre'),
+   //    lastName: yup.string().required('Se requiere por lo menos un apellido'),
+   //    company: yup.string().required('Se requiere un nombre de Empresa o Razón Social'),
+   //    email: yup.string().email().required('Se requiere un correo electronico'),
+   //    phone: yup.string(),
+   //    mobilePhone: yup.string(),
+   //    inquiry: yup.string().required()
+   // })
 
-   const { register, handleSubmit, formState: { errors } } = useForm({
-      defaultValues: {
-         name: '',
-         lastName: '',
-         company: '',
-         email: '',
-         // phone: 0,
-         // mobilePhone: 0,
-         inquiry: ''
-      },
-      resolver: yupResolver(schema)
-   });
+   const { register, handleSubmit, control } = useForm<FormInput>(
 
-   const onSubmit = (values: any) => { alert(JSON.stringify(values)) }
+      // resolver: yupResolver(schema)
+   );
+
+   const onSubmit = (values: FormInput) => { console.log(values) }
 
    const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState<boolean>(false)
    const [acceptedPolicy, setAcceptedPolicy] = useState<boolean>(false)
@@ -47,44 +47,71 @@ export const ContactForm = () => {
             <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
                <Row>
                   <Col md={6}>
-                     <input style={{ width: '100%' }} placeholder='Nombre' {...register('name')} />
-                     <p>{errors.name?.message}</p>
+                     <input className='w-100 mt-1 mb-1' placeholder='Nombre' {...register('name')} />
+                     {/* <p>{errors.name?.message}</p> */}
                   </Col>
                   <Col md={6}>
-                     <input className='w-100' placeholder='Apellido(s)' {...register('lastName')} />
-                     <p>{errors.lastName?.message}</p>
+                     <input className='w-100 mt-1 mb-1' placeholder='Apellido(s)' {...register('lastName')} />
+                     {/* <p>{errors.lastName?.message}</p> */}
                   </Col>
                </Row >
                <Row>
                   <Col md={6}>
-                     <input className='w-100' placeholder='Empresa o Razón Social' {...register('company')} />
-                     <p>{errors.company?.message}</p>
+                     <input className='w-100 mt-1 mb-1' placeholder='Empresa o Razón Social' {...register('company')} />
+                     {/* <p>{errors.company?.message}</p> */}
                   </Col>
                   <Col md={6}>
-                     <input className='w-100' placeholder='Correo Electronico' {...register('email')} />
-                     <p>{errors.email?.message}</p>
+                     <input className='w-100 mt-1 mb-1' placeholder='Correo Electronico' {...register('email')} />
+                     {/* <p>{errors.email?.message}</p> */}
                   </Col>
                </Row>
                <Row>
                   <Col md={6}>
-                     <input className='w-100' placeholder='Telefono' {...register('phone')} type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
-                     <p>{errors.phone?.message}</p>
+                     <Controller
+                        render={({ field: { onChange, name, value } }) => (
+                           <PatternFormat
+                              className='w-100 mt-1 mb-1'
+                              type='tel'
+                              format={'###-###-####'}
+                              placeholder='Telefono'
+                              mask='_'
+                              onChange={onChange}
+                              name={name}
+                              value={value} />
+                        )}
+                        name={'phone'}
+                        control={control}
+                     />
+                     {/* <p>{errors.phone?.message}</p> */}
                   </Col>
                   <Col md={6}>
-                     <input className='w-100' placeholder='WhatsApp' {...register('mobilePhone')} type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
-                     <p>{errors.mobilePhone?.message}</p>
+                     <Controller
+                        render={({ field: { onChange, name, value } }) => (
+                           <PatternFormat
+                              className='w-100 mt-1 mb-1'
+                              type='tel'
+                              format={'###-###-####'}
+                              placeholder='WhatsApp'
+                              mask='_'
+                              onChange={onChange}
+                              name={name}
+                              value={value} />
+                        )}
+                        name={'mobilePhone'}
+                        control={control} />
+                     {/* <p>{errors.mobilePhone?.message}</p> */}
                   </Col>
                </Row>
                <Row>
                   <Col md={12}>
-                     <textarea style={{ resize: 'none' }} rows={5} className='w-100' placeholder='Mensaje' {...register('inquiry')} />
-                     <p>{errors.inquiry?.message}</p>
+                     <textarea style={{ resize: 'none' }} rows={5} className='w-100 mt-1 mb-1' placeholder='Mensaje' {...register('inquiry')} />
+                     {/* <p>{errors.inquiry?.message}</p> */}
                   </Col>
                </Row>
                <br />
                <Row>
                   <Col md={3}>
-                     <Button className='btn btn-link p-0' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
+                     <Button className='btn btn-link p-0 ' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
                   </Col>
                </Row>
                <Row>
@@ -98,7 +125,7 @@ export const ContactForm = () => {
                   </Col>
                </Row>
             </form>
-         </Container>
+         </Container >
       </>
    )
 }

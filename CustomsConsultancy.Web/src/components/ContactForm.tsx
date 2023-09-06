@@ -15,20 +15,9 @@ interface FormInput {
    inquiry: string;
 }
 export const ContactForm = () => {
-   // const schema = yup.object({
-   //    name: yup.string().required('Se requiere un nombre'),
-   //    lastName: yup.string().required('Se requiere por lo menos un apellido'),
-   //    company: yup.string().required('Se requiere un nombre de Empresa o Razón Social'),
-   //    email: yup.string().email().required('Se requiere un correo electronico'),
-   //    phone: yup.string(),
-   //    mobilePhone: yup.string(),
-   //    inquiry: yup.string().required()
-   // })
 
-   const { register, handleSubmit, control } = useForm<FormInput>(
 
-      // resolver: yupResolver(schema)
-   );
+   const { register, handleSubmit, control } = useForm<FormInput>();
 
    const onSubmit = (values: FormInput) => { console.log(values) }
 
@@ -47,22 +36,19 @@ export const ContactForm = () => {
             <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
                <Row>
                   <Col md={6}>
-                     <input className='w-100 mt-1 mb-1' placeholder='Nombre' {...register('name')} />
+                     <input required className='w-100 mt-1 mb-1' placeholder='Nombre' {...register('name')} />
                      {/* <p>{errors.name?.message}</p> */}
                   </Col>
                   <Col md={6}>
-                     <input className='w-100 mt-1 mb-1' placeholder='Apellido(s)' {...register('lastName')} />
-                     {/* <p>{errors.lastName?.message}</p> */}
+                     <input required className='w-100 mt-1 mb-1' placeholder='Apellido(s)' {...register('lastName')} />
                   </Col>
                </Row >
                <Row>
                   <Col md={6}>
-                     <input className='w-100 mt-1 mb-1' placeholder='Empresa o Razón Social' {...register('company')} />
-                     {/* <p>{errors.company?.message}</p> */}
+                     <input required className='w-100 mt-1 mb-1' placeholder='Empresa o Razón Social' {...register('company')} />
                   </Col>
                   <Col md={6}>
                      <input className='w-100 mt-1 mb-1' placeholder='Correo Electronico' {...register('email')} />
-                     {/* <p>{errors.email?.message}</p> */}
                   </Col>
                </Row>
                <Row>
@@ -99,19 +85,17 @@ export const ContactForm = () => {
                         )}
                         name={'mobilePhone'}
                         control={control} />
-                     {/* <p>{errors.mobilePhone?.message}</p> */}
                   </Col>
                </Row>
                <Row>
                   <Col md={12}>
                      <textarea style={{ resize: 'none' }} rows={5} className='w-100 mt-1 mb-1' placeholder='Mensaje' {...register('inquiry')} />
-                     {/* <p>{errors.inquiry?.message}</p> */}
                   </Col>
                </Row>
                <br />
                <Row>
                   <Col md={3}>
-                     <Button className='btn btn-link p-0 ' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
+                     <Button variant='link' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
                   </Col>
                </Row>
                <Row>
@@ -121,7 +105,7 @@ export const ContactForm = () => {
                </Row>
                <Row>
                   <Col md={12}>
-                     <Button disabled={!acceptedPolicy} type='submit'>Enviar</Button>
+                     <Button variant='success' disabled={!acceptedPolicy} type='submit'>Enviar</Button>
                   </Col>
                </Row>
             </form>

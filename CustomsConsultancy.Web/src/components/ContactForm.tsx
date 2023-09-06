@@ -23,8 +23,8 @@ export const ContactForm = () => {
          lastName: '',
          company: '',
          email: '',
-         phone: 0,
-         mobilePhone: 0,
+         // phone: 0,
+         // mobilePhone: 0,
          inquiry: ''
       },
       resolver: yupResolver(schema)
@@ -67,11 +67,11 @@ export const ContactForm = () => {
                </Row>
                <Row>
                   <Col md={6}>
-                     <input className='w-100' placeholder='Telefono' {...register('phone')} type='number' />
+                     <input className='w-100' placeholder='Telefono' {...register('phone')} type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                      <p>{errors.phone?.message}</p>
                   </Col>
                   <Col md={6}>
-                     <input className='w-100' placeholder='WhatsApp' {...register('mobilePhone')} type='number' />
+                     <input className='w-100' placeholder='WhatsApp' {...register('mobilePhone')} type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                      <p>{errors.mobilePhone?.message}</p>
                   </Col>
                </Row>
@@ -84,17 +84,17 @@ export const ContactForm = () => {
                <br />
                <Row>
                   <Col md={3}>
-                     <Button className='btn btn-link' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
+                     <Button className='btn btn-link p-0' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
+                  </Col>
+               </Row>
+               <Row>
+                  <Col md={4}>
+                     <input className='p-0' type='checkbox' onClick={() => setAcceptedPolicy(!acceptedPolicy)} value='Acepto la poltica de privacidad' />Acepto la poltica de privacidad
                   </Col>
                </Row>
                <Row>
                   <Col md={12}>
                      <Button disabled={!acceptedPolicy} type='submit'>Enviar</Button>
-                  </Col>
-               </Row>
-               <Row>
-                  <Col md={4}>
-                     <input type='checkbox' onClick={() => setAcceptedPolicy(!acceptedPolicy)} value='Acepto la poltica de privacidad' />Acepto la poltica de privacidad
                   </Col>
                </Row>
             </form>

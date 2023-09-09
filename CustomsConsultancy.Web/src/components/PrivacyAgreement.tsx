@@ -14,11 +14,44 @@ export const PrivacyAgreement = ({ showModal, hideModal }: Props) => {
             </Modal.Title>
          </Modal.Header>
          <Modal.Body style={{ backgroundColor: 'gray' }}>
-            Lorem ipsum dolor sit amet consectetur adipiscing elit penatibus aptent, eget potenti fusce suspendisse purus montes sociis. Imperdiet fringilla ut libero vulputate leo convallis at sed, dis facilisi tempor sodales facilisis torquent placerat pretium aliquam, nisi nulla etiam felis magnis morbi id. Cubilia volutpat viverra posuere primis laoreet luctus morbi sollicitudin tempor purus litora aptent convallis, facilisi inceptos non tincidunt habitant natoque porta vitae tortor hendrerit sodales.
-
-            At justo dis nec aliquam suspendisse vulputate congue vestibulum, potenti litora class mauris ligula fermentum etiam dignissim, fames porta iaculis augue dapibus ac id. Aptent pellentesque risus quam etiam laoreet mollis nunc tempus accumsan, ligula lobortis interdum quisque taciti nisl nibh suscipit habitant, vitae pharetra nec porttitor ac diam in imperdiet. Sem vivamus vestibulum rhoncus venenatis eget massa, in commodo ligula orci eu elementum, suspendisse egestas aenean malesuada et. Vitae eros curabitur id imperdiet nibh litora fusce, sociosqu a neque nunc natoque tincidunt, fringilla conubia lacinia pulvinar metus orci.
-
-            Justo conubia cubilia vehicula aliquet egestas ornare lacinia imperdiet, lobortis netus sociis tempor semper penatibus venenatis. Lacus eget dui scelerisque id quis gravida sollicitudin neque bibendum ut, etiam laoreet nisl pretium pellentesque sociosqu a cursus nascetur fusce metus, lobortis pulvinar libero nullam class mattis suspendisse curabitur purus. Duis at ridiculus cum viverra id ligula habitasse venenatis tellus, commodo hac tristique vulputate scelerisque himenaeos feugiat velit interdum neque, torquent elementum nec eros blandit taciti sem semper. Duis litora eget tincidunt lectus ac ligula cursus elementum taciti, vestibulum vel dignissim aliquet sed tempus accumsan morbi lacus, non cum habitasse auctor suspendisse nisi varius condimentum.
+            <h3>Aviso de Privacidad</h3>
+            <p>
+               En cumplimiento a lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, Andrés Aguilar Sánchez en adelante I.C. ADUANAL hace de su conocimiento lo siguiente:
+            </p>
+            <p>
+               Los datos y/o información que de manera voluntaria nos proporcione o haya proporcionado, es completamente confidencial y se encuentra resguardada por I.C. ADUANAL quien es el responsable del uso y tratamiento de sus datos personales.
+            </p>
+            <p>
+               La utilización de los datos recopilados será utilizada exclusivamente para:
+               <ol type="I">
+                  <li>Proveer servicios requeridos, así como actividades afines</li>
+                  <li>Informar sobre nuevos servicios que estén relacionado con nuestra actividad</li>
+                  <li>Dar cumplimiento a obligaciones contraídas con nuestros clientes</li>
+                  <li>Evaluar la calidad del servicio</li>
+                  <li>Fines de identificación</li>
+                  <li>Fines estadísticos</li>
+                  <li>Para invitar a los integrantes de esta a los eventos y promociones realizadas por I.C. ADUANAL y
+                  </li>
+                  <li>Para eventualmente contactarlo vía correo electrónico con el fin de compartirle noticias de interés sobre aspectos aduaneros, de comercio exterior y de derecho en general.</li>
+               </ol>
+            </p>
+            <p>Quien desee ser dado de baja de nuestra base de datos podrá hacerlo por cualquiera de los siguientes medios:
+            </p>
+            <p>
+               Enviar un correo electrónico a ic.aduanal@gmail.com con el asunto BAJA indicando la cuenta de correo que desee sea eliminada.
+            </p>
+            <p>
+               Contactarnos vía telefónica al 229 463 9014 de lunes a viernes y de 9 AM a 5 PM indicando los datos de la cuenta de correo electrónico que desean sea removida de la base de datos
+            </p>
+            <p>
+               <ol>
+                  <li>Usted tiene el derecho de acceder a sus datos personales que poseemos y a los detalles del tratamiento de estos, así como a rectificarlos en caso de ser inexactos o darlos de baja cuando considere que resulten ser excesivos o innecesarios para las finalidades que justificaron su obtención u oponerse al tratamiento de estos para fines específicos.</li>
+                  <li>Para limitar el uso o divulgación de sus datos personales, así como para ejercer los derechos de acceso, rectificación, cancelación u oposición, deberá presentar una solicitud al correo electrónico ic.aduanal@gmail.com</li>
+                  <li>El presente Aviso de Privacidad podrá ser modificado y actualizado en cualquier momento. I.C. ADUANAL notificará los cambios al Aviso de Privacidad mediante el correo electrónico ic.aduanal@gmail.com</li>
+               </ol>
+            </p>
+            <p>Responsable: Andrés Aguilar Sánchez y/o I.C. ADUANAL</p>
+            <p>NO SE RECABA NINGÚN DATO PERSONAL SENSIBLE EN TÉRMINOS DE LA LEY. LOS DATOS QUE SE RECABAN SON NOMBRE DEL PARTICIPANTE, EMPRESA EN LA QUE TRABAJA, CORREO ELECTRÓNICO, DOMICILO FISCAL Y TELÉFONO</p>
          </Modal.Body>
          <Modal.Footer style={{ backgroundColor: 'gray' }}>
             <Button variant="primary" onClick={() => hideModal(false)}>Cerrar</Button>

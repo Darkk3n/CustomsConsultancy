@@ -1,10 +1,56 @@
-import { Image } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import './AboutUs.css'
 
 export const AboutUs = () => {
    return (
-      <div>
-         <Image src='src/assets/img/AboutUs2.png' fluid style={{ width: '100%' }} />
-      </div>
+      <Container fluid>
+         <Container style={{ border: 'solid 1px white', height: '18rem' }} fluid>
+            <h1>¿Quiénes Somos?</h1>
+            <p className='pt-5' style={{ fontSize: '2rem' }}>
+               La plataforma I.C. ADUANAL pone a tu alcance un grupo de profesionales con más de 20 años de experiencia en el ramo aduanal para tu COMPLIANCE ADUANERO.
+            </p>
+         </Container>
+         <Container className='mt-2' style={{ border: 'solid 1px red', height: '18rem' }} fluid>
+            <h1>Misión</h1>
+            <p className='pt-3' style={{ fontSize: '1.5rem' }}>
+               En Instrucción y Consultoría Aduanal, nuestra misión es proporcionar soluciones integrales de alto nivel en el ámbito aduanal, garantizando el cumplimiento de la normatividad y regulaciones vigentes. A través de la experiencia de nuestro equipo de profesionales altamente capacitados, brindamos servicios de asesoría jurídica, capacitación y despacho aduanero, para asegurar la excelencia en el COMPLIANCE ADUANERO de nuestros clientes y contribuir al crecimiento sostenible de sus operaciones comerciales.
+            </p>
+         </Container>
+         <Container className='mt-2' style={{ border: 'solid 1px yellow', height: '18rem' }} fluid>
+            <h1>Visión</h1>
+            <p className='pt-2' style={{ fontSize: '1.5rem' }}>
+               Nuestra visión es posicionarnos como la principal plataforma de referencia en el campo de la consultoría aduanal, reconocida por la calidad y eficiencia de nuestros servicios. Aspiramos a ser líderes en el ramo del Comercio Exterior, destacando por nuestra constante innovación, la sólida formación de nuestro equipo de expertos y la confianza que nuestros clientes depositan en nosotros. Buscamos ser un catalizador del éxito empresarial de nuestros clientes, impulsando el crecimiento y la competitividad en el ámbito del comercio internacional.
+            </p>
+         </Container>
+         <Container className='mt-2' style={{ border: 'solid 1px green', height: '25rem' }} fluid>
+            <h1>Valores</h1>
+            <Container className='text-end'>
+               <ol type='1' >
+                  <li>Profesionalismo: Nos regimos por altos estándares de ética y responsabilidad, brindando servicios con un enfoque riguroso y profesional para garantizar la satisfacción de nuestros clientes.</li>
+                  <li>Conocimiento: Valoramos el aprendizaje continuo y la actualización constante de nuestros conocimientos para ofrecer soluciones de vanguardia y estar siempre al tanto de las novedades en el ámbito aduanal.</li>
+                  <li>Confianza: Establecemos relaciones sólidas y duraderas con nuestros clientes, basadas en la confianza mutua y en el cumplimiento de nuestros compromisos.</li>
+                  <li>Excelencia: Nos esforzamos por alcanzar la excelencia en cada uno de nuestros servicios, buscando superar las expectativas de nuestros clientes y alcanzar los más altos niveles de calidad.</li>
+                  <li>Colaboración: Fomentamos el trabajo en equipo y la colaboración entre nuestros profesionales, clientes y socios, reconociendo que juntos podemos lograr resultados excepcionales.</li>
+                  <li>Orientación al cliente: Ponemos a nuestros clientes en el centro de nuestras acciones, adaptando nuestros servicios a sus necesidades específicas y brindando soluciones personalizadas y efectivas.</li>
+                  <li>Innovación: Nos destacamos por la creatividad y la búsqueda de nuevas formas de abordar los desafíos aduaneros, aplicando tecnologías y métodos innovadores para optimizar nuestros servicios.</li>
+               </ol>
+            </Container>
+         </Container>
+         <Container className='mt-2' style={{ border: 'solid 1px purple', height: '23rem' }} fluid>
+            <p style={{ fontSize: '2rem' }}>
+               Nuestra política se centra en el compromiso de brindar servicios de consultoría aduanal de primera clase, basados en el conocimiento técnico y la experiencia de nuestro equipo. Nos comprometemos a:
+            </p>
+            <ul>
+               <li>Cumplir con todas las normativas y regulaciones aduaneras vigentes, garantizando la integridad de nuestras operaciones y las de nuestros clientes.</li>
+               <li>Proporcionar un trato ético y respetuoso a nuestros clientes, asegurando la confidencialidad y privacidad de la información que compartan con nosotros.</li>
+               <li>Mantenernos actualizados en los cambios en las normativas aduaneras y en las mejores prácticas del sector, para ofrecer soluciones de vanguardia y eficientes.</li>
+               <li>Promover la capacitación y el desarrollo profesional de nuestro equipo, para asegurar la excelencia en la prestación de nuestros servicios.</li>
+               <li>Establecer relaciones de confianza y colaboración con nuestros clientes y socios, buscando siempre su satisfacción y el éxito de sus operaciones aduaneras.</li>
+            </ul>
+         </Container>
+         <Container>
+            <p style={{ fontSize: '1.5rem' }}></p>
+         </Container>
+      </Container>
    )
 }

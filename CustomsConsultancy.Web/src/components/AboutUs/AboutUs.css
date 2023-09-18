@@ -1,6 +1,46 @@
-.background {
-   background: url(../assets/img/AboutUs2.png) no-repeat;
+.who-are-we {
+   background: url(src/assets/img/AboutUs1.png)no-repeat;
    background-size: cover;
-   width: 100%;
-   height: 100vh;
+   background-position: center;
+   color: black;
+   height: 17rem
+}
+
+.mission {
+   background: url(src/assets/img/AboutUs2.png) no-repeat;
+   background-size: cover;
+   background-position: center;
+   color: black;
+   height: 20rem;
+   text-align: right;
+}
+
+.vision {
+   background: url(src/assets/img/AboutUs3.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: black;
+   height: 23rem;
+}
+
+.values {
+   background: url(src/assets/img/AboutUs4.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: black;
+   height: 30rem;
+}
+
+.policy {
+   background: url(src/assets/img/AboutUs5.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   height: 35rem;
+}
+
+.about-us-footer {
+   background: url(src/assets/img/AboutUs6.png) no-repeat;
+   background-size: cover;
+   background-position: center;
+   height: 10rem;
 }

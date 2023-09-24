@@ -1,0 +1,7 @@
+.instruction-background {
+   background: url(src/assets/img/Services2.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: black;
+   height: 22rem;
+}

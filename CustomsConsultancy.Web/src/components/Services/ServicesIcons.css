@@ -1,0 +1,7 @@
+.icons-background {
+   background: url(src/assets/img/Services1.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: black;
+   height: 20rem;
+}

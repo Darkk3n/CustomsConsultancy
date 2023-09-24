@@ -1,8 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap"
+import './ServiceCustomsAgency.css'
 
 export const ServiceCustomsAgency = () => {
    return (
-      <Container>
+      <Container className="customs-agency-background">
          <Row>
             <Col md={6}></Col>
             <Col md={6}>

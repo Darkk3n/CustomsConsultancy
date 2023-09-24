@@ -20,7 +20,7 @@ export const AboutUs = () => {
                <Col md={4}></Col>
             </Row>
          </Container>
-         <Container className='mt-2 mission' fluid>
+         <Container className='mission' fluid>
             <Row>
                <Col md={8}>
                </Col>
@@ -39,7 +39,7 @@ export const AboutUs = () => {
                </Col>
             </Row>
          </Container>
-         <Container className='mt-2 vision' fluid>
+         <Container className='vision' fluid>
             <Row>
                <Col md={4}>
                   <Container className='d-flex justify-content-center'>
@@ -55,7 +55,7 @@ export const AboutUs = () => {
                </Col>
             </Row>
          </Container>
-         <Container className='mt-2 values' fluid>
+         <Container className='values' fluid>
             <Row>
                <Col md={5}>
                </Col>
@@ -75,7 +75,7 @@ export const AboutUs = () => {
                </Col>
             </Row>
          </Container>
-         <Container className='mt-2 policy' fluid>
+         <Container className='policy' fluid>
             <Row>
                <Col md={6}>
                   <h1>Política</h1>
@@ -98,7 +98,7 @@ export const AboutUs = () => {
                <Col md={6}></Col>
             </Row>
          </Container>
-         <Container className='mt-2 about-us-footer' fluid>
+         <Container className='about-us-footer' fluid>
             <Row>
                <Col md={8}>
                   <p style={{ fontSize: '1.5rem' }}>

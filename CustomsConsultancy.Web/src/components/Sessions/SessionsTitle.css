@@ -1,0 +1,16 @@
+.sessions-background {
+   background: url(src/assets/img/Sessions1.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: white;
+   height: 40rem;
+}
+
+.title {
+   font-size: 10rem;
+}
+
+.opacity-background {
+   background-color: lightgray;
+   opacity: 0.5;
+}

@@ -1,0 +1,7 @@
+.sessions-upcoming-background {
+   background: url(src/assets/img/Sessions4.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: white;
+   height: 10rem;
+}

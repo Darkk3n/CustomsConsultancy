@@ -1,10 +1,11 @@
 import { Container } from "react-bootstrap"
-import { SessionsTitle } from "./SessionsTitle"
+import { SessionsInfo, SessionsTitle } from "."
 
 export const Sessions = () => {
    return (
       <Container>
          <SessionsTitle />
+         <SessionsInfo />
       </Container>
    )
 }

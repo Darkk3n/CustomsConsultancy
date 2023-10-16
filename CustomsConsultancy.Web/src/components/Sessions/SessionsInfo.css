@@ -1,0 +1,7 @@
+.sessions-info-background {
+   background: url(src/assets/img/Sessions2.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: white;
+   height: 40rem;
+}

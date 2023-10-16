@@ -5,3 +5,8 @@
    color: white;
    height: 40rem;
 }
+
+.container-size {
+   width: 60%;
+   text-align: justify;
+}

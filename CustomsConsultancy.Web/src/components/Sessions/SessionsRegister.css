@@ -1,0 +1,7 @@
+.sessions-register-background {
+   background: url(src/assets/img/Sessions3.png) no-repeat;
+   background-size: cover;
+   background-position: initial;
+   color: white;
+   height: 40rem;
+}

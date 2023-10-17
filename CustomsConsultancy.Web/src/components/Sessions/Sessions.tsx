@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap"
 import { SessionsInfo, SessionsRegister, SessionsTitle } from "."
+import { Courses } from "./Courses"
 import { SessionsUpcoming } from "./SessionsUpcoming"
 
 export const Sessions = () => {
@@ -9,6 +10,7 @@ export const Sessions = () => {
          <SessionsInfo />
          <SessionsRegister />
          <SessionsUpcoming />
+         <Courses />
       </Container>
    )
 }

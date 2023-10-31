@@ -1,19 +1,22 @@
-import './Courses.css'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import './Courses.css';
 
 export const Courses = () => {
+   const baseImg = 'src/assets/img/'
+
    const images = [
-      "https://res.cloudinary.com/ifeomaimoh/image/upload/v1652345767/demo_image2.jpg",
-      "https://res.cloudinary.com/ifeomaimoh/image/upload/v1652366604/demo_image5.jpg",
-      "https://res.cloudinary.com/ifeomaimoh/image/upload/v1652345874/demo_image1.jpg",
+      "Course1.jpg",
+      "Course2.jpg",
+      "Course3.jpg",
+      "Course4.jpg",
    ];
 
    return (
       <Carousel useKeyboardArrows={true}>
-         {images.map((URL, index) => (
-            <div className="slide">
-               <img alt="sample_file" src={URL} key={index} />
+         {images.map((image, index) => (
+            <div className="slide" key={index} >
+               <img alt="sample_file" src={`${baseImg}${image}`} />
             </div>
          ))}
       </Carousel>

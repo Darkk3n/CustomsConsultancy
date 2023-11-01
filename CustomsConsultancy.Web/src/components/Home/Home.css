@@ -17,3 +17,17 @@
    font-family: 'Andika', sans-serif;
    font-size: 23px;
 }
+
+.blue-text {
+   font-family: 'Bebas Neue';
+   color: blue;
+}
+
+.yellow-text {
+   font-family: 'Bebas Neue';
+   color: yellow;
+}
+
+.global-font {
+   font-family: 'Bebas Neue';
+}

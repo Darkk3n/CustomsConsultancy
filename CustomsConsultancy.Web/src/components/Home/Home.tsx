@@ -4,11 +4,11 @@ export const Home = () => {
    return (
       <div className='back'>
          <div className='home-text'>
-            <p>
-               Expertos en ASESORIA <span style={{ color: 'blue' }}>Aduanal</span> y <span style={{ color: 'blue' }}>Capacitación</span>
+            <p className='global-text'>
+               Expertos en ASESORIA <span className='blue-text'>Aduanal</span> y <span className='blue-text'>Capacitación</span>
             </p>
-            <p>
-               Experticia Legal para <span style={{ color: 'blue' }}> Potenciar</span> tus Operaciones Aduaneras y <span style={{ color: 'blue' }}> Cumplir</span> con <span style={{ color: 'yellow' }}> Éxito</span>
+            <p className='global-text'>
+               Experticia Legal para <span className='blue-text'> Potenciar</span> tus Operaciones Aduaneras y <span className='blue-text'> Cumplir</span> con <span className='yellow-text'> Éxito</span>
             </p>
          </div>
       </div>

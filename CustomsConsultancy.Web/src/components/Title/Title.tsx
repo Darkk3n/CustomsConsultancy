@@ -8,7 +8,7 @@ export const Title = () => {
       <>
          <Navbar expand="lg" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
             <Navbar.Brand href='/'>
-               <Image src='src/assets/img/Logo.jpeg' alt='Logo' style={{ borderRadius: '50%', width: '10rem', paddingRight: '10px' }} />
+               <Image src='../src/assets/img/Logo.jpeg' alt='Logo' style={{ borderRadius: '50%', width: '10rem', paddingRight: '10px' }} />
             </Navbar.Brand>
             <Nav style={{ display: 'flex' }}>
                <Nav.Item>

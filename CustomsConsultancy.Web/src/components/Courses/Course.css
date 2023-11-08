@@ -1,0 +1,22 @@
+.regular-text {
+   color: black
+}
+
+.emphazised-text {
+   color: orange
+}
+
+.flex-display {
+   display: flex;
+   flex-direction: column;
+}
+
+.bolded {
+   color: black;
+   font-weight: bolder;
+}
+
+.regular-text-lighter {
+   font-weight: lighter;
+   color: darkblue
+}

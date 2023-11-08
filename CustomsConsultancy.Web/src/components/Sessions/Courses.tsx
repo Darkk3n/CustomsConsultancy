@@ -1,5 +1,6 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useNavigate } from "react-router-dom";
 import './Courses.css';
 
 export const Courses = () => {
@@ -11,12 +12,19 @@ export const Courses = () => {
       "Course3.jpg",
       "Course4.jpg",
    ];
+   const navigate = useNavigate();
+
+   const openCourse = (index: number) => {
+      navigate(`/courses/${index}`)
+   }
 
    return (
       <Carousel useKeyboardArrows={true}>
          {images.map((image, index) => (
             <div className="slide" key={index} >
-               <img alt="sample_file" src={`${baseImg}${image}`} />
+               <button onClick={() => openCourse(index)} >
+                  <img alt="sample_file" src={`${baseImg}${image}`} />
+               </button>
             </div>
          ))}
       </Carousel>

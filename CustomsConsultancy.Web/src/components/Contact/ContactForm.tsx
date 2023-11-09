@@ -28,8 +28,8 @@ export const ContactForm = () => {
       <>
          {displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
          <Row>
-            <p style={{ marginTop: '20px', fontFamily: 'Abhaya Libre', fontSize: '1.5rem' }}>
-               REGISTRO PARA RECIBIR INFORMACIÓN DE NUESTRAS SESIONES DE ESTUDIO ADUANAL.
+            <p style={{ marginTop: '20px', fontFamily: 'Bebas Neue', fontSize: '1.5rem' }}>
+               ¿Necesitas asesorías? Ponte en contacto
             </p>
          </Row>
          <Container className='container-contact'>

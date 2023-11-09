@@ -7,10 +7,10 @@ export const Courses = () => {
    const baseImg = 'src/assets/img/'
 
    const images = [
-      "Course1.jpg",
-      "Course2.jpg",
-      "Course3.jpg",
-      "Course4.jpg",
+      "Course1.webp",
+      "Course2.webp",
+      "Course3.webp",
+      "Course4.webp",
    ];
    const navigate = useNavigate();
 

@@ -1,4 +1,3 @@
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
 import './Courses.css';
@@ -19,14 +18,14 @@ export const Courses = () => {
    }
 
    return (
-      <Carousel useKeyboardArrows={true}>
+      <div className="wrapper">
          {images.map((image, index) => (
-            <div className="slide" key={index} >
+            <div key={index} >
                <button onClick={() => openCourse(index)} >
                   <img alt="sample_file" src={`${baseImg}${image}`} />
                </button>
             </div>
          ))}
-      </Carousel>
+      </div>
    )
 }

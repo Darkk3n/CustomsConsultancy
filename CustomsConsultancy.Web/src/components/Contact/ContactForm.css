@@ -5,3 +5,7 @@
    height: 100%;
    margin-top: 50px;
 }
+
+input[type="checkbox"] {
+   font-size: 1.5rem;
+}

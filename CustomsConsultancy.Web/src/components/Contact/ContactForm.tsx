@@ -28,7 +28,7 @@ export const ContactForm = () => {
       <>
          {displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
          <Row>
-            <p style={{ marginTop: '20px', fontFamily: 'Bebas Neue', fontSize: '1.5rem' }}>
+            <p style={{ marginTop: '20px', fontFamily: 'Bebas Neue', fontSize: '3rem' }}>
                ¿Necesitas asesorías? Ponte en contacto
             </p>
          </Row>
@@ -95,7 +95,7 @@ export const ContactForm = () => {
                <br />
                <Row>
                   <Col md={3}>
-                     <Button variant='link' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
+                     <Button style={{ fontSize: '1.5rem' }} variant='link' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
                   </Col>
                </Row>
                <Row>

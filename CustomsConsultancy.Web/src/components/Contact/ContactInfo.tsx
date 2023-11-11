@@ -21,7 +21,7 @@ export const ContactInfo = () => (
             <NavLink to='https://www.instagram.com/icaduanal/' target='_blank' style={{ paddingLeft: '10px' }}>
                <Image src='src/assets/img/Instagram.png' className='social-logo' />
             </NavLink>
-            <NavLink to='https://www.tiktok.com/@icaduanal' target='_blank' style={{ paddingLeft: '10px' }}>
+            <NavLink to='https://www.tiktok.com/@i.c.aduanal' target='_blank' style={{ paddingLeft: '10px' }}>
                <Image src='src/assets/img/TikTokLogo.png' className='social-logo' />
             </NavLink>
          </div>

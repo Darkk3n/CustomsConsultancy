@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { CourseData } from '../../Models/CourseData';
 import './Course.css';
 export const Course = () => {
@@ -47,8 +47,12 @@ export const Course = () => {
    return (
       <>
          <Container>
-            <h2 style={{ textAlign: 'justify' }}>{selectedCourse?.title}</h2>
-            <h3 style={{ textAlign: 'justify' }}>Cursos Grabados</h3>
+            <h1 className='regular-text' style={{ textAlign: 'justify' }}>{selectedCourse?.title}</h1>
+         </Container>
+         <Container>
+            <NavLink to='https://www.tiktok.com/@i.c.aduanal/video/7296225010857839878?_r=1&_t=8gyntQgfdXK' target='_blank' className='video-text'>
+               Video Explicativo
+            </NavLink>
          </Container>
          <Container style={{ backgroundColor: 'lightGray' }}>
             <Row>

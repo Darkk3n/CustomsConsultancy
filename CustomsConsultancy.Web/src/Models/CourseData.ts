@@ -4,4 +4,5 @@ export interface CourseData {
    price: number;
    duration: string;
    objective: string;
+   image: string;
 }

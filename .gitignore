@@ -20,5 +20,8 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
 *.sw?
+
+/CustomsConsultancy.Admin.Api/bin/Debug/net6.0
+/CustomsConsultancy.Admin.Api/obj
+*.vsidx

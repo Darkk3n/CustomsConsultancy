@@ -45,7 +45,7 @@ export const SessionsRegisterForm = () => {
                   <PhoneInput fieldName="phone" placeholder="Telefono" control={control} />
                </Col>
                <Col md={6}>
-                  <Form.Select placeholder="Tipo de Client" className='w-100 mt-1 mb-1 p-1' {...register('clientType')} onChange={(e) => onClientTypeChange(e.target)}>
+                  <Form.Select placeholder="Tipo de Client" className='w-100 mt-1 mb-1 p-1 client-type' {...register('clientType')} onChange={(e) => onClientTypeChange(e.target)}>
                      <option>Agente Aduanal</option>
                      <option>Importador</option>
                      <option>Exportador</option>

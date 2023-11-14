@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { NavLink, useParams } from 'react-router-dom';
-import { CourseData } from '../../Models/CourseData';
+import { CourseData } from '../../models/CourseData';
 import './Course.css';
 export const Course = () => {
    const baseImg = '../src/assets/img/';

@@ -18,13 +18,11 @@ export const Courses = () => {
    }
 
    return (
-      <div className="wrapper">
+      <div>
          {images.map((image, index) => (
-            <div key={index} >
-               <button onClick={() => openCourse(index)} >
-                  <img alt="sample_file" src={`${baseImg}${image}`} />
-               </button>
-            </div>
+            <button onClick={() => openCourse(index)} key={index}>
+               <img alt="sample_file" src={`${baseImg}${image}`} />
+            </button>
          ))}
       </div>
    )

@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import { PatternFormat } from 'react-number-format';
-import { PrivacyAgreement } from '.';
+import { useAcceptPolicy } from '../../hooks/useAcceptPolicy';
 import './ContactForm.css';
 
 interface FormInput {
@@ -21,12 +20,10 @@ export const ContactForm = () => {
 
    const onSubmit = (values: FormInput) => { console.log(values) }
 
-   const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState<boolean>(false)
-   const [acceptedPolicy, setAcceptedPolicy] = useState<boolean>(false)
+   const { acceptPolicyElement } = useAcceptPolicy();
 
    return (
       <>
-         {displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
          <Row>
             <p style={{ marginTop: '20px', fontFamily: 'Bebas Neue', fontSize: '3rem' }}>
                ¿Necesitas asesorías? Ponte en contacto
@@ -93,21 +90,7 @@ export const ContactForm = () => {
                   </Col>
                </Row>
                <br />
-               <Row>
-                  <Col md={3}>
-                     <Button style={{ fontSize: '1.5rem' }} variant='link' onClick={() => setDisplayPrivacyAgreement(!displayPrivacyAgreement)}>Politica de Privacidad</Button>
-                  </Col>
-               </Row>
-               <Row>
-                  <Col md={4}>
-                     <input className='p-0' type='checkbox' onClick={() => setAcceptedPolicy(!acceptedPolicy)} value='Acepto la poltica de privacidad' />Acepto la poltica de privacidad
-                  </Col>
-               </Row>
-               <Row>
-                  <Col md={12}>
-                     <Button variant='success' disabled={!acceptedPolicy} type='submit'>Enviar</Button>
-                  </Col>
-               </Row>
+               {acceptPolicyElement}
             </form>
          </Container >
       </>

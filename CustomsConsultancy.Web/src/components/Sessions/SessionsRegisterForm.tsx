@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Controller, useForm } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
+import { useAcceptPolicy } from "../../hooks/useAcceptPolicy";
 import './SessionsRegisterForm.css';
 
 interface FormData {
@@ -17,9 +18,12 @@ export const SessionsRegisterForm = () => {
    const onSubmit = (data: FormData) => {
       console.log(data)
    }
+   const { acceptPolicyElement } = useAcceptPolicy();
+
    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-         <Container>
+      <Container>
+
+         <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
             <Row>
                <Col md={6}>
                   <input required className='w-100 mt-1 mb-1' placeholder='Nombre' {...register('name')} />
@@ -57,10 +61,11 @@ export const SessionsRegisterForm = () => {
             </Row>
             <Row>
                <Col md={12}>
-                  <textarea style={{ resize: 'none' }} rows={5} className='w-100 mt-1 mb-1' placeholder='Mensaje' {...register('topicsOfInterest')} />
+                  <textarea style={{ resize: 'none' }} rows={5} className='w-100 mt-1 mb-1' placeholder='Temas de interés' {...register('topicsOfInterest')} />
                </Col>
             </Row>
-         </Container>
-      </form>
+            {acceptPolicyElement}
+         </form>
+      </Container>
    )
 }

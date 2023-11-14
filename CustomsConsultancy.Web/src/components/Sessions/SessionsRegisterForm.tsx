@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import { Controller, useForm } from "react-hook-form";
-import { PatternFormat } from "react-number-format";
+import { useForm } from "react-hook-form";
 import { useAcceptPolicy } from "../../hooks/useAcceptPolicy";
+import { PhoneInput } from "../Inputs/PhoneInput";
 import './SessionsRegisterForm.css';
 
 interface FormData {
@@ -10,6 +11,7 @@ interface FormData {
    email: string;
    phone: string;
    clientType: string;
+   otherClientType: string;
    topicsOfInterest: string;
 }
 export const SessionsRegisterForm = () => {
@@ -20,9 +22,15 @@ export const SessionsRegisterForm = () => {
    }
    const { acceptPolicyElement } = useAcceptPolicy();
 
+   const [otherClientType, setOtherClientType] = useState<boolean>(false)
+
+   const onClientTypeChange = (target: EventTarget & HTMLSelectElement) => {
+      setOtherClientType(target.selectedIndex === 4)
+      console.log(target.value)
+   }
+
    return (
       <Container>
-
          <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
             <Row>
                <Col md={6}>
@@ -34,30 +42,28 @@ export const SessionsRegisterForm = () => {
             </Row>
             <Row>
                <Col md={6}>
-                  <Controller
-                     render={({ field: { onChange, name, value } }) => (
-                        <PatternFormat
-                           className='w-100 mt-1 mb-1'
-                           type='tel'
-                           format={'###-###-####'}
-                           placeholder='Telefono'
-                           mask='_'
-                           onChange={onChange}
-                           name={name}
-                           value={value} />
-                     )}
-                     name={'phone'}
-                     control={control}
-                  />
+                  <PhoneInput fieldName="phone" placeholder="Telefono" control={control} />
                </Col>
                <Col md={6}>
-                  <Form.Select placeholder="Tipo de Client" className='w-100 mt-1 mb-1' {...register('clientType')} onChange={(e) => { console.log(e.target.value) }}>
-                     <option>-- SELECCIONE --</option>
-                     <option>Test 1</option>
-                     <option>Test 2</option>
-                     <option>Test 3</option>
+                  <Form.Select placeholder="Tipo de Client" className='w-100 mt-1 mb-1' {...register('clientType')} onChange={(e) => onClientTypeChange(e.target)}>
+                     <option>Agente Aduanal</option>
+                     <option>Importador</option>
+                     <option>Exportador</option>
+                     <option>Estudiante</option>
+                     <option>Otro (Especifique)</option>
                   </Form.Select>
                </Col>
+               {
+                  otherClientType &&
+                  <>
+                     <Row>
+                        <Col md={6}></Col>
+                        <Col md={6}>
+                           <input className='w-100 mt-1 mb-1 ms-3' placeholder='Tipo de Cliente' {...register('otherClientType')} />
+                        </Col>
+                     </Row>
+                  </>
+               }
             </Row>
             <Row>
                <Col md={12}>

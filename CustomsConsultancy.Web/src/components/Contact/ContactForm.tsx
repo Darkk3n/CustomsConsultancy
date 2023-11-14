@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import { Controller, useForm } from 'react-hook-form';
-import { PatternFormat } from 'react-number-format';
+import { useForm } from 'react-hook-form';
 import { useAcceptPolicy } from '../../hooks/useAcceptPolicy';
+import { PhoneInput } from '../Inputs/PhoneInput';
 import './ContactForm.css';
 
 interface FormInput {
@@ -50,38 +50,11 @@ export const ContactForm = () => {
                </Row>
                <Row>
                   <Col md={6}>
-                     <Controller
-                        render={({ field: { onChange, name, value } }) => (
-                           <PatternFormat
-                              className='w-100 mt-1 mb-1'
-                              type='tel'
-                              format={'###-###-####'}
-                              placeholder='Telefono'
-                              mask='_'
-                              onChange={onChange}
-                              name={name}
-                              value={value} />
-                        )}
-                        name={'phone'}
-                        control={control}
-                     />
+                     <PhoneInput fieldName="phone" placeholder="Telefono" control={control} />
                      {/* <p>{errors.phone?.message}</p> */}
                   </Col>
                   <Col md={6}>
-                     <Controller
-                        render={({ field: { onChange, name, value } }) => (
-                           <PatternFormat
-                              className='w-100 mt-1 mb-1'
-                              type='tel'
-                              format={'###-###-####'}
-                              placeholder='WhatsApp'
-                              mask='_'
-                              onChange={onChange}
-                              name={name}
-                              value={value} />
-                        )}
-                        name={'mobilePhone'}
-                        control={control} />
+                     <PhoneInput fieldName="mobilePhone" placeholder="Whatsapp" control={control} />
                   </Col>
                </Row>
                <Row>

@@ -25,3 +25,6 @@ dist-ssr
 /CustomsConsultancy.Admin.Api/bin/Debug/net6.0
 /CustomsConsultancy.Admin.Api/obj
 *.vsidx
+/.vs/CustomsConsultancy/v17
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json

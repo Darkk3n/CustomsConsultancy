@@ -1,3 +1,4 @@
+import { SessionsRegisterForm } from '.'
 import './SessionsRegister.css'
 
 export const SessionsRegister = () => {
@@ -12,7 +13,7 @@ export const SessionsRegister = () => {
                REGISTRO PARA RECIBIR INFORMACIÓN DE NUESTRAS SESIONES DE ESTUDIO ADUANAL.
             </p>
          </div>
-         <h1>Formulario</h1>
+         <SessionsRegisterForm />
       </div>
    )
 }

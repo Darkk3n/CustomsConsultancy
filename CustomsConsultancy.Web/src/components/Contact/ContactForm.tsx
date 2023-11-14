@@ -33,19 +33,19 @@ export const ContactForm = () => {
             <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
                <Row>
                   <Col md={6}>
-                     <input required className='w-100 mt-1 mb-1' placeholder='Nombre' {...register('name')} />
+                     <input required className='w-100 mt-1 mb-1 p-1' placeholder='Nombre' {...register('name')} />
                      {/* <p>{errors.name?.message}</p> */}
                   </Col>
                   <Col md={6}>
-                     <input required className='w-100 mt-1 mb-1' placeholder='Apellido(s)' {...register('lastName')} />
+                     <input required className='w-100 mt-1 mb-1 p-1' placeholder='Apellido(s)' {...register('lastName')} />
                   </Col>
                </Row >
                <Row>
                   <Col md={6}>
-                     <input required className='w-100 mt-1 mb-1' placeholder='Empresa o Razón Social' {...register('company')} />
+                     <input required className='w-100 mt-1 mb-1 p-1' placeholder='Empresa o Razón Social' {...register('company')} />
                   </Col>
                   <Col md={6}>
-                     <input className='w-100 mt-1 mb-1' placeholder='Correo Electronico' {...register('email')} />
+                     <input className='w-100 mt-1 mb-1 p-1' placeholder='Correo Electronico' {...register('email')} />
                   </Col>
                </Row>
                <Row>
@@ -59,7 +59,7 @@ export const ContactForm = () => {
                </Row>
                <Row>
                   <Col md={12}>
-                     <textarea style={{ resize: 'none' }} rows={5} className='w-100 mt-1 mb-1' placeholder='Mensaje' {...register('inquiry')} />
+                     <textarea style={{ resize: 'none' }} rows={5} className='w-100 mt-1 mb-1 p-1' placeholder='Mensaje' {...register('inquiry')} />
                   </Col>
                </Row>
                <br />

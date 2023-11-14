@@ -12,7 +12,7 @@ export const PhoneInput = ({ fieldName, placeholder, control }: IProps) => {
       <Controller
          render={({ field: { onChange, name, value } }) => (
             <PatternFormat
-               className='w-100 mt-1 mb-1'
+               className='w-100 mt-1 mb-1 p-1'
                type='tel'
                format={'###-###-####'}
                placeholder={placeholder}

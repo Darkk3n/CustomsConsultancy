@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useAcceptPolicy } from '../../hooks/useAcceptPolicy';
 import { PhoneInput } from '../Inputs/PhoneInput';
 import './ContactForm.css';
+import { toast } from 'sonner'
 
 interface FormInput {
    name: string;
@@ -18,7 +19,10 @@ export const ContactForm = () => {
 
    const { register, handleSubmit, control } = useForm<FormInput>();
 
-   const onSubmit = (values: FormInput) => { console.log(values) }
+   const onSubmit = (values: FormInput) => {
+      console.log(values)
+      toast.success('Pregunta enviada con exito.');
+   }
 
    const { acceptPolicyElement } = useAcceptPolicy();
 

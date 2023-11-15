@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useAcceptPolicy } from "../../hooks/useAcceptPolicy";
 import { PhoneInput } from "../Inputs/PhoneInput";
 import './SessionsRegisterForm.css';
+import { toast } from 'sonner'
 
 interface FormData {
    name: string;
@@ -19,6 +20,7 @@ export const SessionsRegisterForm = () => {
 
    const onSubmit = (data: FormData) => {
       console.log(data)
+      toast.success('Registro enviado con exito.');
    }
    const { acceptPolicyElement } = useAcceptPolicy();
 

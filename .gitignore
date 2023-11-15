@@ -28,4 +28,4 @@ dist-ssr
 /.vs/CustomsConsultancy/v17
 /.vs/slnx.sqlite
 /.vs/VSWorkspaceState.json
-/CustomsConsultancy.Admin.Api/.vs/ProjectEvaluation
+/CustomsConsultancy.Admin.Api/.vs/*

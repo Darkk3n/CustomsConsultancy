@@ -1,4 +1,5 @@
 using CustomsConsultancy.Admin.Api;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +12,12 @@ builder.Services.AddDbContext<ConsultancyContext>(opt => opt.UseSqlite("Data Sou
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 builder.Services.AddCors(opt =>
 {
-    opt.AddDefaultPolicy(policy =>
+    opt.AddPolicy("Policy", policy =>
     {
-        policy.WithOrigins("http://localhost:3006", "http://localhost:5173").AllowAnyMethod().AllowAnyHeader();
+        policy
+        .WithOrigins("http://localhost:3006", "http://localhost:5173")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
     });
 });
 var app = builder.Build();
@@ -25,8 +29,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
-app.MapGet("/", () => "Hello World").WithName("HelloWorld");
+app.MapGet("/api/HelloWorld", () => Results.Ok("Hello World"));
+app.UseCors("Policy");
 
 app.Run();

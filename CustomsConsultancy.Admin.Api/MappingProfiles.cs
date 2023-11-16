@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
+using CustomsConsultancy.Admin.Api.Dtos;
+using CustomsConsultancy.Admin.Api.Models;
 
 namespace CustomsConsultancy.Admin.Api
 {
@@ -10,7 +8,7 @@ namespace CustomsConsultancy.Admin.Api
     {
         public MappingProfiles()
         {
-
+            CreateMap<PotentialClient, PotentialClientDto>().ReverseMap();
         }
     }
 }

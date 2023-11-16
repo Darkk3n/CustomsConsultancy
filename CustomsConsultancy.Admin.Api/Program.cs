@@ -1,5 +1,5 @@
 using CustomsConsultancy.Admin.Api;
-using Microsoft.AspNetCore.Mvc;
+using CustomsConsultancy.Admin.Api.Endpoints;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,7 +32,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/api/HelloWorld", () => Results.Ok("Hello World"));
+app.AddPotentialClientsEndpoints();
+
 app.UseCors("Policy");
 
 app.Run();

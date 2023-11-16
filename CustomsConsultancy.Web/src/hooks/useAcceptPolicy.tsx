@@ -24,6 +24,6 @@ export function useAcceptPolicy() {
          </Row>
       </>
 
-   return { acceptPolicyElement };
+   return { acceptPolicyElement, setAcceptedPolicy, acceptedPolicy };
 }
 

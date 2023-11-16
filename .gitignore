@@ -33,3 +33,5 @@ dist-ssr
 CustomsConsultancy.Admin.Api/.vs/CustomsConsultancy.Admin.Api/DesignTimeBuild/.dtbcache.v2
 CustomsConsultancy.Admin.Api/.vs/CustomsConsultancy.Admin.Api/v17/.futdcache.v2
 CustomsConsultancy.Admin.Api/CustomConsultancy.db
+CustomsConsultancy.Admin.Api/CustomConsultancy.db-shm
+CustomsConsultancy.Admin.Api/CustomConsultancy.db-wal

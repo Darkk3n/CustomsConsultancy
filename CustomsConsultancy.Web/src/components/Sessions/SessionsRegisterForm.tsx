@@ -16,7 +16,16 @@ interface FormData {
    topicsOfInterest: string;
 }
 export const SessionsRegisterForm = () => {
-   const { register, control, handleSubmit, reset } = useForm<FormData>();
+   const { register, control, handleSubmit, reset } = useForm<FormData>({
+      defaultValues: {
+         name: '',
+         email: '',
+         phone: '',
+         clientType: 'Agente Aduanal',
+         otherClientType: '',
+         topicsOfInterest: ''
+      }
+   });
 
    const onSubmit = (data: FormData) => {
       fetch("https://localhost:7108/api/PotentialClient", {

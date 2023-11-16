@@ -16,11 +16,27 @@ interface FormData {
    topicsOfInterest: string;
 }
 export const SessionsRegisterForm = () => {
-   const { register, control, handleSubmit } = useForm<FormData>();
+   const { register, control, handleSubmit, reset } = useForm<FormData>();
 
    const onSubmit = (data: FormData) => {
-      console.log(data)
-      toast.success('Registro enviado con exito.');
+      fetch("https://localhost:7108/api/PotentialClient", {
+         method: 'POST',
+         headers: {
+            'content-type': 'application/json',
+         },
+         body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            potentialClientType: otherClientType ? data.otherClientType : data.clientType,
+            topicsOfInterest: data.topicsOfInterest
+         })
+      })
+         .then(() => {
+            toast.success('Registro enviado con exito.')
+            reset();
+         })
+         .catch(err => console.log(err));
    }
    const { acceptPolicyElement } = useAcceptPolicy();
 
@@ -28,7 +44,6 @@ export const SessionsRegisterForm = () => {
 
    const onClientTypeChange = (target: EventTarget & HTMLSelectElement) => {
       setOtherClientType(target.selectedIndex === 4)
-      console.log(target.value)
    }
 
    return (

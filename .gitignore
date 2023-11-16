@@ -14,6 +14,7 @@ dist-ssr
 
 # Editor directories and files
 .vscode/*
+.vs/*
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -29,3 +30,6 @@ dist-ssr
 /.vs/slnx.sqlite
 /.vs/VSWorkspaceState.json
 /CustomsConsultancy.Admin.Api/.vs/*
+CustomsConsultancy.Admin.Api/.vs/CustomsConsultancy.Admin.Api/DesignTimeBuild/.dtbcache.v2
+CustomsConsultancy.Admin.Api/.vs/CustomsConsultancy.Admin.Api/v17/.futdcache.v2
+CustomsConsultancy.Admin.Api/CustomConsultancy.db

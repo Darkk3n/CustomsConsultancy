@@ -6,6 +6,7 @@ import { useAcceptPolicy } from "../../hooks/useAcceptPolicy";
 import { PhoneInput } from "../Inputs/PhoneInput";
 import './SessionsRegisterForm.css';
 import { toast } from 'sonner'
+import { http } from "../../api/agent";
 
 interface FormData {
    name: string;
@@ -28,18 +29,12 @@ export const SessionsRegisterForm = () => {
    });
 
    const onSubmit = (data: FormData) => {
-      fetch("https://localhost:7108/api/PotentialClient", {
-         method: 'POST',
-         headers: {
-            'content-type': 'application/json',
-         },
-         body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            potentialClientType: otherClientType ? data.otherClientType : data.clientType,
-            topicsOfInterest: data.topicsOfInterest
-         })
+      http("/PotentialClient", {
+         name: data.name,
+         email: data.email,
+         phone: data.phone,
+         potentialClientType: otherClientType ? data.otherClientType : data.clientType,
+         topicsOfInterest: data.topicsOfInterest
       })
          .then(() => {
             toast.success('Registro enviado con exito.')

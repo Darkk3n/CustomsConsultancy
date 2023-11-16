@@ -35,10 +35,11 @@ export const SessionsRegisterForm = () => {
          .then(() => {
             toast.success('Registro enviado con exito.')
             reset();
+            setAcceptedPolicy(!acceptedPolicy);
          })
          .catch(err => console.log(err));
    }
-   const { acceptPolicyElement } = useAcceptPolicy();
+   const { acceptPolicyElement, acceptedPolicy, setAcceptedPolicy } = useAcceptPolicy();
 
    const [otherClientType, setOtherClientType] = useState<boolean>(false)
 

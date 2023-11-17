@@ -9,6 +9,7 @@ namespace CustomsConsultancy.Admin.Api
         public MappingProfiles()
         {
             CreateMap<PotentialClient, PotentialClientDto>().ReverseMap();
+            CreateMap<IEnumerable<PotentialClient>, IEnumerable<PotentialClientDto>>().ReverseMap();
         }
     }
 }

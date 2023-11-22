@@ -1,21 +1,17 @@
-import { useEffect, useState } from 'react'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavBar } from './components/NavBar';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [message, setMessage] = useState<string>()
-
-  useEffect(() => {
-    fetch("https://localhost:7108/api/HelloWorld")
-      .then(r => r.json())
-      .then(d => setMessage(d))
-
-
-  }, [])
-
-
   return (
     <>
-      <div>App Loaded {message}</div>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<div>Home</div>} />
+        <Route path='/inquiries' element={<div>Preguntas</div>} />
+        <Route path='/courses' element={<div>Cursos</div>} />
+      </Routes>
     </>
   )
 }

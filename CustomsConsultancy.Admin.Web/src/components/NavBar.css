@@ -1,0 +1,10 @@
+.menu-link {
+    padding: 2px;
+    background-color: #3c4e64;
+    color: white;
+    margin-right: 5px;
+    text-decoration: none;
+    font-family: "Abhaya Libre", serif;
+    font-size: 2rem;
+    border-radius: 10px;
+}

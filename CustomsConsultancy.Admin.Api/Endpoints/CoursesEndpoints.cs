@@ -43,6 +43,14 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 await context.SaveChangesAsync();
                 return Results.Ok();
             });
+
+            app.MapDelete("api/courses/{courseid}", async (ConsultancyContext context, int courseid) =>
+            {
+                var course = await context.Course.FindAsync(courseid);
+                context.Course.Remove(course);
+                await context.SaveChangesAsync();
+                return Results.Ok();
+            });
         }
         private static void GetModel(CourseDto dto) => Course.FromDto(dto);
     }

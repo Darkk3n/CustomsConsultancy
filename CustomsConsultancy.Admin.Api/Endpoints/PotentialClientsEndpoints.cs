@@ -18,16 +18,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
 
             app.MapGet("/api/PotentialClient", async (ConsultancyContext context) =>
             {
-                var data = await context.PotentialClients
-                .Select(r => new PotentialClient
-                {
-                    Name = r.Name,
-                    Email = r.Email,
-                    Phone = r.Phone,
-                    PotentialClientType = r.PotentialClientType,
-                    TopicsOfInterest = r.TopicsOfInterest
-                })
-                .ToListAsync();
+                var data = await context.PotentialClients.ToListAsync();
                 return Results.Ok(PotentialClientDto.ToDtoList(data));
             });
         }

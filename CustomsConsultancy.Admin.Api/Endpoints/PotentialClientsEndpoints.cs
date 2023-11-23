@@ -1,4 +1,3 @@
-using AutoMapper;
 using CustomsConsultancy.Admin.Api.Dtos;
 using CustomsConsultancy.Admin.Api.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,14 +9,14 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
     {
         public static void AddPotentialClientsEndpoints(this WebApplication app)
         {
-            app.MapPost("/api/PotentialClient", async (ConsultancyContext context, IMapper mapper, [FromBody] PotentialClientDto potentialClientDto) =>
+            app.MapPost("/api/PotentialClient", async (ConsultancyContext context, [FromBody] PotentialClientDto potentialClientDto) =>
             {
-                var newRecord = mapper.Map<PotentialClient>(potentialClientDto);
+                var newRecord = PotentialClient.FromDto(potentialClientDto);
                 context.PotentialClients.Add(newRecord);
                 await context.SaveChangesAsync();
             });
 
-            app.MapGet("/api/PotentialClient", async (ConsultancyContext context, IMapper mapper) =>
+            app.MapGet("/api/PotentialClient", async (ConsultancyContext context) =>
             {
                 var data = await context.PotentialClients
                 .Select(r => new PotentialClient
@@ -29,7 +28,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                     TopicsOfInterest = r.TopicsOfInterest
                 })
                 .ToListAsync();
-                return Results.Ok(mapper.Map<IEnumerable<PotentialClientDto>>(data));
+                return Results.Ok(PotentialClientDto.ToDtoList(data));
             });
         }
     }

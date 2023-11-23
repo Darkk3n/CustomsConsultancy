@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.AddPotentialClientsEndpoints();
-// app.AddCoursesEndpoints();
+app.AddCoursesEndpoints();
 
 app.UseCors("Policy");
 

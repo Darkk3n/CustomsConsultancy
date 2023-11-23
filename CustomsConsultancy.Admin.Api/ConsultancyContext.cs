@@ -13,6 +13,9 @@ namespace CustomsConsultancy.Admin.Api
 
         public DbSet<PotentialClient> PotentialClients { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Inquiry> Inquiries { get; set; }
+        public DbSet<CourseClients> CourseClients { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

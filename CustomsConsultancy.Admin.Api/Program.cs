@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ConsultancyContext>(opt => opt.UseSqlite("Data Source = CustomConsultancy.db"));
-builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("Policy", policy =>
@@ -33,6 +32,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.AddPotentialClientsEndpoints();
+// app.AddCoursesEndpoints();
 
 app.UseCors("Policy");
 

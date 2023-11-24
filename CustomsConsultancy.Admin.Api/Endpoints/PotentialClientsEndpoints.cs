@@ -1,5 +1,5 @@
 using CustomsConsultancy.Admin.Api.Dtos;
-using CustomsConsultancy.Admin.Api.Models;
+using CustomsConsultancy.Admin.Api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +11,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
         {
             app.MapPost("/api/PotentialClient", async (ConsultancyContext context, [FromBody] PotentialClientDto potentialClientDto) =>
             {
-                var newRecord = PotentialClient.FromDto(potentialClientDto);
+                var newRecord = PotentialClientMapper.FromDto(potentialClientDto);
                 context.PotentialClients.Add(newRecord);
                 await context.SaveChangesAsync();
             });
@@ -19,7 +19,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
             app.MapGet("/api/PotentialClient", async (ConsultancyContext context) =>
             {
                 var data = await context.PotentialClients.ToListAsync();
-                return Results.Ok(PotentialClientDto.ToDtoList(data));
+                return Results.Ok(PotentialClientMapper.ToDtoList(data));
             });
         }
     }

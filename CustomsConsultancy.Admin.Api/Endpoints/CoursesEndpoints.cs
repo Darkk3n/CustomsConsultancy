@@ -1,5 +1,5 @@
 using CustomsConsultancy.Admin.Api.Dtos;
-using CustomsConsultancy.Admin.Api.Models;
+using CustomsConsultancy.Admin.Api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +16,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 {
                     return Results.NotFound();
                 }
-                return Results.Ok(CourseDto.FromModel(course));
+                return Results.Ok(CourseMapper.FromModel(course));
             });
 
             app.MapGet("/api/courses", async (ConsultancyContext context) =>
@@ -26,12 +26,12 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 {
                     return Results.NotFound();
                 }
-                return Results.Ok(CourseDto.FromModelList(courses));
+                return Results.Ok(CourseMapper.FromModelList(courses));
             });
 
             app.MapPost("/api/courses", async (ConsultancyContext context, [FromBody] CourseDto dto) =>
             {
-                context.Course.Add(Course.FromDto(dto));
+                context.Course.Add(CourseMapper.FromDto(dto));
                 await context.SaveChangesAsync();
                 return Results.Ok();
             });
@@ -52,6 +52,5 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 return Results.Ok();
             });
         }
-        private static void GetModel(CourseDto dto) => Course.FromDto(dto);
     }
 }

@@ -23,4 +23,9 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string MobilePhone { get; set; }
         public string Inquiry { get; set; }
     }
+
+    public class InquiryAnswerDto
+    {
+        public string Response { get; set; }
+    }
 }

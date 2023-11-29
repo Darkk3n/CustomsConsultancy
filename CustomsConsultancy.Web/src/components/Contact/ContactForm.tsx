@@ -4,22 +4,12 @@ import { useAcceptPolicy } from '../../hooks/useAcceptPolicy';
 import { PhoneInput } from '../Inputs/PhoneInput';
 import './ContactForm.css';
 import { toast } from 'sonner'
+import { InquiryModel } from '../../Models/InquiryModel';
 
-interface FormInput {
-   name: string;
-   lastName: string;
-   company: string;
-   email: string;
-   phone: string;
-   mobilePhone: string;
-   inquiry: string;
-}
 export const ContactForm = () => {
+   const { register, handleSubmit, control } = useForm<InquiryModel>();
 
-
-   const { register, handleSubmit, control } = useForm<FormInput>();
-
-   const onSubmit = (values: FormInput) => {
+   const onSubmit = (values: InquiryModel) => {
       console.log(values)
       toast.success('Pregunta enviada con exito.');
    }

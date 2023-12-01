@@ -5,7 +5,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
 {
     public static class InquiryMapper
     {
-        public static Inquiry FromDto(InquiryDto dto)
+        public static Inquiry FromDto(InquiryCreateDto dto)
         {
             return new Inquiry
             {

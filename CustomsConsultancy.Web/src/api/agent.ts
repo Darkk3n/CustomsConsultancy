@@ -22,6 +22,9 @@ const PotentialClients = {
 };
 
 const http = {
+    Inquiries,
+    PotentialClients
+}
 	Inquiries,
 	PotentialClients,
 };

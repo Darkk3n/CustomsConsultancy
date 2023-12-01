@@ -9,5 +9,6 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string Phone { get; set; }
         public string MobilePhone { get; set; }
         public string Inquiry { get; set; }
+        public bool Answered { get; set; }
     }
 }

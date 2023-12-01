@@ -1,4 +1,5 @@
 export interface InquiryModel {
+    inquiryId: number;
     name: string;
     lastName: string;
     company: string;

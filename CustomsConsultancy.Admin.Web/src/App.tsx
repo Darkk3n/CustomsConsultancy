@@ -1,7 +1,8 @@
-import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavBar } from './components/NavBar';
 import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import { InquiriesIndex } from './components/Inquiries/InquiriesIndex';
+import { NavBar } from './components/NavBar';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<div>Home</div>} />
-        <Route path='/inquiries' element={<div>Preguntas</div>} />
+        <Route path='/inquiries' element={<InquiriesIndex />} />
         <Route path='/courses' element={<div>Cursos</div>} />
         <Route path='/potentialclients' element={<div>Clientes Potenciales</div>} />
       </Routes>

@@ -6,4 +6,5 @@ export interface InquiryModel {
     phone: string;
     mobilePhone: string;
     inquiry: string;
+    answered: boolean;
 }

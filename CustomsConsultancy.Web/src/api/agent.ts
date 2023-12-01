@@ -17,14 +17,6 @@ const Inquiries = {
     create: (inquiry: InquiryModel) => requests.post<void>('/inquiries', inquiry),
 }
 
-// const Courses = {
-//     create: (course: CourseData) => requests.post<void>('/courses', course),
-//     update: (course: CourseData) => requests.put<CourseData>(`/courses/${course.id}`, course),
-//     delete: (courseId: number) => requests.del<void>(`/courses/${courseId}`, {}),
-//     list: () => requests.get<CourseData[]>('/courses'),
-//     getById: (courseId: number) => requests.get<CourseData>(`/course/${courseId}`)
-// }
-
 const PotentialClients = {
     create: (data: PotentialClientModel) => requests.post<void>('/PotentialClient', data)
 }
@@ -33,6 +25,5 @@ const http = {
     Inquiries,
     PotentialClients
 }
-
 
 export default http;

@@ -30,7 +30,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 Email = i.Email,
                 Phone = i.Phone,
                 Inquiry = i.Question,
-                MobilePhone = i.MobilePhone
+                MobilePhone = i.MobilePhone,
+                Answered = i.Answered
             }));
             return toReturn;
         }

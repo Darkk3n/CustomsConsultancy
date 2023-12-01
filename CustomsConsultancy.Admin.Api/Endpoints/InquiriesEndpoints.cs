@@ -9,7 +9,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
     {
         public static void AddInquiriesEndpoints(this WebApplication app)
         {
-            app.MapPost("/api/inquiries", async (ConsultancyContext context, [FromBody] InquiryDto dto) =>
+            app.MapPost("/api/inquiries", async (ConsultancyContext context, [FromBody] InquiryCreateDto dto) =>
             {
                 var inquiry = InquiryMapper.FromDto(dto);
                 context.Inquiry.Add(inquiry);

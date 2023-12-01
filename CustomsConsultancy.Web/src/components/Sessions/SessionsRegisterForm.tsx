@@ -2,22 +2,16 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
+import { toast } from 'sonner';
+import { PotentialClientModel } from "../../Models/PotentialClientModel";
+import http from "../../api/agent";
 import { useAcceptPolicy } from "../../hooks/useAcceptPolicy";
 import { PhoneInput } from "../Inputs/PhoneInput";
 import './SessionsRegisterForm.css';
-import { toast } from 'sonner'
-import { http } from "../../api/agent";
 
-interface FormData {
-   name: string;
-   email: string;
-   phone: string;
-   clientType: string;
-   otherClientType: string;
-   topicsOfInterest: string;
-}
+
 export const SessionsRegisterForm = () => {
-   const { register, control, handleSubmit, reset } = useForm<FormData>({
+   const { register, control, handleSubmit, reset } = useForm<PotentialClientModel>({
       defaultValues: {
          name: '',
          email: '',
@@ -28,22 +22,17 @@ export const SessionsRegisterForm = () => {
       }
    });
 
-   const onSubmit = (data: FormData) => {
-      http("/PotentialClient", {
-         name: data.name,
-         email: data.email,
-         phone: data.phone,
-         potentialClientType: otherClientType ? data.otherClientType : data.clientType,
-         topicsOfInterest: data.topicsOfInterest
-      })
+   const onSubmit = (data: PotentialClientModel) => {
+      http.PotentialClients.create(data)
          .then(() => {
+            console.log(data);
             toast.success('Registro enviado con exito.')
             reset();
-            setAcceptedPolicy(!acceptedPolicy);
+            setAcceptedPolicy(false);
          })
          .catch(err => console.log(err));
    }
-   const { acceptPolicyElement, acceptedPolicy, setAcceptedPolicy } = useAcceptPolicy();
+   const { acceptPolicyElement, setAcceptedPolicy } = useAcceptPolicy();
 
    const [otherClientType, setOtherClientType] = useState<boolean>(false)
 
@@ -67,7 +56,7 @@ export const SessionsRegisterForm = () => {
                   <PhoneInput fieldName="phone" placeholder="Telefono" control={control} />
                </Col>
                <Col md={6}>
-                  <Form.Select placeholder="Tipo de Client" className='w-100 mt-1 mb-1 p-1 client-type' {...register('clientType')} onChange={(e) => onClientTypeChange(e.target)}>
+                  <Form.Select placeholder="Tipo de Cliente" className='w-100 mt-1 mb-1 p-1 client-type' {...register('clientType')} onChange={(e) => onClientTypeChange(e.target)}>
                      <option>Agente Aduanal</option>
                      <option>Importador</option>
                      <option>Exportador</option>

@@ -1,17 +1,19 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { InquiryModel } from '../../Models/InquiryModel';
+import http from '../../api/agent';
 import { useAcceptPolicy } from '../../hooks/useAcceptPolicy';
 import { PhoneInput } from '../Inputs/PhoneInput';
 import './ContactForm.css';
-import { toast } from 'sonner'
-import { InquiryModel } from '../../Models/InquiryModel';
 
 export const ContactForm = () => {
    const { register, handleSubmit, control } = useForm<InquiryModel>();
 
    const onSubmit = (values: InquiryModel) => {
       console.log(values)
-      toast.success('Pregunta enviada con exito.');
+      http.Inquiries.create(values)
+         .then(() => toast.success('Pregunta enviada con exito.'))
    }
 
    const { acceptPolicyElement } = useAcceptPolicy();

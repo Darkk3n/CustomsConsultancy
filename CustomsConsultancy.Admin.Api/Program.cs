@@ -33,6 +33,7 @@ app.UseHttpsRedirection();
 
 app.AddPotentialClientsEndpoints();
 app.AddCoursesEndpoints();
+app.AddInquiriesEndpoints();
 
 app.UseCors("Policy");
 

@@ -1,0 +1,26 @@
+# top-most EditorConfig file
+root = true
+
+[*.{js,jsx,ts,tsx}]
+indent_style = tab
+indent_size = 3
+end_of_line = lf
+insert_final_newline = true
+quote_type = double
+
+# Disallow single line functions
+[*.{js,jsx,ts,tsx}]
+max_line_length = off
+multiline_function = always
+
+# Ensure proper parentheses and commas
+[*.{js,jsx,ts,tsx}]
+insert_final_newline = false
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Add commas to lists, arrays, property definitions, object creation
+[*.{js,jsx,ts,tsx}]
+javascript: {
+    trailing_comma = all
+}

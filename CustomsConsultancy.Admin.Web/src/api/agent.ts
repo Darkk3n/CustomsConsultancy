@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { CourseData } from '../../../CustomsConsultancy.Web/src/Models/CourseData';
+import { InquiryModel } from "../../../CustomsConsultancy.Web/src/Models/InquiryModel";
 
 axios.defaults.baseURL = 'https://localhost:7108/api'
 
@@ -20,8 +21,12 @@ const Courses = {
    getById: (courseId: number) => requests.get<CourseData>(`/course/${courseId}`)
 }
 
+const Inquiries = {
+   getAll: () => requests.get<InquiryModel[]>('/inquiries')
+}
+
 const http = {
-   Courses
+   Courses, Inquiries
 }
 
 

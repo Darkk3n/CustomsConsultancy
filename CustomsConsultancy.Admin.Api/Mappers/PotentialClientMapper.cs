@@ -1,4 +1,5 @@
 using CustomsConsultancy.Admin.Api.Dtos;
+using CustomsConsultancy.Admin.Api.Extensions;
 using CustomsConsultancy.Admin.Api.Models;
 
 namespace CustomsConsultancy.Admin.Api.Mappers
@@ -10,7 +11,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             Name = potentialClient.Name,
             Email = potentialClient.Email,
             Phone = potentialClient.Phone,
-            PotentialClientType = potentialClient.PotentialClientType,
+            ClientType = potentialClient.PotentialClientType,
             TopicsOfInterest = potentialClient.TopicsOfInterest
         };
 
@@ -22,7 +23,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 Name = r.Name,
                 Email = r.Email,
                 Phone = r.Phone,
-                PotentialClientType = r.PotentialClientType,
+                ClientType = r.PotentialClientType,
                 TopicsOfInterest = r.TopicsOfInterest
             }));
             return toReturn;
@@ -31,9 +32,9 @@ namespace CustomsConsultancy.Admin.Api.Mappers
         public static PotentialClient FromDto(PotentialClientDto dto) => new()
         {
             Name = dto.Name,
-            Email = dto.Name,
+            Email = dto.Email,
             Phone = dto.Phone,
-            PotentialClientType = dto.Phone,
+            PotentialClientType = dto.OtherClientType.HasValue() ? dto.OtherClientType : dto.ClientType,
             TopicsOfInterest = dto.TopicsOfInterest
         };
     }

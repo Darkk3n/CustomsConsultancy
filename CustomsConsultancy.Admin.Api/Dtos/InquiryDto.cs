@@ -15,6 +15,7 @@ namespace CustomsConsultancy.Admin.Api.Dtos
 
     public class InquiryCreateDto
     {
+        public int InquiryId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Company { get; set; }
@@ -24,6 +25,8 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string Inquiry { get; set; }
         public bool Answered { get; set; }
     }
+
+
 
     public class InquiryAnswerDto
     {

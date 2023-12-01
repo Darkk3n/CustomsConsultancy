@@ -24,6 +24,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             var toReturn = new List<InquiryDto>();
             toReturn.AddRange(inquiries.Select(i => new InquiryDto
             {
+                InquiryId = i.Id,
                 Name = i.ClientName,
                 LastName = i.ClientLastName,
                 Company = i.Company,

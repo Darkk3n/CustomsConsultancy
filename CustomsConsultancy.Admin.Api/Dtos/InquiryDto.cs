@@ -2,6 +2,7 @@ namespace CustomsConsultancy.Admin.Api.Dtos
 {
     public class InquiryDto
     {
+        public int InquiryId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Company { get; set; }

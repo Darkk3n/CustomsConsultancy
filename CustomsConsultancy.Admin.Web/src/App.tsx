@@ -1,4 +1,6 @@
+import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavBar } from './components/NavBar';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { InquiriesIndex, InquiryDetails } from './components/Inquiries';

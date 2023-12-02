@@ -23,7 +23,7 @@ export const InquiryList = ({ inquiries }: IInquiryListProps) => {
 							<td>{r.inquiryId}</td>
 							<td>{`${r.name} ${r.lastName}`}</td>
 							<td>
-								<Link to={`/inquiry/${r.inquiryId}`}>Ver detalles</Link>
+								<Link to={`/inquiries/${r.inquiryId}`}>Ver detalles</Link>
 							</td>
 						</tr>)
 					})

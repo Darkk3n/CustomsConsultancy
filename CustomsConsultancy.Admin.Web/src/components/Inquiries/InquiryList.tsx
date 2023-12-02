@@ -13,7 +13,6 @@ export const InquiryList = ({ inquiries }: IInquiryListProps) => {
 				<tr>
 					<th>#</th>
 					<th>Nombre</th>
-					<th>Resumen</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -23,7 +22,6 @@ export const InquiryList = ({ inquiries }: IInquiryListProps) => {
 						return (<tr key={index}>
 							<td>{r.inquiryId}</td>
 							<td>{`${r.name} ${r.lastName}`}</td>
-							<td>{r.inquiry}</td>
 							<td>
 								<Link to={`/inquiry/${r.inquiryId}`}>Ver detalles</Link>
 							</td>

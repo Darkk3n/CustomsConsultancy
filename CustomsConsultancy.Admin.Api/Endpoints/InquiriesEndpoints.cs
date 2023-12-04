@@ -26,6 +26,16 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 return Results.Ok(InquiryMapper.ToDtoList(inquiries));
             });
 
+            app.MapGet("api/inquiries/{inquiryid}", async (ConsultancyContext context, int inquiryid) =>
+            {
+                var inquiry = await context.Inquiry.FindAsync(inquiryid);
+                if (inquiry == null)
+                {
+                    return Results.NotFound();
+                }
+                return Results.Ok(InquiryMapper.ToDto(inquiry));
+            });
+
             app.MapPost("/api/inquiries/answer/{inquiryid}", async (ConsultancyContext context, int inquiryid, [FromBody] InquiryAnswerDto dto) =>
             {
                 var selectedInquiry = await context.Inquiry.FindAsync(inquiryid);

@@ -36,5 +36,19 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             }));
             return toReturn;
         }
+
+        public static InquiryDto ToDto(Inquiry model)
+        {
+            return new InquiryDto
+            {
+                Name = model.ClientName,
+                LastName = model.ClientLastName,
+                Phone = model.Phone,
+                MobilePhone = model.MobilePhone,
+                Email = model.Email,
+                Inquiry = model.Question,
+                Company = model.Company
+            };
+        }
     }
 }

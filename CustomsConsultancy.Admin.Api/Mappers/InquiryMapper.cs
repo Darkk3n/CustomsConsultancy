@@ -47,7 +47,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 MobilePhone = model.MobilePhone,
                 Email = model.Email,
                 Inquiry = model.Question,
-                Company = model.Company
+                Company = model.Company,
+                Answered = model.Answered
             };
         }
     }

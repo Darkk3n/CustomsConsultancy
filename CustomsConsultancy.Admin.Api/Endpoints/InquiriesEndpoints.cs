@@ -1,8 +1,7 @@
-using System.Runtime.CompilerServices;
 using CustomsConsultancy.Admin.Api.Dtos;
 using CustomsConsultancy.Admin.Api.Mappers;
+using CustomsConsultancy.Admin.Api.Models;
 using MailKit.Net.Smtp;
-using MailKit.Security;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
@@ -41,25 +40,34 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 var selectedInquiry = await context.Inquiry.FindAsync(inquiryid);
                 selectedInquiry.Answered = true;
                 await context.SaveChangesAsync();
-                await SendEmail(dto.Response, selectedInquiry);
-                return Results.Ok();
+                try
+                {
+                    await SendEmail(dto.Response, selectedInquiry);
+                    return Results.Ok();
+                }
+                catch (Exception)
+                {
+                    return Results.BadRequest();
+                }
             });
 
         }
-        private static async Task SendEmail(string response, Models.Inquiry selectedInquiry)
+        private static async Task SendEmail(string response, Inquiry selectedInquiry)
         {
-            var message = new MimeMessage();
-            message.Subject = "I.C. Aduanal - ";
-            message.From.Add(MailboxAddress.Parse("from email"));
+            var message = new MimeMessage
+            {
+                Subject = $"I.C. Aduanal - Respuesta a pregunta"
+            };
+            message.From.Add(MailboxAddress.Parse("gerraguilar@gmail.com"));
             message.To.Add(MailboxAddress.Parse(selectedInquiry.Email));
             message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
                 Text = response
             };
             using var client = new SmtpClient();
-            await client.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            await client.ConnectAsync("smtp.gmail.com", 587, false);
 
-            await client.AuthenticateAsync("username", "password");
+            await client.AuthenticateAsync("gerraguilar@gmail.com", "omoropcjbdffexdg");
 
             await client.SendAsync(message);
 

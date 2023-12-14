@@ -1,14 +1,29 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { InquiryModel } from '../../../../CustomsConsultancy.Web/src/Models/InquiryModel';
-import http from "../../api/agent";
+import { InquiryModel, InquiryResponseModel } from '../../../../CustomsConsultancy.Web/src/Models/InquiryModel';
+import http from "../../api/adminAgent";
 import './InquiryDetails.css';
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export const InquiryDetails = () => {
 	const { inquiryid } = useParams();
 	const inquiryIdParsed = Number(inquiryid);
 	const [inquiryDtl, setInquiryDtl] = useState<InquiryModel>();
+	const [response, setResponse] = useState('')
+
+	const { register, handleSubmit, reset } = useForm<InquiryResponseModel>();
+
+	const onSubmit = (data: InquiryResponseModel) => {
+		data.inquiryId = inquiryIdParsed;
+		http.Inquiries.answer(data)
+			.then(() => {
+				toast.success('Respuesta enviada con exito.');
+				setResponse('');
+				reset();
+			})
+	}
 
 	useEffect(() => {
 		http.Inquiries.getById(inquiryIdParsed)
@@ -87,6 +102,23 @@ export const InquiryDetails = () => {
 					</InputGroup>
 				</Col>
 			</Row>
-		</Container>
+			{inquiryDtl?.answered === false &&
+				<>
+					<Row>
+						<Col md={12}>
+							<Form.Label className="form-myLabel">Respuesta:</Form.Label>
+						</Col>
+					</Row>
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<Row>
+							<textarea style={{ resize: 'none' }} rows={8} className='w-100 mt-1 mb-1 p-1' placeholder='Respuesta a pregunta' {...register('response')} onChange={(e) => setResponse(e.target.value)} />
+						</Row>
+						<Row>
+							<Button variant='success' disabled={!response} type='submit'>Enviar</Button>
+						</Row>
+					</form>
+				</>
+			}
+		</Container >
 	)
 }

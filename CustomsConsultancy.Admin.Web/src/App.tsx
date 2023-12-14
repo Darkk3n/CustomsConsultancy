@@ -4,7 +4,6 @@ import { NavBar } from './components/NavBar';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { InquiriesIndex, InquiryDetails } from './components/Inquiries';
-import { NavBar } from './components/NavBar';
 
 function App() {
 	return (

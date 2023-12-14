@@ -9,3 +9,8 @@ export interface InquiryModel {
 	inquiry: string;
 	answered: boolean;
 }
+
+export interface InquiryResponseModel {
+	inquiryId: number;
+	response: string;
+}

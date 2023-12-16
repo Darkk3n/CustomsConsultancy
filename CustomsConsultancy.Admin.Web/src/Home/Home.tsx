@@ -19,7 +19,7 @@ export const Home = () => {
 		<>
 			{recordCount > 0 ?
 				<>
-					<div className="my-display">Existen {recordCount} preguntas sin responder.
+					<div className="my-display">Existen {recordCount} pregunta(s) sin responder.
 					</div>
 					<Link className="my-display" to='/inquiries'>Ir a Preguntas</Link>
 				</>

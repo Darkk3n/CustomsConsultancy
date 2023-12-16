@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 import { InquiryModel, InquiryResponseModel } from '../../../../CustomsConsultancy.Web/src/Models/InquiryModel';
 import http from "../../api/adminAgent";
 import './InquiryDetails.css';
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 export const InquiryDetails = () => {
 	const { inquiryid } = useParams();
@@ -22,6 +22,9 @@ export const InquiryDetails = () => {
 				toast.success('Respuesta enviada con exito.');
 				setResponse('');
 				reset();
+				setInquiryDtl(prev => {
+					return { ...prev!, answered: true }
+				})
 			})
 	}
 

@@ -11,15 +11,15 @@ export const ContactForm = () => {
 	const { register, handleSubmit, control, reset } = useForm<InquiryModel>();
 
 	const onSubmit = (values: InquiryModel) => {
-		console.log(values)
 		http.Inquiries.create(values)
 			.then(() => {
 				toast.success('Pregunta enviada con exito.')
 				reset();
+				setAcceptedPolicy(false);
 			});
 	}
 
-	const { acceptPolicyElement } = useAcceptPolicy();
+	const { acceptPolicyElement, setAcceptedPolicy } = useAcceptPolicy();
 
 	return (
 		<>

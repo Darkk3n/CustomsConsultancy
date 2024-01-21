@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { CourseData } from "../../../CustomsConsultancy.Web/src/Models/CourseData";
 import { InquiryModel, InquiryResponseModel } from "../../../CustomsConsultancy.Web/src/Models/InquiryModel";
+import { PotentialClientModel } from "../models";
 
 axios.defaults.baseURL = "https://localhost:7108/api";
 
@@ -27,9 +28,14 @@ const Inquiries = {
 	answer: (inquiryResponse: InquiryResponseModel) => requests.post<void>(`/inquiries/answer/${inquiryResponse.inquiryId}`, inquiryResponse),
 };
 
+const PotentialClients = {
+	getAll: () => requests.get<PotentialClientModel[]>('/potentialclient'),
+}
+
 const http = {
 	Courses,
 	Inquiries,
+	PotentialClients
 };
 
 export default http;

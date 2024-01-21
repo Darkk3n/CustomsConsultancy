@@ -1,6 +1,6 @@
 namespace CustomsConsultancy.Admin.Api.Dtos
 {
-    public class PotentialClientDto
+    public record PotentialClientDto
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -8,5 +8,6 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string ClientType { get; set; }
         public string OtherClientType { get; set; }
         public string TopicsOfInterest { get; set; }
+        public bool Contacted { get; set; }
     }
 }

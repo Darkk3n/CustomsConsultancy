@@ -12,7 +12,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             Email = potentialClient.Email,
             Phone = potentialClient.Phone,
             ClientType = potentialClient.PotentialClientType,
-            TopicsOfInterest = potentialClient.TopicsOfInterest
+            TopicsOfInterest = potentialClient.TopicsOfInterest,
+            Contacted = potentialClient.Contacted
         };
 
         public static IEnumerable<PotentialClientDto> ToDtoList(IEnumerable<PotentialClient> potentialClients)
@@ -24,7 +25,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 Email = r.Email,
                 Phone = r.Phone,
                 ClientType = r.PotentialClientType,
-                TopicsOfInterest = r.TopicsOfInterest
+                TopicsOfInterest = r.TopicsOfInterest,
+                Contacted = r.Contacted
             }));
             return toReturn;
         }

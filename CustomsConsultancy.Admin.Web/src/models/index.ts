@@ -1,3 +1,4 @@
 export * from './InquiryModel';
-export * from './PotentialClientModel';
+export * from './PotentialClients/PotentialClientEmail';
+export * from './PotentialClients/PotentialClientModel';
 

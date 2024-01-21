@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Form, Table } from "react-bootstrap";
 import http from "../../api/adminAgent";
 import { PotentialClientModel } from "../../models";
 
@@ -13,28 +13,34 @@ export const PotentialClientList = () => {
 
 	return (
 		<Container>
-			<Table bordered responsive='md'>
-				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Correo Electronico</th>
-						<th>Tipo de Cliente</th>
-						<th>Temas de interes</th>
-					</tr>
-				</thead>
-				<tbody>
-					{
-						potentialClients.map((pc: PotentialClientModel, index) => {
-							return (<tr key={index}>
-								<td>{pc.name}</td>
-								<td>{pc.email}</td>
-								<td>{pc.otherClientType !== null ? pc.otherClientType : pc.clientType}</td>
-								<td>{pc.topicsOfInterest}</td>
-							</tr>)
-						})
-					}
-				</tbody>
-			</Table>
+			<Form>
+				<Table bordered responsive='md'>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Nombre</th>
+							<th>Correo Electronico</th>
+							<th>Tipo de Cliente</th>
+							<th>Temas de interes</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							potentialClients.map((pc: PotentialClientModel, index) => {
+								return (<tr key={index}>
+									<td>
+										<Form.Check id={`check-${index}`} />
+									</td>
+									<td>{pc.name}</td>
+									<td>{pc.email}</td>
+									<td>{pc.otherClientType !== null ? pc.otherClientType : pc.clientType}</td>
+									<td>{pc.topicsOfInterest}</td>
+								</tr>)
+							})
+						}
+					</tbody>
+				</Table>
+			</Form >
 		</Container>
 	)
 }

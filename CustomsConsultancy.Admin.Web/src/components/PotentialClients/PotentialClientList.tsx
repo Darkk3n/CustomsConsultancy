@@ -38,10 +38,3 @@ export const PotentialClientList = () => {
 		</Container>
 	)
 }
-
-// name: string;
-// email: string;
-// phone: string;
-// clientType: string;
-// otherClientType: string;
-// topicsOfInterest: string;

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CustomsConsultancy.Admin.Api.Models
 {
     public class PotentialClient : BaseEntity
@@ -7,5 +9,7 @@ namespace CustomsConsultancy.Admin.Api.Models
         public string Phone { get; set; }
         public string PotentialClientType { get; set; }
         public string TopicsOfInterest { get; set; }
+        [Column(TypeName = "bit")]
+        public bool Contacted { get; set; } = false;
     }
 }

@@ -11,5 +11,6 @@ namespace CustomsConsultancy.Admin.Api.Models
         public string TopicsOfInterest { get; set; }
         [Column(TypeName = "bit")]
         public bool Contacted { get; set; } = false;
+        public DateTime? DateContacted { get; set; }
     }
 }

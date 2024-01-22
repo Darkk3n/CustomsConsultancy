@@ -5,4 +5,6 @@ export interface PotentialClientModel {
 	clientType: string;
 	otherClientType: string;
 	topicsOfInterest: string;
+	contacted: boolean;
+	dateContacted: Date;
 }

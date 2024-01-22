@@ -4,7 +4,7 @@ import './App.css';
 import { Home } from './components/Home';
 import { InquiriesIndex, InquiryDetails } from './components/Inquiries';
 import { NavBar } from './components/NavBar';
-import { PotentialClientList } from './components/PotentialClients';
+import { PotentialClientIndex } from './components/PotentialClients';
 
 function App() {
 	return (
@@ -14,7 +14,7 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/inquiries' element={<InquiriesIndex />} />
 				<Route path='/courses' element={<div>Cursos</div>} />
-				<Route path='/potentialclients' element={<PotentialClientList />} />
+				<Route path='/potentialclients' element={<PotentialClientIndex />} />
 				<Route path='/inquiries/:inquiryid' element={<InquiryDetails />} />
 			</Routes>
 		</>

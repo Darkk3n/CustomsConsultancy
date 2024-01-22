@@ -1,2 +1,3 @@
-export * from './PotentialClientList';
+export * from './PotentialClientIndex';
+export * from './PotentialClientsList';
 

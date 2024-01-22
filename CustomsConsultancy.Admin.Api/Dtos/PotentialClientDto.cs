@@ -9,5 +9,6 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string OtherClientType { get; set; }
         public string TopicsOfInterest { get; set; }
         public bool Contacted { get; set; }
+        public DateTime? DateContacted { get; set; }
     }
 }

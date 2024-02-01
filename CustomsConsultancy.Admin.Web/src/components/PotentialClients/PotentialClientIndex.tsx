@@ -46,19 +46,21 @@ export const PotentialClientIndex = () => {
 			<Modal show={showModal} onHide={() => setShowModal(false)}>
 				<Modal.Header>
 					<div style={{ display: 'flex', color: 'black' }}>
-						<div>Enviar correo electronico a:</div>
-						{
-							selected.filter(r => r.selected)
-								.map((r, index) => {
-									return <ul>
-										<li key={index}>{r.email}</li>
-									</ul>
-								})
-						}
+						<div>Enviar correo electronico a:
+							<ul>
+								{
+									selected.filter(r => r.selected)
+										.map((r, index) => {
+											return <li key={index}>{r.email}</li>
+										})
+								}
+							</ul>
+						</div>
 					</div>
 				</Modal.Header>
 				<Modal.Body style={{ color: 'black' }}>
 					<form>
+						<input type="hidden" value={selected.filter(r => r.selected).map(r => r.id.toString())} />
 						<textarea style={{ resize: 'none' }} rows={5} cols={55} />
 					</form>
 				</Modal.Body>

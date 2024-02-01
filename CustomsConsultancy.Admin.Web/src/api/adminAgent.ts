@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { CourseData } from "../../../CustomsConsultancy.Web/src/Models/CourseData";
 import { InquiryModel, InquiryResponseModel } from "../../../CustomsConsultancy.Web/src/Models/InquiryModel";
 import { PotentialClientModel } from "../models";
+import { PotentialClientForm } from "../models/PotentialClients/PotentialClientModel";
 
 axios.defaults.baseURL = "https://localhost:7108/api";
 
@@ -29,13 +30,14 @@ const Inquiries = {
 };
 
 const PotentialClients = {
-	getAll: () => requests.get<PotentialClientModel[]>('/potentialclient'),
-}
+	getAll: () => requests.get<PotentialClientModel[]>("/potentialclient"),
+	contact: (data: PotentialClientForm) => requests.post<PotentialClientModel[]>("/potentialclient/answer", data),
+};
 
 const http = {
 	Courses,
 	Inquiries,
-	PotentialClients
+	PotentialClients,
 };
 
 export default http;

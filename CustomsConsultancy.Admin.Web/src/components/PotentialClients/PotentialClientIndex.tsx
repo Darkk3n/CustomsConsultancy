@@ -36,7 +36,12 @@ export const PotentialClientIndex = () => {
 	const { register, handleSubmit } = useForm<PotentialClientForm>();
 
 	const onSubmit = (data: PotentialClientForm) => {
-		console.log(data)
+		http.PotentialClients
+			.contact(data)
+			.then((r: PotentialClientModel[]) => {
+				setPotentialClients(r.filter(r => !r.contacted))
+				setPotentialClientsContacted(r.filter(r => r.contacted))
+			})
 	}
 
 	return (

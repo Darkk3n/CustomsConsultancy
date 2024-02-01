@@ -17,6 +17,6 @@ export interface PotentialClientSelectableModel {
 }
 
 export interface PotentialClientForm {
-	potentialClientIds: number[];
+	potentialClientIds: string;
 	message: string;
 }

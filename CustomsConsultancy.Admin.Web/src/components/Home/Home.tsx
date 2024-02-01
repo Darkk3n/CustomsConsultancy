@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { InquiryModel } from "../../../CustomsConsultancy.Web/src/Models/InquiryModel"
-import http from "../api/adminAgent"
+import http from "../../api/adminAgent"
+import { InquiryModel } from "../../models"
 import './Home.css'
 
 export const Home = () => {

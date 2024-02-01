@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Home } from './Home';
+import { Home } from './components/Home';
 import { InquiriesIndex, InquiryDetails } from './components/Inquiries';
 import { NavBar } from './components/NavBar';
+import { PotentialClientIndex } from './components/PotentialClients';
 
 function App() {
 	return (
@@ -13,7 +14,7 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/inquiries' element={<InquiriesIndex />} />
 				<Route path='/courses' element={<div>Cursos</div>} />
-				<Route path='/potentialclients' element={<div>Clientes Potenciales</div>} />
+				<Route path='/potentialclients' element={<PotentialClientIndex />} />
 				<Route path='/inquiries/:inquiryid' element={<InquiryDetails />} />
 			</Routes>
 		</>

@@ -14,7 +14,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             ClientType = potentialClient.PotentialClientType,
             TopicsOfInterest = potentialClient.TopicsOfInterest,
             Contacted = potentialClient.Contacted,
-            DateContacted = potentialClient.DateContacted
+            DateContacted = potentialClient.DateContacted.HasValue ? potentialClient.DateContacted.Value.ToString("dd/MM/yyyy") : null
         };
 
         public static IEnumerable<PotentialClientDto> ToDtoList(IEnumerable<PotentialClient> potentialClients)
@@ -22,13 +22,14 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             var toReturn = new List<PotentialClientDto>();
             toReturn.AddRange(potentialClients.Select(r => new PotentialClientDto
             {
+                Id = r.Id,
                 Name = r.Name,
                 Email = r.Email,
                 Phone = r.Phone,
                 ClientType = r.PotentialClientType,
                 TopicsOfInterest = r.TopicsOfInterest,
                 Contacted = r.Contacted,
-                DateContacted = r.DateContacted
+                DateContacted = r.DateContacted.HasValue ? r.DateContacted.Value.ToString("dd/MM/yyyy") : null
             }));
             return toReturn;
         }

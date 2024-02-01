@@ -16,7 +16,7 @@ export const PotentialClientIndex = () => {
 				setPotentialClients(d.filter(r => !r.contacted))
 				setPotentialClientsContacted(d.filter(r => r.contacted))
 				setSelected(d.map(r => {
-					const obj: PotentialClientSelectableModel = { email: '', selected: false };
+					const obj: PotentialClientSelectableModel = { id: r.id, email: '', selected: false };
 					obj.email = r.email;
 					return obj;
 				}))

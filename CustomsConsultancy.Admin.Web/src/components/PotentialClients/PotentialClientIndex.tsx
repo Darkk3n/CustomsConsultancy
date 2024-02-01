@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Container, Modal, Tab, Tabs } from "react-bootstrap";
 import { PotentialClientsList } from ".";
 import http from "../../api/adminAgent";
-import { PotentialClientModel, PotentialClientSelectableModel } from "../../models";
+import { PotentialClientForm, PotentialClientModel, PotentialClientSelectableModel } from "../../models";
+import { useForm } from "react-hook-form";
 
 export const PotentialClientIndex = () => {
 	const [potentialClients, setPotentialClients] = useState<PotentialClientModel[]>([])
@@ -32,6 +33,11 @@ export const PotentialClientIndex = () => {
 		setEnableButton(selected.filter(r => r.selected).length > 0);
 	}
 
+	const { register, handleSubmit } = useForm<PotentialClientForm>();
+
+	const onSubmit = (data: PotentialClientForm) => {
+		console.log(data)
+	}
 
 	return (
 		<Container>
@@ -58,15 +64,15 @@ export const PotentialClientIndex = () => {
 						</div>
 					</div>
 				</Modal.Header>
-				<Modal.Body style={{ color: 'black' }}>
-					<form>
-						<input type="hidden" value={selected.filter(r => r.selected).map(r => r.id.toString())} />
-						<textarea style={{ resize: 'none' }} rows={5} cols={55} />
-					</form>
-				</Modal.Body>
-				<Modal.Footer>
-					<Button variant="primary">Enviar</Button>
-				</Modal.Footer>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<Modal.Body style={{ color: 'black' }}>
+						<input type="hidden" value={selected.filter(r => r.selected).map(r => r.id.toString())} {...register('potentialClientIds')} />
+						<textarea style={{ resize: 'none' }} rows={5} cols={55} {...register('message')} />
+					</Modal.Body>
+					<Modal.Footer>
+						<Button type="submit" variant="primary">Enviar</Button>
+					</Modal.Footer>
+				</form>
 			</Modal>
 		</Container >
 	)

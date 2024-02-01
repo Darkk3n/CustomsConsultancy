@@ -15,3 +15,8 @@ export interface PotentialClientSelectableModel {
 	selected: boolean;
 	email: string;
 }
+
+export interface PotentialClientForm {
+	potentialClientIds: number[];
+	message: string;
+}

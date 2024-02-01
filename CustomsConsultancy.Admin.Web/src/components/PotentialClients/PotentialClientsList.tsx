@@ -1,6 +1,8 @@
 import { Button, Form, Table } from "react-bootstrap";
 import { PotentialClientModel } from "../../models";
 import './PotentialClientList.css';
+import { DateTime } from "luxon";
+
 
 interface IProps {
 	clientList: PotentialClientModel[];
@@ -32,11 +34,19 @@ export const PotentialClientsList = ({ clientList, isContacted, handleCheck, sho
 						<th>Correo Electronico</th>
 						<th>Tipo de Cliente</th>
 						<th>Temas de interes</th>
+						{
+							isContacted &&
+							<th>Fecha de Contacto</th>
+						}
 					</tr>
 				</thead>
 				<tbody>
 					{
 						clientList.map((pc: PotentialClientModel, index) => {
+							console.log(pc.dateContacted, pc.contacted)
+							const dateStr = isContacted
+								? DateTime.fromJSDate(pc.dateContacted).toLocaleString(DateTime.DATE_SHORT)
+								: '';
 							return (<tr key={index}>
 								{
 									!isContacted &&
@@ -48,6 +58,7 @@ export const PotentialClientsList = ({ clientList, isContacted, handleCheck, sho
 								<td>{pc.email}</td>
 								<td>{pc.otherClientType !== null ? pc.otherClientType : pc.clientType}</td>
 								<td>{pc.topicsOfInterest}</td>
+								{isContacted && <td>{dateStr}</td>}
 							</tr>)
 						})
 					}

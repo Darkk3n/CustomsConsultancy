@@ -22,6 +22,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             var toReturn = new List<PotentialClientDto>();
             toReturn.AddRange(potentialClients.Select(r => new PotentialClientDto
             {
+                Id = r.Id,
                 Name = r.Name,
                 Email = r.Email,
                 Phone = r.Phone,

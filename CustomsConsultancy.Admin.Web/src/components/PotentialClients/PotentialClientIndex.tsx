@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Modal, Tab, Tabs } from "react-bootstrap";
+import { Button, Container, Modal, Tab, Tabs } from "react-bootstrap";
 import { PotentialClientsList } from ".";
 import http from "../../api/adminAgent";
 import { PotentialClientModel, PotentialClientSelectableModel } from "../../models";
@@ -7,6 +7,7 @@ import { PotentialClientModel, PotentialClientSelectableModel } from "../../mode
 export const PotentialClientIndex = () => {
 	const [potentialClients, setPotentialClients] = useState<PotentialClientModel[]>([])
 	const [selected, setSelected] = useState<PotentialClientSelectableModel[]>([]);
+	const [enableButton, setEnableButton] = useState<boolean>(false)
 	const [potentialClientsContacted, setPotentialClientsContacted] = useState<PotentialClientModel[]>([])
 	const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -28,6 +29,7 @@ export const PotentialClientIndex = () => {
 		const element = data.filter(r => r.email === email)[0];
 		element.selected = checked;
 		setSelected(data);
+		setEnableButton(selected.filter(r => r.selected).length > 0);
 	}
 
 
@@ -35,20 +37,35 @@ export const PotentialClientIndex = () => {
 		<Container>
 			<Tabs>
 				<Tab title="No Contactados" eventKey='noContacted'>
-					<PotentialClientsList clientList={potentialClients} isContacted={false} handleCheck={handleCheck} showModal={() => setShowModal(true)} />
+					<PotentialClientsList clientList={potentialClients} isContacted={false} handleCheck={handleCheck} showModal={() => setShowModal(true)} buttonEnabled={enableButton} />
 				</Tab>
 				<Tab title="Contactados" eventKey='contacted'>
 					<PotentialClientsList clientList={potentialClientsContacted} isContacted={true} handleCheck={() => { }} />
 				</Tab>
 			</Tabs>
 			<Modal show={showModal} onHide={() => setShowModal(false)}>
-				<Modal.Header style={{ color: 'black' }}>
-					Envio de correos electronicos
+				<Modal.Header>
+					<div style={{ display: 'flex', color: 'black' }}>
+						<div>Enviar correo electronico a:</div>
+						{
+							selected.filter(r => r.selected)
+								.map((r, index) => {
+									return <ul>
+										<li key={index}>{r.email}</li>
+									</ul>
+								})
+						}
+					</div>
 				</Modal.Header>
 				<Modal.Body style={{ color: 'black' }}>
-					Foo
+					<form>
+						<textarea style={{ resize: 'none' }} rows={5} cols={55} />
+					</form>
 				</Modal.Body>
+				<Modal.Footer>
+					<Button variant="primary">Enviar</Button>
+				</Modal.Footer>
 			</Modal>
-		</Container>
+		</Container >
 	)
 }

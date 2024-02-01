@@ -7,17 +7,18 @@ interface IProps {
 	isContacted: boolean;
 	handleCheck: (email: string, checked: boolean) => void;
 	showModal?: () => void;
+	buttonEnabled?: boolean;
 }
 
 
-export const PotentialClientsList = ({ clientList, isContacted, handleCheck, showModal }: IProps) => {
+export const PotentialClientsList = ({ clientList, isContacted, handleCheck, showModal, buttonEnabled }: IProps) => {
 	return (
 		<>
 			{
 				isContacted
 					? undefined
 					: <div className="email-btn">
-						<Button onClick={showModal} variant="primary" type="submit">Enviar Email</Button>
+						<Button disabled={!buttonEnabled} onClick={showModal} variant="primary" type="submit">Enviar Email</Button>
 					</div>
 			}
 			< Table bordered responsive='md' >

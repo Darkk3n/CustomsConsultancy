@@ -7,7 +7,7 @@ export interface PotentialClientModel {
 	otherClientType: string;
 	topicsOfInterest: string;
 	contacted: boolean;
-	dateContacted: Date;
+	dateContacted: string;
 }
 
 export interface PotentialClientSelectableModel {

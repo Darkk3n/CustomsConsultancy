@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Tab, Tabs } from "react-bootstrap";
+import { Container, Modal, Tab, Tabs } from "react-bootstrap";
 import { PotentialClientsList } from ".";
 import http from "../../api/adminAgent";
 import { PotentialClientModel, PotentialClientSelectableModel } from "../../models";
@@ -8,6 +8,7 @@ export const PotentialClientIndex = () => {
 	const [potentialClients, setPotentialClients] = useState<PotentialClientModel[]>([])
 	const [selected, setSelected] = useState<PotentialClientSelectableModel[]>([]);
 	const [potentialClientsContacted, setPotentialClientsContacted] = useState<PotentialClientModel[]>([])
+	const [showModal, setShowModal] = useState<boolean>(false);
 
 	useEffect(() => {
 		http.PotentialClients.getAll()
@@ -35,12 +36,20 @@ export const PotentialClientIndex = () => {
 		<Container>
 			<Tabs>
 				<Tab title="No Contactados" eventKey='noContacted'>
-					<PotentialClientsList clientList={potentialClients} isContacted={false} handleCheck={handleCheck} />
+					<PotentialClientsList clientList={potentialClients} isContacted={false} handleCheck={handleCheck} showModal={() => setShowModal(true)} />
 				</Tab>
 				<Tab title="Contactados" eventKey='contacted'>
 					<PotentialClientsList clientList={potentialClientsContacted} isContacted={true} handleCheck={() => { }} />
 				</Tab>
 			</Tabs>
+			<Modal show={showModal} onHide={() => setShowModal(false)}>
+				<Modal.Header style={{ color: 'black' }}>
+					Envio de correos electronicos
+				</Modal.Header>
+				<Modal.Body style={{ color: 'black' }}>
+					Foo
+				</Modal.Body>
+			</Modal>
 		</Container>
 	)
 }

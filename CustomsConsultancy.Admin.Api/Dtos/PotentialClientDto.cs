@@ -12,4 +12,10 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public bool Contacted { get; set; }
         public DateTime? DateContacted { get; set; }
     }
+
+    public record PotentialClientForm
+    {
+        public string PotentialClientIds { get; set; }
+        public string Message { get; set; }
+    }
 }

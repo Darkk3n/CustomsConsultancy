@@ -5,9 +5,11 @@ import './PotentialClientList.css';
 interface IProps {
 	clientList: PotentialClientModel[];
 	isContacted: boolean;
+	handleCheck: (email: string, checked: boolean) => void;
 }
 
-export const PotentialClientsList = ({ clientList, isContacted }: IProps) => {
+
+export const PotentialClientsList = ({ clientList, isContacted, handleCheck }: IProps) => {
 	return (
 		<>
 			{
@@ -37,7 +39,7 @@ export const PotentialClientsList = ({ clientList, isContacted }: IProps) => {
 								{
 									!isContacted &&
 									<td>
-										<Form.Check id={`check-${index}`} />
+										<Form.Check id={`check-${index}`} onChange={(e) => handleCheck(pc.email, e.target.checked)} />
 									</td>
 								}
 								<td>{pc.name}</td>

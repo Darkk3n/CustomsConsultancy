@@ -8,3 +8,8 @@ export interface PotentialClientModel {
 	contacted: boolean;
 	dateContacted: Date;
 }
+
+export interface PotentialClientSelectableModel {
+	selected: boolean;
+	email: string;
+}

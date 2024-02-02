@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Modal, Tab, Tabs } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import { PotentialClientsList } from ".";
 import http from "../../api/adminAgent";
 import { PotentialClientForm, PotentialClientModel, PotentialClientSelectableModel } from "../../models";
-import { useForm } from "react-hook-form";
 
 export const PotentialClientIndex = () => {
 	const [potentialClients, setPotentialClients] = useState<PotentialClientModel[]>([])
@@ -20,27 +20,30 @@ export const PotentialClientIndex = () => {
 				setSelected(d.map(r => {
 					const obj: PotentialClientSelectableModel = { id: r.id, email: r.email, selected: false };
 					return obj;
-				}))
+				}));
 			});
 	}, [])
 
 
-	const handleCheck = (email: string, checked: boolean) => {
+	const handleCheck = (id: number, checked: boolean) => {
 		const data = [...selected];
-		const element = data.filter(r => r.email === email)[0];
+		const element = data.filter(r => r.id === id)[0];
 		element.selected = checked;
 		setSelected(data);
 		setEnableButton(selected.filter(r => r.selected).length > 0);
 	}
 
-	const { register, handleSubmit } = useForm<PotentialClientForm>();
+	const { register, handleSubmit, reset } = useForm<PotentialClientForm>();
 
 	const onSubmit = (data: PotentialClientForm) => {
 		http.PotentialClients
 			.contact(data)
 			.then((r: PotentialClientModel[]) => {
-				setPotentialClients(r.filter(r => !r.contacted))
-				setPotentialClientsContacted(r.filter(r => r.contacted))
+				reset();
+				setPotentialClients(r.filter(r => !r.contacted));
+				setPotentialClientsContacted(r.filter(r => r.contacted));
+				setSelected([]);
+				setShowModal(false);
 			})
 	}
 
@@ -79,6 +82,6 @@ export const PotentialClientIndex = () => {
 					</Modal.Footer>
 				</form>
 			</Modal>
-		</Container >
+		</Container>
 	)
 }

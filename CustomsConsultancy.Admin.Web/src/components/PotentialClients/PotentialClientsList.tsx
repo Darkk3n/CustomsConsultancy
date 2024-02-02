@@ -6,7 +6,7 @@ import './PotentialClientList.css';
 interface IProps {
 	clientList: PotentialClientModel[];
 	isContacted: boolean;
-	handleCheck: (email: string, checked: boolean) => void;
+	handleCheck: (id: number, checked: boolean) => void;
 	showModal?: () => void;
 	buttonEnabled?: boolean;
 }
@@ -46,7 +46,7 @@ export const PotentialClientsList = ({ clientList, isContacted, handleCheck, sho
 								{
 									!isContacted &&
 									<td>
-										<Form.Check id={`check-${index}`} onChange={(e) => handleCheck(pc.email, e.target.checked)} />
+										<Form.Check id={`check-${index}`} onChange={(e) => handleCheck(pc.id, e.target.checked)} />
 									</td>
 								}
 								<td>{pc.name}</td>

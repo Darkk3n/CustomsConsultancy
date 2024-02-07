@@ -36,8 +36,8 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                     item.DateContacted = DateTime.Now;
                     item.Contacted = true;
                     context.PotentialClients.Update(item);
-                    await context.SaveChangesAsync();
                 }
+                await context.SaveChangesAsync();
                 var newData = await context.PotentialClients.AsNoTracking().ToListAsync();
                 return Results.Ok(newData);
             });

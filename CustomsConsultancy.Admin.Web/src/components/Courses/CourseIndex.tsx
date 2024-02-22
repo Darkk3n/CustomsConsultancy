@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import { CourseIndexModel } from '../../models/Courses/CourseIndexModel';
 
 export const CourseIndex = () => {
@@ -8,6 +8,10 @@ export const CourseIndex = () => {
 			{
 				title: 'Curso 1',
 				duration: '2 horas'
+			},
+			{
+				title: 'Curso 2',
+				duration: '1 hora'
 			}
 		]
 
@@ -16,24 +20,27 @@ export const CourseIndex = () => {
 	}, [])
 
 	return (
-		<Table bordered responsive='md'>
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>Duracion</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				{
-					data.map((d: CourseIndexModel, index: number) => {
-						return <tr key={index}>
-							<td>{d.title}</td>
-							<td>{d.duration}</td>
-						</tr>
-					})
-				}
-			</tbody>
-		</Table>
+		<Container>
+			<Table bordered responsive='md'>
+				<thead>
+					<tr>
+						<th>Titulo</th>
+						<th>Duracion</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						data.map((d: CourseIndexModel, index: number) => {
+							return <tr key={index}>
+								<td>{d.title}</td>
+								<td>{d.duration}</td>
+								<td><Button variant="primary">Editar</Button></td>
+							</tr>
+						})
+					}
+				</tbody>
+			</Table>
+		</Container>
 	)
 }

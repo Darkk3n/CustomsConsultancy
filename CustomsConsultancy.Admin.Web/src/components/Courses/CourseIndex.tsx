@@ -13,6 +13,9 @@ export const CourseIndex = () => {
 
 	return (
 		<Container>
+			<div className="email-btn">
+				<Button variant="primary" type="submit">Agregar Nuevo</Button>
+			</div>
 			<Table bordered responsive='md'>
 				<thead>
 					<tr>
@@ -27,7 +30,7 @@ export const CourseIndex = () => {
 							return <tr key={index}>
 								<td>{d.title}</td>
 								<td>{d.duration}</td>
-								<td><Button variant="primary">Editar</Button></td>
+								<td><Button variant="secondary">Editar</Button></td>
 							</tr>
 						})
 					}

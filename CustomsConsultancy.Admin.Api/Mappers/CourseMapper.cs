@@ -20,6 +20,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             var toReturn = new List<CourseDto>();
             toReturn.AddRange(courses.Select(r => new CourseDto
             {
+                Id = r.Id,
                 Title = r.Title,
                 Duration = r.Duration,
                 FileName = r.FileName,

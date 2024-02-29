@@ -22,7 +22,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
             app.MapGet("/api/courses", async (ConsultancyContext context) =>
             {
                 var courses = await context.Course.ToListAsync();
-                if (courses is null)
+                if (courses is null || courses.Count == 0)
                 {
                     return Results.NotFound();
                 }

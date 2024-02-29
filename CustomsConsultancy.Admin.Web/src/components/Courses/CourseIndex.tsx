@@ -1,22 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
+import http from "../../api/adminAgent";
 import { CourseIndexModel } from '../../models/Courses/CourseIndexModel';
 
 export const CourseIndex = () => {
-	const data: CourseIndexModel[] =
-		[
-			{
-				title: 'Curso 1',
-				duration: '2 horas'
-			},
-			{
-				title: 'Curso 2',
-				duration: '1 hora'
-			}
-		]
-
+	const [courses, setCourses] = useState<CourseIndexModel[]>([]);
 	useEffect(() => {
-
+		http.Courses
+			.list()
+			.then(r => setCourses(r))
 	}, [])
 
 	return (
@@ -31,7 +23,7 @@ export const CourseIndex = () => {
 				</thead>
 				<tbody>
 					{
-						data.map((d: CourseIndexModel, index: number) => {
+						courses.map((d: CourseIndexModel, index: number) => {
 							return <tr key={index}>
 								<td>{d.title}</td>
 								<td>{d.duration}</td>

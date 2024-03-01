@@ -6,8 +6,9 @@ export interface CourseIndexModel {
 
 export interface CourseModel {
 	title: string;
-	Price: number;
+	price: number;
 	duration: string;
 	fileName: string;
 	status: string;
+	videoId: string
 }

@@ -29,7 +29,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 return Results.Ok(CourseMapper.FromModelList(courses));
             });
 
-            app.MapPost("/api/courses", async (ConsultancyContext context, [FromBody] CourseDto dto) =>
+            app.MapPost("/api/courses", async (ConsultancyContext context, [FromBody] CourseCreateDto dto) =>
             {
                 context.Course.Add(CourseMapper.FromDto(dto));
                 await context.SaveChangesAsync();

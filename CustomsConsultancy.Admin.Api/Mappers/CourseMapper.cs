@@ -8,6 +8,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
     {
         public static CourseDto FromModel(Course course) => new()
         {
+            Id = course.Id,
             Title = course.Title,
             Duration = course.Duration,
             FileName = course.FileName,
@@ -30,7 +31,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             return toReturn;
         }
 
-        public static Course FromDto(CourseDto dto) => new()
+        public static Course FromDto(CourseCreateDto dto) => new()
         {
             Title = dto.Title,
             Duration = dto.Duration,

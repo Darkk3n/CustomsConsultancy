@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import http from "../../api/adminAgent";
-import { CourseModel } from '../../models/Courses/CourseIndexModel';
+import { CourseCreateModel, CourseModel } from '../../models/Courses/CourseIndexModel';
 
 export const CourseDetails = () => {
 	const { courseId } = useParams();
@@ -11,16 +11,43 @@ export const CourseDetails = () => {
 	const [course, setCourse] = useState<CourseModel>()
 
 	const newCourse = numCourseId === 0;
+	const { handleSubmit, register, setValue } = useForm<CourseModel>({ defaultValues: course })
 
 	useEffect(() => {
-		http.Courses
-			.getById(numCourseId)
-			.then(r => setCourse(r))
-	}, [numCourseId])
+		if (numCourseId !== 0) {
+			http.Courses
+				.getById(numCourseId)
+				.then(r => {
+					setCourse(r);
+					setValue("id", r.id);
+					setValue("title", r.title);
+					setValue("price", r.price);
+					setValue("duration", r.duration);
+					setValue("status", r.status);
+					setValue("fileName", r.fileName);
+					setValue("videoId", r.videoId);
+				})
+		}
+	}, [numCourseId, setValue])
 
-	const { handleSubmit, register } = useForm<CourseModel>()
+	const navigate = useNavigate();
 
-	const onSubmit = (data: CourseModel) => { }
+	const onSubmit = (data: CourseCreateModel) => {
+		if (newCourse) {
+			http.Courses
+				.create(data)
+				.then(() => navigate('../courses'))
+		}
+		else {
+			const updateData: CourseModel = {
+				...data,
+				id: course?.id
+			}
+			http.Courses
+				.update(updateData)
+				.then(() => navigate('../courses'))
+		}
+	}
 
 	return (
 		<Container>
@@ -29,6 +56,7 @@ export const CourseDetails = () => {
 				: <h1>Editar Curso: {course?.title}</h1>
 			}
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<input type="hidden" {...register("id")} />
 				<Row>
 					<Col md={6}>
 						<input className="w-100 mb-3" placeholder="Nombre" {...register("title")} />

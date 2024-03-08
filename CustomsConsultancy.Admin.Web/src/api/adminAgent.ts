@@ -1,8 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import { CourseData } from "../../../CustomsConsultancy.Web/src/Models/CourseData";
 import { InquiryModel, InquiryResponseModel } from "../../../CustomsConsultancy.Web/src/Models/InquiryModel";
 import { PotentialClientModel } from "../models";
-import { CourseIndexModel, CourseModel } from "../models/Courses/CourseIndexModel";
+import { CourseCreateModel, CourseIndexModel, CourseModel } from "../models/Courses/CourseIndexModel";
 import { PotentialClientForm } from "../models/PotentialClients/PotentialClientModel";
 
 axios.defaults.baseURL = "https://localhost:7108/api";
@@ -17,8 +16,8 @@ const requests = {
 };
 
 const Courses = {
-	create: (course: CourseData) => requests.post<void>("/courses", course),
-	update: (course: CourseData) => requests.put<CourseData>(`/courses/${course.id}`, course),
+	create: (course: CourseCreateModel) => requests.post<void>("/courses", course),
+	update: (course: CourseModel) => requests.put<CourseModel>(`/courses/${course.id}`, course),
 	delete: (courseId: number) => requests.del<void>(`/courses/${courseId}`, {}),
 	list: () => requests.get<CourseIndexModel[]>("/courses"),
 	getById: (courseId: number) => requests.get<CourseModel>(`/courses/${courseId}`),

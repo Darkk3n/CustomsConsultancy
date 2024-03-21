@@ -1,4 +1,6 @@
+using CustomsConsultancy.Admin.Api.Dtos;
 using CustomsConsultancy.Admin.Api.Mappers;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomsConsultancy.Admin.Api.Endpoints
@@ -14,6 +16,13 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 .ToListAsync();
 
                 return Results.Ok(CourseRegistrationMapper.ToDtoList(registrations));
+            });
+
+            app.MapPost("/api/courseRegistration/", async (ConsultancyContext context, [FromBody] CourseRegistrationDto registration) =>
+            {
+                context.CourseClients.Add(CourseRegistrationMapper.ToModel(registration));
+                await context.SaveChangesAsync();
+                return Results.Ok();
             });
         }
     }

@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CustomsConsultancy.Admin.Api.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace CustomsConsultancy.Admin.Api.Endpoints
 {
@@ -9,7 +7,14 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
     {
         public static void AddCourseRegistrationEndpoints(this WebApplication app)
         {
+            app.MapGet("/api/courseRegistration/{courseid}", async (ConsultancyContext context, int courseId) =>
+            {
+                var registrations = await context.CourseClients
+                .Where(r => r.CourseId == courseId)
+                .ToListAsync();
 
+                return Results.Ok(CourseRegistrationMapper.ToDtoList(registrations));
+            });
         }
     }
 }

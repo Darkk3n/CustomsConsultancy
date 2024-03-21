@@ -1,29 +1,34 @@
+import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
+import { CourseModel } from '../../../../CustomsConsultancy.Admin.Web/src/models/Courses/CourseIndexModel';
+import http from "../../api/agent";
 import './Courses.css';
 
 export const Courses = () => {
-   const baseImg = 'src/assets/img/'
+	const baseImg = 'src/assets/img/'
 
-   const images = [
-      "Course1.webp",
-      "Course2.webp",
-      "Course3.webp",
-      "Course4.webp",
-   ];
-   const navigate = useNavigate();
+	const navigate = useNavigate();
 
-   const openCourse = (index: number) => {
-      navigate(`/courses/${index}`)
-   }
+	const [courses, setCourses] = useState<CourseModel[]>([])
 
-   return (
-      <div>
-         {images.map((image, index) => (
-            <button onClick={() => openCourse(index)} key={index}>
-               <img alt="sample_file" src={`${baseImg}${image}`} />
-            </button>
-         ))}
-      </div>
-   )
+	useEffect(() => {
+		http.Courses.list()
+			.then(r => setCourses(r))
+	}, [])
+
+
+	const openCourse = (index: number) => {
+		navigate(`/courses/${index}`)
+	}
+
+	return (
+		<div>
+			{courses.map((course, index) => (
+				<button onClick={() => openCourse(course.id!)} key={index}>
+					<img alt="sample_file" src={`${baseImg}${course.fileName}`} />
+				</button>
+			))}
+		</div>
+	)
 }

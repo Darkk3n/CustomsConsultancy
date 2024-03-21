@@ -19,5 +19,11 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             }));
             return toReturn;
         }
+
+        public static CourseClients ToModel(CourseRegistrationDto registration) => new()
+        {
+            ClientId = registration.ClientId,
+            CourseId = registration.CourseId
+        };
     }
 }

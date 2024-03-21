@@ -23,7 +23,7 @@ const PotentialClients = {
 };
 
 const Courses = {
-	list: () => requests.get<CourseModel>("/courses"),
+	list: () => requests.get<CourseModel[]>("/courses"),
 	getById: (courseId: number) => requests.get<CourseModel>(`/courses/${courseId}`)
 }
 

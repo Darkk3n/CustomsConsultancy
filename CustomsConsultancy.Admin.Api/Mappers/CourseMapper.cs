@@ -13,7 +13,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             Duration = course.Duration,
             FileName = course.FileName,
             Status = course.Status,
-            Price = course.Price
+            Price = course.Price,
+            VideoId = course.VideoId
         };
 
         public static IEnumerable<CourseDto> FromModelList(IEnumerable<Course> courses)
@@ -26,7 +27,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 Duration = r.Duration,
                 FileName = r.FileName,
                 Price = r.Price,
-                Status = r.Status
+                Status = r.Status,
+                VideoId = r.VideoId
             }));
             return toReturn;
         }
@@ -38,6 +40,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             FileName = dto.FileName,
             Price = dto.Price,
             Status = dto.Status,
+            VideoId = dto.VideoId
         };
 
         public static void UpdateValues(this Course course, CourseDto dto)
@@ -47,6 +50,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             course.Duration = dto.Duration.HasValue() ? dto.Duration : course.Duration;
             course.FileName = dto.FileName.HasValue() ? dto.FileName : course.FileName;
             course.Status = dto.Status.HasValue() ? dto.Status : course.Status;
+            course.VideoId = dto.VideoId.HasValue() ? dto.VideoId : course.VideoId;
         }
     }
 }

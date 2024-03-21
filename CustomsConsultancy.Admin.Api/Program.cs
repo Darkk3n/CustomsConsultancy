@@ -34,6 +34,7 @@ app.UseHttpsRedirection();
 app.AddPotentialClientsEndpoints();
 app.AddCoursesEndpoints();
 app.AddInquiriesEndpoints();
+app.AddCourseRegistrationEndpoints();
 
 app.UseCors("Policy");
 

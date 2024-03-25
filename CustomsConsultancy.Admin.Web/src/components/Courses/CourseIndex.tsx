@@ -21,6 +21,12 @@ export const CourseIndex = () => {
 			navigate('/courses/0')
 	}
 
+	const deleteCourse = (courseId: number) => {
+		http.Courses.delete(courseId)
+			.then(() => http.Courses.list()
+				.then((r) => setCourses(r)))
+	}
+
 	return (
 		<Container>
 			<div className="email-btn">
@@ -32,6 +38,7 @@ export const CourseIndex = () => {
 						<th>Titulo</th>
 						<th>Duracion</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,7 +47,8 @@ export const CourseIndex = () => {
 							return <tr key={index}>
 								<td>{d.title}</td>
 								<td>{d.duration}</td>
-								<td><Button variant="secondary" onClick={() => moveToDetails(d.id)}>Editar</Button></td>
+								<td><Button variant="info" onClick={() => moveToDetails(d.id)}>Editar</Button></td>
+								<td><Button variant="danger" onClick={() => deleteCourse(d.id)}>Eliminar</Button></td>
 							</tr>
 						})
 					}

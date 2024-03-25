@@ -11,7 +11,7 @@ export const CourseDetails = () => {
 	const [course, setCourse] = useState<CourseModel>()
 
 	const newCourse = numCourseId === 0;
-	const { handleSubmit, register, setValue } = useForm<CourseModel>({ defaultValues: course })
+	const { handleSubmit, register, setValue, reset } = useForm<CourseModel>({ defaultValues: course })
 
 	useEffect(() => {
 		if (numCourseId !== 0) {
@@ -49,6 +49,11 @@ export const CourseDetails = () => {
 		}
 	}
 
+	const onCancel = () => {
+		reset();
+		navigate('../courses');
+	}
+
 	return (
 		<Container>
 			{newCourse
@@ -82,8 +87,11 @@ export const CourseDetails = () => {
 					</Col>
 				</Row>
 				<Row>
-					<Col md={12}>
+					<Col md={6}>
 						<Button type="submit" variant="primary">Guardar</Button>
+					</Col>
+					<Col md={6}>
+						<Button onClick={onCancel} variant="secondary">Cancelar</Button>
 					</Col>
 				</Row>
 			</form>

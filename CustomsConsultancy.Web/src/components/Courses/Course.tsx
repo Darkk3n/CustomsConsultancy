@@ -25,9 +25,12 @@ export const Course = () => {
 				<Image src={`${baseImg}${selectedCourse?.fileName}`} />
 			</Container>
 			<Container>
-				<NavLink to={`https://www.tiktok.com/@i.c.aduanal/video/${selectedCourse?.videoId}`} target='_blank' className='video-text'>
-					Video Explicativo
-				</NavLink>
+				{
+					selectedCourse?.videoId &&
+					<NavLink to={`https://www.tiktok.com/@i.c.aduanal/video/${selectedCourse?.videoId}`} target='_blank' className='video-text'>
+						Video Explicativo
+					</NavLink>
+				}
 			</Container>
 			<Container style={{ backgroundColor: 'lightGray' }}>
 				<Row>

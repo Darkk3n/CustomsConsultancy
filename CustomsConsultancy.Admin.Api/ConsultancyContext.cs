@@ -53,8 +53,7 @@ namespace CustomsConsultancy.Admin.Api
             .HasMaxLength(200);
 
             modelBuilder.Entity<Course>()
-            .Property(r => r.Status)
-            .HasMaxLength(20);
+            .Property(r => r.IsActive);
 
             modelBuilder.Entity<Client>()
             .Property(r => r.Name)

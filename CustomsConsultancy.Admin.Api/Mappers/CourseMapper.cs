@@ -12,7 +12,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             Title = course.Title,
             Duration = course.Duration,
             FileName = course.FileName,
-            Status = course.Status,
+            IsActive = course.IsActive,
             Price = course.Price,
             VideoId = course.VideoId
         };
@@ -27,7 +27,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 Duration = r.Duration,
                 FileName = r.FileName,
                 Price = r.Price,
-                Status = r.Status,
+                IsActive = r.IsActive,
                 VideoId = r.VideoId
             }));
             return toReturn;
@@ -39,7 +39,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             Duration = dto.Duration,
             FileName = dto.FileName,
             Price = dto.Price,
-            Status = dto.Status.Value,
+            IsActive = dto.IsActive.Value,
             VideoId = dto.VideoId
         };
 
@@ -49,7 +49,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             course.Price = dto.Price > 0 ? dto.Price : course.Price;
             course.Duration = dto.Duration.HasValue() ? dto.Duration : course.Duration;
             course.FileName = dto.FileName.HasValue() ? dto.FileName : course.FileName;
-            course.Status = dto.Status.HasValue ? dto.Status : course.Status;
+            course.IsActive = dto.IsActive.HasValue ? dto.IsActive : course.IsActive;
             course.VideoId = dto.VideoId.HasValue() ? dto.VideoId : course.VideoId;
         }
     }

@@ -10,7 +10,7 @@ export interface CourseModel {
 	price: number;
 	duration: string;
 	fileName: string;
-	status: string;
+	isActive: boolean;
 	videoId: string
 }
 
@@ -20,6 +20,6 @@ export interface CourseCreateModel {
 	price: number;
 	duration: string;
 	fileName: string;
-	status: string;
+	isActive: boolean;
 	videoId: string
 }

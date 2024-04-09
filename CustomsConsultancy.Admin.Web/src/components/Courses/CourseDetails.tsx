@@ -23,7 +23,7 @@ export const CourseDetails = () => {
 					setValue("title", r.title);
 					setValue("price", r.price);
 					setValue("duration", r.duration);
-					setValue("status", r.status);
+					setValue("isActive", r.isActive);
 					setValue("fileName", r.fileName);
 					setValue("videoId", r.videoId);
 				})
@@ -80,7 +80,8 @@ export const CourseDetails = () => {
 				</Row>
 				<Row>
 					<Col md={6}>
-						<input className="w-100 mb-3" placeholder="Estatus" {...register("status")} />
+						<label>Activo</label>
+						<input type="checkbox" checked style={{ height: "1.5rem", width: "1.5rem" }} className="w-100 mb-3" placeholder="Estatus" {...register("isActive")} />
 					</Col>
 					<Col md={6}>
 						<input className="w-100 mb-3" placeholder="ID Video TikTok" {...register("videoId")} />

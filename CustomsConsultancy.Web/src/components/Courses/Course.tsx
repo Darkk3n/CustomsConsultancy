@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { CourseModel } from '../../Models';
 import http from '../../api/agent';
 import './Course.css';
@@ -15,6 +15,10 @@ export const Course = () => {
 		//Use fetch here instead when the API project exists
 		http.Courses.getById(parsedCourseId).then(r => setSelectedCourse(r))
 	}, [courseId, parsedCourseId])
+
+	const navigate = useNavigate();
+
+	const navigateToSubscribe = () => navigate('subscribe');
 
 	return (
 		<>
@@ -52,7 +56,7 @@ export const Course = () => {
 					<Col md={4}>
 						<div className='flex-display'>
 							<h4 className='regular-text'>Registro y Pago</h4>
-							<Button variant='primary'>Registrarme al curso</Button>
+							<Button variant='primary' onClick={() => navigateToSubscribe()}>Registrarme al curso</Button>
 						</div>
 					</Col>
 				</Row>

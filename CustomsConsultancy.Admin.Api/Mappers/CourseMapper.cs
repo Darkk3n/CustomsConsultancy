@@ -39,7 +39,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             Duration = dto.Duration,
             FileName = dto.FileName,
             Price = dto.Price,
-            Status = dto.Status,
+            Status = dto.Status.Value,
             VideoId = dto.VideoId
         };
 
@@ -49,7 +49,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             course.Price = dto.Price > 0 ? dto.Price : course.Price;
             course.Duration = dto.Duration.HasValue() ? dto.Duration : course.Duration;
             course.FileName = dto.FileName.HasValue() ? dto.FileName : course.FileName;
-            course.Status = dto.Status.HasValue() ? dto.Status : course.Status;
+            course.Status = dto.Status.HasValue ? dto.Status : course.Status;
             course.VideoId = dto.VideoId.HasValue() ? dto.VideoId : course.VideoId;
         }
     }

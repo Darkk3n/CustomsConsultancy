@@ -9,7 +9,7 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public decimal Price { get; set; }
         public string Duration { get; set; }
         public string FileName { get; set; }
-        public string Status { get; set; }
+        public bool? Status { get; set; }
         public string VideoId { get; set; }
     }
 
@@ -19,7 +19,7 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public decimal Price { get; set; }
         public string Duration { get; set; }
         public string FileName { get; set; }
-        public string Status { get; set; }
+        public bool? Status { get; set; }
         public string VideoId { get; set; }
     }
 }

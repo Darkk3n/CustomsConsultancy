@@ -2,6 +2,7 @@ export interface CourseIndexModel {
 	id: number;
 	title: string;
 	duration: string;
+	isActive: boolean;
 }
 
 export interface CourseModel {

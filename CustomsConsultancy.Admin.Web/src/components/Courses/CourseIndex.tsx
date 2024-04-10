@@ -54,6 +54,7 @@ export const CourseIndex = () => {
 						<tr>
 							<th>Titulo</th>
 							<th>Duracion</th>
+							<th>Impartido</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -64,6 +65,7 @@ export const CourseIndex = () => {
 								return <tr key={index}>
 									<td>{d.title}</td>
 									<td>{d.duration}</td>
+									<td><input type="checkbox" checked={!d.isActive} /></td>
 									<td><Button variant="info" onClick={() => moveToDetails(d.id)}>Editar</Button></td>
 									<td><Button variant="danger" onClick={() => setDeleteCourse(d)}>Eliminar</Button></td>
 								</tr>

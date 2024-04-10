@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import http from "../../api/adminAgent";
 import { CourseCreateModel, CourseModel } from '../../models/Courses/CourseIndexModel';
+import './CourseDetails.css';
 
 export const CourseDetails = () => {
 	const { courseId } = useParams();
@@ -12,6 +13,8 @@ export const CourseDetails = () => {
 
 	const newCourse = numCourseId === 0;
 	const { handleSubmit, register, setValue, reset } = useForm<CourseModel>({ defaultValues: course })
+
+	const [checkValue, setCheckValue] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (numCourseId !== 0) {
@@ -26,6 +29,7 @@ export const CourseDetails = () => {
 					setValue("isActive", r.isActive);
 					setValue("fileName", r.fileName);
 					setValue("videoId", r.videoId);
+					setCheckValue(r.isActive);
 				})
 		}
 	}, [numCourseId, setValue])
@@ -54,6 +58,11 @@ export const CourseDetails = () => {
 		navigate('../courses');
 	}
 
+	const setCheck = () => {
+		setCheckValue(!checkValue);
+		setValue("isActive", !checkValue);
+	}
+
 	return (
 		<Container>
 			{newCourse
@@ -64,26 +73,37 @@ export const CourseDetails = () => {
 				<input type="hidden" {...register("id")} />
 				<Row>
 					<Col md={6}>
+						<label>Titulo</label>
 						<input className="w-100 mb-3" placeholder="Nombre" {...register("title")} />
 					</Col>
 					<Col md={6}>
+						<label>Duracion</label>
 						<input className="w-100 mb-3" placeholder="Duracion" {...register("duration")} />
 					</Col>
 				</Row>
 				<Row>
 					<Col md={6}>
+						<label>Precio</label>
 						<input className="w-100 mb-3" placeholder="Precio" {...register("price")} />
 					</Col>
 					<Col md={6}>
+						<label>Nombre de archivo</label>
 						<input className="w-100 mb-3" placeholder="Nombre de Archivo" {...register("fileName")} />
 					</Col>
 				</Row>
 				<Row>
 					<Col md={6}>
 						<label>Activo</label>
-						<input type="checkbox" checked style={{ height: "1.5rem", width: "1.5rem" }} className="w-100 mb-3" placeholder="Estatus" {...register("isActive")} />
+						<input type="checkbox"
+							defaultChecked={checkValue}
+							style={{ height: "1.5rem", width: "1.5rem" }}
+							className="w-100 mb-3"
+							placeholder="Estatus"
+							{...register("isActive")}
+							onChange={setCheck} />
 					</Col>
 					<Col md={6}>
+						<label>ID Video TikTok</label>
 						<input className="w-100 mb-3" placeholder="ID Video TikTok" {...register("videoId")} />
 					</Col>
 				</Row>

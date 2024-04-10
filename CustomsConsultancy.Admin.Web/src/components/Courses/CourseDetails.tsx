@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import http from "../../api/adminAgent";
 import { CourseCreateModel, CourseModel } from '../../models/Courses/CourseIndexModel';
+import './Course.css';
 import './CourseDetails.css';
 
 export const CourseDetails = () => {
@@ -96,8 +97,7 @@ export const CourseDetails = () => {
 						<label>Activo</label>
 						<input type="checkbox"
 							defaultChecked={checkValue}
-							style={{ height: "1.5rem", width: "1.5rem" }}
-							className="w-100 mb-3"
+							className="w-100 mb-3 check-given"
 							placeholder="Estatus"
 							{...register("isActive")}
 							onChange={setCheck} />

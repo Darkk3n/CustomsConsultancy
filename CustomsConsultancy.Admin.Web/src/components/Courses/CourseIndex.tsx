@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CourseDeleteConfirm } from ".";
 import http from "../../api/adminAgent";
 import { CourseIndexModel } from '../../models/Courses/CourseIndexModel';
+import './Course.css';
 
 export const CourseIndex = () => {
 	const [courses, setCourses] = useState<CourseIndexModel[]>([]);
@@ -65,7 +66,7 @@ export const CourseIndex = () => {
 								return <tr key={index}>
 									<td>{d.title}</td>
 									<td>{d.duration}</td>
-									<td><input type="checkbox" checked={!d.isActive} /></td>
+									<td><input type="checkbox" readOnly checked={!d.isActive} className="check-given" /></td>
 									<td><Button variant="info" onClick={() => moveToDetails(d.id)}>Editar</Button></td>
 									<td><Button variant="danger" onClick={() => setDeleteCourse(d)}>Eliminar</Button></td>
 								</tr>

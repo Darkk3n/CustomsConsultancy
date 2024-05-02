@@ -1,3 +1,4 @@
+using CustomsConsultancy.Admin.Api.Contracts;
 using CustomsConsultancy.Admin.Api.Dtos;
 using CustomsConsultancy.Admin.Api.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,10 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 return Results.Ok(CourseRegistrationMapper.ToDtoList(registrations));
             });
 
-            app.MapPost("/api/courseRegistration/", async (ConsultancyContext context, [FromBody] CourseRegistrationDto registration) =>
+            app.MapPost("/api/courseRegistration/", async (ConsultancyContext context, IClientCreateService clientCreateService, [FromBody] CourseRegistrationDto registration) =>
             {
-                context.CourseClients.Add(CourseRegistrationMapper.ToModel(registration));
+                var resultClientId = await clientCreateService.GetOrCreateClient(registration);
+                context.CourseClients.Add(CourseRegistrationMapper.ToModel(registration, resultClientId));
                 await context.SaveChangesAsync();
                 return Results.Ok();
             });

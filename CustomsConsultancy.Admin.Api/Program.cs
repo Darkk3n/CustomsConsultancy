@@ -1,5 +1,7 @@
 using CustomsConsultancy.Admin.Api;
+using CustomsConsultancy.Admin.Api.Contracts;
 using CustomsConsultancy.Admin.Api.Endpoints;
+using CustomsConsultancy.Admin.Api.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +22,7 @@ builder.Services.AddCors(opt =>
         .AllowAnyHeader();
     });
 });
+builder.Services.AddTransient<IClientCreateService, ClientCreateService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

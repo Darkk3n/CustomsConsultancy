@@ -20,9 +20,9 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             return toReturn;
         }
 
-        public static CourseClients ToModel(CourseRegistrationDto registration) => new()
+        public static CourseClients ToModel(CourseRegistrationDto registration, int clientId) => new()
         {
-            ClientId = registration.ClientId,
+            ClientId = clientId,
             CourseId = registration.CourseId
         };
     }

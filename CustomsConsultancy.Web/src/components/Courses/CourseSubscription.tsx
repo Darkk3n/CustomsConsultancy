@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { CourseModel } from "../../Models";
@@ -12,15 +12,18 @@ export const CourseSubscription = () => {
 	const [showInvoiceData, setShowInvoiceData] = useState<boolean>(false);
 	const [checkYesValue, setCheckYesValue] = useState<boolean>(false);
 	const [checkNoValue, setCheckNoValue] = useState<boolean>(true);
+	const [paymentForm, setPaymentForm] = useState<string>('');
 
 
 	useEffect(() => {
 		http.Courses
 			.getById(parsedCourseId)
 			.then((d: CourseModel) => setCourse(d));
-
 	}, [parsedCourseId])
 
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setPaymentForm(e.target.value);
+	}
 
 	return (
 		<Container style={{ color: 'black' }} className="w-100">
@@ -38,7 +41,6 @@ export const CourseSubscription = () => {
 						Precio ${course?.price}
 					</Col>
 				</Row>
-				<hr />
 				<h3>Datos de facturacion</h3>
 				<hr />
 				<Row className="left-margin">
@@ -91,7 +93,7 @@ export const CourseSubscription = () => {
 							</Row>
 							<Row>
 								<Col md={6}>
-									Reginmen fiscal de la empresa o persona fisica a la que se le factura (Obligatorio)
+									Regimen fiscal de la empresa o persona fisica a la que se le factura (Obligatorio)
 								</Col>
 								<Col md={6}>
 									Correo Electronico (Obligatorio)
@@ -134,9 +136,85 @@ export const CourseSubscription = () => {
 									ejemplo@ejemplo.com
 								</Col>
 							</Row>
+
 						</>
 						: undefined
 				}
+				<Row>
+					<h3>Datos de participante</h3>
+				</Row>
+				<hr />
+				<Row>
+					<Col md={6}>
+						<p>1. Nombre del participante <span>(Obligatorio)</span></p>
+					</Col>
+					<Col md={6}>
+						<p>1. Correo del participante <span>(Obligatorio)</span></p>
+					</Col>
+				</Row>
+				<Row>
+					<Col md={3}>
+						<input type="text" className="w-100" />
+					</Col>
+					<Col md={3}>
+						<input type="text" className="w-100" />
+					</Col>
+					<Col md={6}>
+						<input type="text" className="w-100" />
+					</Col>
+				</Row>
+				<Row>
+					<Col md={3}>
+						<label>Nombre</label>
+					</Col>
+					<Col md={3}>
+						<label>Apellidos</label>
+					</Col>
+					<Col md={6}>
+						<label>ejemplo@ejemplo.com</label>
+					</Col>
+				</Row>
+				<Row className="left-margin">
+					Escribalo exactamente como desea que aparezca en el reconocimento (ejemplo Dr. Jose Sanchez Perez)
+				</Row>
+				<Row>
+					<h3>Datos de Pago</h3>
+					<hr />
+					<Col md={6}>
+						<p>Forma de Pago (Obligatorio)</p>
+						<div className="d-flex flex-column">
+							<Form.Group>
+								<Form.Check type="radio" label='Deposito en Efectivo' name='paymentForm' value="cash" onChange={(e) => handleChange(e)} />
+								<Form.Check type="radio" label='Transferencia' name='paymentForm' value="transfer" onChange={(e) => handleChange(e)} />
+								<Form.Check type="radio" label='Tarjeta de Credito (Solo meses sin intereses)' value="msi" name='paymentForm' onChange={(e) => handleChange(e)} />
+								<Form.Check type="radio" label='Tarjeta de Credito/Debito' name='paymentForm' value="tdc" onChange={(e) => handleChange(e)} />
+								<Form.Check type="radio" label='PayPal' name='paymentForm' value="paypal" onChange={(e) => handleChange(e)} />
+							</Form.Group>
+
+						</div>
+					</Col>
+					{
+						["cash", "transfer"].includes(paymentForm) &&
+						<Col md={6}>
+							<p>Adjuntar comprobante de pago. <span className="mandatory">(Obligatorio)</span></p>
+							<p>Tama;o maximo de archivo: 64MB.</p>
+							<p>No se procesaran inscripciones sin comprobante de pago</p>
+							<p>INFORMACION DE PAGO:</p>
+							<p>BBVA Cta: 11111111</p>
+							<p>Titular: Andres Aguilar Sanchez</p>
+							<p>CLABE:111111111111111</p>
+							<p>RFC:XXXXXXXXX</p>
+						</Col>
+					}
+				</Row>
+				<hr />
+				<Row>
+					<p>Leer el aviso de privacidad <span className="mandatory">(Obligatorio)</span></p>
+				</Row>
+				<Row>
+					<p>Politicas de inscripcion a cursos <span className="mandatory">(Obligatorio)</span></p>
+
+				</Row>
 			</form>
 		</Container>
 	)

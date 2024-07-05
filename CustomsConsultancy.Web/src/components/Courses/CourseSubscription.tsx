@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { CourseModel } from "../../Models";
 import http from "../../api/agent";
@@ -21,7 +21,7 @@ export const CourseSubscription = () => {
 			.then((d: CourseModel) => setCourse(d));
 	}, [parsedCourseId])
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const handlePaymentFormChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setPaymentForm(e.target.value);
 	}
 
@@ -184,11 +184,11 @@ export const CourseSubscription = () => {
 						<p>Forma de Pago (Obligatorio)</p>
 						<div className="d-flex flex-column">
 							<Form.Group>
-								<Form.Check type="radio" label='Deposito en Efectivo' name='paymentForm' value="cash" onChange={(e) => handleChange(e)} />
-								<Form.Check type="radio" label='Transferencia' name='paymentForm' value="transfer" onChange={(e) => handleChange(e)} />
-								<Form.Check type="radio" label='Tarjeta de Credito (Solo meses sin intereses)' value="msi" name='paymentForm' onChange={(e) => handleChange(e)} />
-								<Form.Check type="radio" label='Tarjeta de Credito/Debito' name='paymentForm' value="tdc" onChange={(e) => handleChange(e)} />
-								<Form.Check type="radio" label='PayPal' name='paymentForm' value="paypal" onChange={(e) => handleChange(e)} />
+								<Form.Check type="radio" label='Deposito en Efectivo' name='paymentForm' value="cash" onChange={(e) => handlePaymentFormChange(e)} />
+								<Form.Check type="radio" label='Transferencia' name='paymentForm' value="transfer" onChange={(e) => handlePaymentFormChange(e)} />
+								<Form.Check type="radio" label='Tarjeta de Credito (Solo meses sin intereses)' value="msi" name='paymentForm' onChange={(e) => handlePaymentFormChange(e)} />
+								<Form.Check type="radio" label='Tarjeta de Credito/Debito' name='paymentForm' value="tdc" onChange={(e) => handlePaymentFormChange(e)} />
+								<Form.Check type="radio" label='PayPal' name='paymentForm' value="paypal" onChange={(e) => handlePaymentFormChange(e)} />
 							</Form.Group>
 
 						</div>
@@ -210,11 +210,13 @@ export const CourseSubscription = () => {
 				<hr />
 				<Row>
 					<p>Leer el aviso de privacidad <span className="mandatory">(Obligatorio)</span></p>
+					<Form.Check type="radio" label='He leido y estoy de acuerdo con el aviso de privacidad' name='privacyStatement' />
 				</Row>
 				<Row>
 					<p>Politicas de inscripcion a cursos <span className="mandatory">(Obligatorio)</span></p>
-
+					<Form.Check type="radio" label='He leido y estoy de acuerdo con políticas de inscripción a cursos' name='courseInscriptionPolicy' />
 				</Row>
+				<Button variant="primary" type="submit">Enviar</Button>
 			</form>
 		</Container>
 	)

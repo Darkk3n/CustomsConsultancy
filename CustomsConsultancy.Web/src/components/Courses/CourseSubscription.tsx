@@ -77,10 +77,10 @@ export const CourseSubscription = () => {
 							</Row>
 							<Row>
 								<Col md={6}>
-									Nombre de la empresa o persona fisica a la que se le factura (Obligatorio)
+									Nombre de la empresa o persona fisica a la que se le factura <span className="mandatory">(Obligatorio)</span>
 								</Col>
 								<Col md={6}>
-									Codigo Postal del domicilio fiscal (Obligatorio)
+									Codigo Postal del domicilio fiscal <span className="mandatory">(Obligatorio)</span>
 								</Col>
 							</Row>
 							<Row>
@@ -93,10 +93,10 @@ export const CourseSubscription = () => {
 							</Row>
 							<Row>
 								<Col md={6}>
-									Regimen fiscal de la empresa o persona fisica a la que se le factura (Obligatorio)
+									Regimen fiscal de la empresa o persona fisica a la que se le factura <span className="mandatory">(Obligatorio)</span>
 								</Col>
 								<Col md={6}>
-									Correo Electronico (Obligatorio)
+									Correo Electronico <span className="mandatory">(Obligatorio)</span>
 								</Col>
 							</Row>
 							<Row>
@@ -146,10 +146,10 @@ export const CourseSubscription = () => {
 				<hr />
 				<Row>
 					<Col md={6}>
-						<p>1. Nombre del participante <span>(Obligatorio)</span></p>
+						<p>1. Nombre del participante <span className="mandatory">(Obligatorio)</span></p>
 					</Col>
 					<Col md={6}>
-						<p>1. Correo del participante <span>(Obligatorio)</span></p>
+						<p>2. Correo del participante <span className="mandatory">(Obligatorio)</span></p>
 					</Col>
 				</Row>
 				<Row>
@@ -181,7 +181,7 @@ export const CourseSubscription = () => {
 					<h3>Datos de Pago</h3>
 					<hr />
 					<Col md={6}>
-						<p>Forma de Pago (Obligatorio)</p>
+						<p>Forma de Pago <span className="mandatory">(Obligatorio)</span></p>
 						<div className="d-flex flex-column">
 							<Form.Group>
 								<Form.Check type="radio" label='Deposito en Efectivo' name='paymentForm' value="cash" onChange={(e) => handlePaymentFormChange(e)} />
@@ -210,11 +210,21 @@ export const CourseSubscription = () => {
 				<hr />
 				<Row>
 					<p>Leer el aviso de privacidad <span className="mandatory">(Obligatorio)</span></p>
-					<Form.Check type="radio" label='He leido y estoy de acuerdo con el aviso de privacidad' name='privacyStatement' />
+					<Form.Check type="radio" label={
+						<span>
+							He leido y estoy de acuerdo con el
+							{" "}<Button className="btn btn-link p-0">acuerdo de privacidad</Button>
+						</span>
+					} name='privacyStatement' />
 				</Row>
 				<Row>
-					<p>Politicas de inscripcion a cursos <span className="mandatory">(Obligatorio)</span></p>
-					<Form.Check type="radio" label='He leido y estoy de acuerdo con políticas de inscripción a cursos' name='courseInscriptionPolicy' />
+					<p className="pt-2">Politicas de inscripcion a cursos <span className="mandatory">(Obligatorio)</span></p>
+					<Form.Check type="radio" label={
+						<span>
+							He leido y estoy de acuerdo con las
+							{" "}<Button className="btn btn-link p-0">políticas de inscripción a cursos</Button>
+						</span>
+					} name='courseInscriptionPolicy' />
 				</Row>
 				<Button variant="primary" type="submit">Enviar</Button>
 			</form>

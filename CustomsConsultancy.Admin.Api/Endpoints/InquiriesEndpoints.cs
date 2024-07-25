@@ -39,6 +39,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
             {
                 var selectedInquiry = await context.Inquiry.FindAsync(inquiryid);
                 selectedInquiry.Answered = true;
+                selectedInquiry.Answer = dto.Response;
                 await context.SaveChangesAsync();
                 try
                 {

@@ -8,6 +8,7 @@ export interface InquiryModel {
 	mobilePhone: string;
 	inquiry: string;
 	answered: boolean;
+	answer: string;
 }
 
 export interface InquiryResponseModel {

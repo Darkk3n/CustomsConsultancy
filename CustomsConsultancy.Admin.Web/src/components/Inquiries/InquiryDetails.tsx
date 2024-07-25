@@ -105,7 +105,8 @@ export const InquiryDetails = () => {
 					</InputGroup>
 				</Col>
 			</Row>
-			{inquiryDtl?.answered === false &&
+			{inquiryDtl?.answered === false
+				?
 				<>
 					<Row>
 						<Col md={12}>
@@ -120,6 +121,15 @@ export const InquiryDetails = () => {
 							<Button variant='success' disabled={!response} type='submit'>Enviar</Button>
 						</Row>
 					</form>
+				</>
+				:
+				<>
+					<Row>
+						<Form.Label className="form-myLabel">Respuesta:</Form.Label>
+						<Form.Text className="form-text">
+							{inquiryDtl?.answer}
+						</Form.Text>
+					</Row>
 				</>
 			}
 		</Container >

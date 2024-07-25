@@ -46,7 +46,7 @@ export const PotentialClientsList = ({ clientList, isContacted, handleCheck, sho
 								{
 									!isContacted &&
 									<td>
-										<Form.Check id={`check-${index}`} onChange={(e) => handleCheck(pc.id, e.target.checked)} />
+										<Form.Check className="formCheck" id={`check-${index}`} onChange={(e) => handleCheck(pc.id, e.target.checked)} />
 									</td>
 								}
 								<td>{pc.name}</td>

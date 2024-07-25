@@ -35,6 +35,11 @@ export const PotentialClientIndex = () => {
 
 	const { register, handleSubmit, reset } = useForm<PotentialClientForm>();
 
+	const resetCheckBoxes = () => {
+		const checkBoxes = document.querySelectorAll<HTMLInputElement>('input[type=checkbox]')
+		checkBoxes.forEach(r => r.checked = false);
+	}
+
 	const onSubmit = (data: PotentialClientForm) => {
 		http.PotentialClients
 			.contact(data)
@@ -44,7 +49,8 @@ export const PotentialClientIndex = () => {
 				setPotentialClientsContacted(r.filter(r => r.contacted));
 				setSelected([]);
 				setShowModal(false);
-			})
+				resetCheckBoxes();
+			});
 	}
 
 	return (

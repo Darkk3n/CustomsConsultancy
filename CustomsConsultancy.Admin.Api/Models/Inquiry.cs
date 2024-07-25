@@ -10,5 +10,6 @@ namespace CustomsConsultancy.Admin.Api.Models
         public string MobilePhone { get; set; }
         public string Question { get; set; }
         public bool Answered { get; set; }
+        public string Answer { get; set; }
     }
 }

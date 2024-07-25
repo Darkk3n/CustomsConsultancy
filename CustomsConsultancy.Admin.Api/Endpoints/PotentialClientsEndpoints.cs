@@ -20,7 +20,9 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
 
             app.MapGet("/api/PotentialClient", async (ConsultancyContext context) =>
             {
-                var data = await context.PotentialClients.ToListAsync();
+                var data = await context.PotentialClients
+                .OrderByDescending(r => r.DateContacted)
+                .ToListAsync();
                 return Results.Ok(PotentialClientMapper.ToDtoList(data));
             });
 
@@ -38,8 +40,11 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                     context.PotentialClients.Update(item);
                 }
                 await context.SaveChangesAsync();
-                var newData = await context.PotentialClients.AsNoTracking().ToListAsync();
-                return Results.Ok(newData);
+                var newData = await context.PotentialClients
+                .OrderByDescending(r => r.DateContacted)
+                .AsNoTracking()
+                .ToListAsync();
+                return Results.Ok(PotentialClientMapper.ToDtoList(newData));
             });
         }
 

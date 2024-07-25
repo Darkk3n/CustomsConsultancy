@@ -32,7 +32,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 Phone = i.Phone,
                 Inquiry = i.Question,
                 MobilePhone = i.MobilePhone,
-                Answered = i.Answered
+                Answered = i.Answered,
+                Answer = i.Answer
             }));
             return toReturn;
         }
@@ -48,7 +49,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 Email = model.Email,
                 Inquiry = model.Question,
                 Company = model.Company,
-                Answered = model.Answered
+                Answered = model.Answered,
+                Answer = model.Answer
             };
         }
     }

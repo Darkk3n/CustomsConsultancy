@@ -11,6 +11,7 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string MobilePhone { get; set; }
         public string Inquiry { get; set; }
         public bool Answered { get; set; }
+        public string Answer { get; set; }
     }
 
     public class InquiryCreateDto

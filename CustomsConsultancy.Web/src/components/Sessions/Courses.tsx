@@ -23,7 +23,7 @@ export const Courses = () => {
 	}
 
 	return (
-		<div>
+		<div className="d-flex justify-content-center">
 			{courses.map((course, index) => (
 				<button onClick={() => openCourse(course.id!)} key={index}>
 					<img alt="sample_file" src={`${baseImg}${course.fileName}`} />

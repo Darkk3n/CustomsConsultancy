@@ -67,8 +67,10 @@ export const CourseSubscription = () => {
 				{
 					showInvoiceData
 						? <>
-							<Row className="left-margin">
-								RFC de facturacion (Obligatorio)
+							<Row>
+								<Col md={12}>
+									RFC de facturacion <span className="mandatory">(Obligatorio)</span>
+								</Col>
 							</Row>
 							<Row>
 								<Col md={12}>
@@ -186,9 +188,9 @@ export const CourseSubscription = () => {
 							<Form.Group>
 								<Form.Check type="radio" label='Deposito en Efectivo' name='paymentForm' value="cash" onChange={(e) => handlePaymentFormChange(e)} />
 								<Form.Check type="radio" label='Transferencia' name='paymentForm' value="transfer" onChange={(e) => handlePaymentFormChange(e)} />
-								<Form.Check type="radio" label='Tarjeta de Credito (Solo meses sin intereses)' value="msi" name='paymentForm' onChange={(e) => handlePaymentFormChange(e)} />
+								{/* <Form.Check type="radio" label='Tarjeta de Credito (Solo meses sin intereses)' value="msi" name='paymentForm' onChange={(e) => handlePaymentFormChange(e)} />
 								<Form.Check type="radio" label='Tarjeta de Credito/Debito' name='paymentForm' value="tdc" onChange={(e) => handlePaymentFormChange(e)} />
-								<Form.Check type="radio" label='PayPal' name='paymentForm' value="paypal" onChange={(e) => handlePaymentFormChange(e)} />
+								<Form.Check type="radio" label='PayPal' name='paymentForm' value="paypal" onChange={(e) => handlePaymentFormChange(e)} /> */}
 							</Form.Group>
 
 						</div>

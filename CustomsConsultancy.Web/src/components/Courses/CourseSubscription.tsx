@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { CourseModel } from "../../Models";
 import http from "../../api/agent";
-import { PrivacyAgreement } from "../Contact";
+import { CourseSubscriptionAgreement, PrivacyAgreement } from "../Contact";
 import './CourseSubscription.css';
 
 export const CourseSubscription = () => {
@@ -14,6 +14,8 @@ export const CourseSubscription = () => {
 	const [checkYesValue, setCheckYesValue] = useState<boolean>(false);
 	const [checkNoValue, setCheckNoValue] = useState<boolean>(true);
 	const [paymentForm, setPaymentForm] = useState<string>('');
+	const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState(false);
+	const [displayCourseSubscriptionAgreement, setDisplayCourseSubscriptionAgreement] = useState(false);
 
 
 	useEffect(() => {
@@ -26,7 +28,6 @@ export const CourseSubscription = () => {
 		setPaymentForm(e.target.value);
 	}
 
-	const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState(false);
 
 	return (
 		<Container style={{ color: 'black' }} className="w-100">
@@ -227,13 +228,14 @@ export const CourseSubscription = () => {
 					<Form.Check type="radio" label={
 						<span>
 							He leido y estoy de acuerdo con las
-							{" "}<Button className="btn btn-link p-0">políticas de inscripción a cursos</Button>
+							{" "}<Button className="btn btn-link p-0" onClick={() => setDisplayCourseSubscriptionAgreement(true)}>políticas de inscripción a cursos</Button>
 						</span>
 					} name='courseInscriptionPolicy' />
 				</Row>
 				<Button variant="primary" type="submit">Enviar</Button>
 			</form>
 			{displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
+			{displayCourseSubscriptionAgreement && <CourseSubscriptionAgreement showModal={displayCourseSubscriptionAgreement} hideModal={setDisplayCourseSubscriptionAgreement} />}
 		</Container>
 	)
 }

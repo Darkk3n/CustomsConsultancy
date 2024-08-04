@@ -22,13 +22,13 @@ export const Course = () => {
 
 	return (
 		<>
-			<Container>
+			<Container className='d-flex justify-content-center'>
 				<h1 className='regular-text'>{selectedCourse?.title}</h1>
 			</Container>
-			<Container>
+			<Container className='d-flex justify-content-center'>
 				<Image src={`${baseImg}${selectedCourse?.fileName}`} />
 			</Container>
-			<Container>
+			<Container className='d-flex justify-content-center'>
 				{
 					selectedCourse?.videoId &&
 					<NavLink to={`https://www.tiktok.com/@i.c.aduanal/video/${selectedCourse?.videoId}`} target='_blank' className='video-text'>

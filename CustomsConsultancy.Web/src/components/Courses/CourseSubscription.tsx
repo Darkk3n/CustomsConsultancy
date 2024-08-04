@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { CourseModel } from "../../Models";
 import http from "../../api/agent";
+import { PrivacyAgreement } from "../Contact";
 import './CourseSubscription.css';
 
 export const CourseSubscription = () => {
@@ -24,6 +25,8 @@ export const CourseSubscription = () => {
 	const handlePaymentFormChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setPaymentForm(e.target.value);
 	}
+
+	const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState(false);
 
 	return (
 		<Container style={{ color: 'black' }} className="w-100">
@@ -215,7 +218,7 @@ export const CourseSubscription = () => {
 					<Form.Check type="radio" label={
 						<span>
 							He leido y estoy de acuerdo con el
-							{" "}<Button className="btn btn-link p-0">acuerdo de privacidad</Button>
+							{" "}<Button className="btn btn-link p-0" onClick={() => setDisplayPrivacyAgreement(true)}>acuerdo de privacidad</Button>
 						</span>
 					} name='privacyStatement' />
 				</Row>
@@ -230,6 +233,7 @@ export const CourseSubscription = () => {
 				</Row>
 				<Button variant="primary" type="submit">Enviar</Button>
 			</form>
+			{displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
 		</Container>
 	)
 }

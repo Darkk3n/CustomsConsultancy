@@ -18,14 +18,12 @@ export const InquiryDetails = () => {
 	const onSubmit = (data: InquiryResponseModel) => {
 		data.inquiryId = inquiryIdParsed;
 		http.Inquiries.answer(data)
-			.then(() => {
+			.then((q: InquiryModel) => {
 				toast.success('Respuesta enviada con exito.');
 				setResponse('');
 				reset();
-				setInquiryDtl(prev => {
-					return { ...prev!, answered: true }
-				})
-			})
+				setInquiryDtl(q);
+			});
 	}
 
 	useEffect(() => {

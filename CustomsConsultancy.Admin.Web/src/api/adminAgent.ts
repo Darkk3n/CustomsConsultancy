@@ -26,7 +26,7 @@ const Courses = {
 const Inquiries = {
 	getAll: () => requests.get<InquiryModel[]>("/inquiries"),
 	getById: (inquiryId: number) => requests.get<InquiryModel>(`/inquiries/${inquiryId}`),
-	answer: (inquiryResponse: InquiryResponseModel) => requests.post<void>(`/inquiries/answer/${inquiryResponse.inquiryId}`, inquiryResponse),
+	answer: (inquiryResponse: InquiryResponseModel) => requests.post<InquiryModel>(`/inquiries/answer/${inquiryResponse.inquiryId}`, inquiryResponse),
 };
 
 const PotentialClients = {

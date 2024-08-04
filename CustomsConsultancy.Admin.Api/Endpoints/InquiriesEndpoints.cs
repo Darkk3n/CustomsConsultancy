@@ -44,7 +44,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 try
                 {
                     await SendEmail(dto.Response, selectedInquiry);
-                    return Results.Ok();
+                    return Results.Ok(InquiryMapper.ToDto(selectedInquiry));
                 }
                 catch (Exception)
                 {

@@ -39,14 +39,14 @@ export const Course = () => {
 			<Container style={{ backgroundColor: 'lightGray' }}>
 				<Row>
 					<Col md={4}>
-						<div className='flex-display'>
+						<div className='d-flex flex-column'>
 							<h3 className='regular-text'>Precio</h3>
 							<h1 className='emphazised-text'>${selectedCourse?.price}</h1>
 							<p className='regular-text'>Precio por persona IVA incluido.</p>
 						</div>
 					</Col>
 					<Col md={4}>
-						<div className='flex-display'>
+						<div className='d-flex flex-column'>
 							<h3 className='regular-text'>Datos del Curso</h3>
 							<p className='bolded'>Expositor: <span className='regular-text-lighter'>Andres Aguilar Sánchez</span></p>
 							<p className='bolded'>Duración: <span className='regular-text-lighter'>{selectedCourse?.duration}</span></p>
@@ -54,7 +54,7 @@ export const Course = () => {
 						</div>
 					</Col>
 					<Col md={4}>
-						<div className='flex-display'>
+						<div className='d-flex flex-column'>
 							<h4 className='regular-text'>Registro y Pago</h4>
 							<Button variant='primary' onClick={() => navigateToSubscribe()}>Registrarme al curso</Button>
 						</div>

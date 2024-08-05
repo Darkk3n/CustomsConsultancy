@@ -23,6 +23,7 @@ builder.Services.AddCors(opt =>
     });
 });
 builder.Services.AddTransient<IClientCreateService, ClientCreateService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

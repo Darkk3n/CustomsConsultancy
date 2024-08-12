@@ -11,6 +11,7 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string FileName { get; set; }
         public bool? IsActive { get; set; }
         public string VideoId { get; set; }
+        public string DateDue { get; set; }
     }
 
     public record CourseCreateDto
@@ -21,5 +22,6 @@ namespace CustomsConsultancy.Admin.Api.Dtos
         public string FileName { get; set; }
         public bool? IsActive { get; set; }
         public string VideoId { get; set; }
+        public string DateDue { get; set; }
     }
 }

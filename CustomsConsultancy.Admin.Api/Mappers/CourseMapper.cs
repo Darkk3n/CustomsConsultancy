@@ -14,7 +14,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             FileName = course.FileName,
             IsActive = course.IsActive,
             Price = course.Price,
-            VideoId = course.VideoId
+            VideoId = course.VideoId,
+            DateDue = course.DateDue.Value.ToShortDateString()
         };
 
         public static IEnumerable<CourseDto> FromModelList(IEnumerable<Course> courses)
@@ -28,7 +29,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
                 FileName = r.FileName,
                 Price = r.Price,
                 IsActive = r.IsActive,
-                VideoId = r.VideoId
+                VideoId = r.VideoId,
+                DateDue = r.DateDue.Value.ToShortDateString()
             }));
             return toReturn;
         }
@@ -40,7 +42,8 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             FileName = dto.FileName,
             Price = dto.Price,
             IsActive = dto.IsActive.Value,
-            VideoId = dto.VideoId
+            VideoId = dto.VideoId,
+            DateDue = DateTime.Parse(dto.DateDue)
         };
 
         public static void UpdateValues(this Course course, CourseDto dto)
@@ -51,6 +54,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             course.FileName = dto.FileName.HasValue() ? dto.FileName : course.FileName;
             course.IsActive = dto.IsActive.HasValue ? dto.IsActive : course.IsActive;
             course.VideoId = dto.VideoId.HasValue() ? dto.VideoId : course.VideoId;
+            course.DateDue = dto.DateDue.HasValue() ? DateTime.Parse(dto.DateDue) : course.DateDue;
         }
     }
 }

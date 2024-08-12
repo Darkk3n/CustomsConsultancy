@@ -30,6 +30,7 @@ export const CourseDetails = () => {
 					setValue("isActive", r.isActive);
 					setValue("fileName", r.fileName);
 					setValue("videoId", r.videoId);
+					setValue("dateDue", r.dateDue);
 					setCheckValue(r.isActive);
 				})
 		}
@@ -94,6 +95,16 @@ export const CourseDetails = () => {
 				</Row>
 				<Row>
 					<Col md={6}>
+						<label>Fecha</label>
+						<input className="w-100 mb-3" placeholder="Fecha" {...register("dateDue")} />
+					</Col>
+					<Col md={6}>
+						<label>ID Video TikTok</label>
+						<input className="w-100 mb-3" placeholder="ID Video TikTok" {...register("videoId")} />
+					</Col>
+				</Row>
+				<Row>
+					<Col md={6}>
 						<label>Activo</label>
 						<input type="checkbox"
 							defaultChecked={checkValue}
@@ -101,10 +112,6 @@ export const CourseDetails = () => {
 							placeholder="Estatus"
 							{...register("isActive")}
 							onChange={setCheck} />
-					</Col>
-					<Col md={6}>
-						<label>ID Video TikTok</label>
-						<input className="w-100 mb-3" placeholder="ID Video TikTok" {...register("videoId")} />
 					</Col>
 				</Row>
 				<Row>

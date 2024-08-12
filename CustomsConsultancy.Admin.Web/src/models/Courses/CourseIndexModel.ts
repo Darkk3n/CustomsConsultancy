@@ -1,3 +1,4 @@
+
 export interface CourseIndexModel {
 	id: number;
 	title: string;
@@ -12,7 +13,8 @@ export interface CourseModel {
 	duration: string;
 	fileName: string;
 	isActive: boolean;
-	videoId: string
+	videoId: string;
+	dateDue: string
 }
 
 
@@ -23,4 +25,5 @@ export interface CourseCreateModel {
 	fileName: string;
 	isActive: boolean;
 	videoId: string
+	dateDue: string;
 }

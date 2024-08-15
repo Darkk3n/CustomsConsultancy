@@ -1,5 +1,8 @@
+import { es } from 'date-fns/locale/es';
 import { useEffect, useMemo, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import DatePicker, { registerLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import http from "../../api/adminAgent";
@@ -8,6 +11,7 @@ import './Course.css';
 import './CourseDetails.css';
 
 export const CourseDetails = () => {
+	registerLocale('es', es)
 	const { courseId } = useParams();
 	const numCourseId = useMemo(() => Number(courseId), [courseId]);
 	const [course, setCourse] = useState<CourseModel>()
@@ -16,6 +20,7 @@ export const CourseDetails = () => {
 	const { handleSubmit, register, setValue, reset } = useForm<CourseModel>({ defaultValues: course })
 
 	const [checkValue, setCheckValue] = useState<boolean>(false);
+	const [dueDate, setDueDate] = useState<Date | null>(new Date());
 
 	useEffect(() => {
 		if (numCourseId !== 0) {
@@ -32,9 +37,10 @@ export const CourseDetails = () => {
 					setValue("videoId", r.videoId);
 					setValue("dateDue", r.dateDue);
 					setCheckValue(r.isActive);
+					setDueDate(new Date(r.dateDue));
 				})
 		}
-	}, [numCourseId, setValue])
+	}, [numCourseId, setDueDate, setValue])
 
 	const navigate = useNavigate();
 
@@ -63,6 +69,11 @@ export const CourseDetails = () => {
 	const setCheck = () => {
 		setCheckValue(!checkValue);
 		setValue("isActive", !checkValue);
+	}
+
+	const setDateValue = (date: Date | null) => {
+		setDueDate(date);
+		setValue("dateDue", date!.toLocaleDateString());
 	}
 
 	return (
@@ -94,9 +105,10 @@ export const CourseDetails = () => {
 					</Col>
 				</Row>
 				<Row>
-					<Col md={6}>
+					<Col md={6} className="d-flex flex-column">
 						<label>Fecha</label>
-						<input className="w-100 mb-3" placeholder="Fecha" {...register("dateDue")} />
+						<DatePicker className="w-100 mb-3" locale='es' selected={dueDate} onChange={(date) => setDateValue(date)} />
+						{/* <input className="w-100 mb-3" placeholder="Fecha" {...register("dateDue")} /> */}
 					</Col>
 					<Col md={6}>
 						<label>ID Video TikTok</label>

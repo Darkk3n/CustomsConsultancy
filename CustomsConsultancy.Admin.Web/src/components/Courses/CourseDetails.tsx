@@ -108,7 +108,6 @@ export const CourseDetails = () => {
 					<Col md={6} className="d-flex flex-column">
 						<label>Fecha</label>
 						<DatePicker className="w-100 mb-3" locale='es' selected={dueDate} onChange={(date) => setDateValue(date)} />
-						{/* <input className="w-100 mb-3" placeholder="Fecha" {...register("dateDue")} /> */}
 					</Col>
 					<Col md={6}>
 						<label>ID Video TikTok</label>

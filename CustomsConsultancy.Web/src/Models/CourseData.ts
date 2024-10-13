@@ -14,5 +14,16 @@ export interface CourseModel {
 	duration: string;
 	fileName: string;
 	status: string;
-	videoId: string
+	videoId: string;
+}
+
+export interface CourseSubscriptionModel {
+	courseId: number;
+	requiresInvoice: boolean;
+	rfc?: string;
+	personOrCompanyName?: string;
+	postalCode?: string;
+	taxRegime?: number;
+	taxPayerEmail?: string;
+	paymentMethod?: string;
 }

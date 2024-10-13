@@ -4,14 +4,10 @@ using CustomsConsultancy.Admin.Api.Models;
 
 namespace CustomsConsultancy.Admin.Api.Services
 {
-    public class ClientCreateService : IClientCreateService
+    public class ClientCreateService(ConsultancyContext context) : IClientCreateService
     {
-        private readonly ConsultancyContext context;
+        private readonly ConsultancyContext context = context;
 
-        public ClientCreateService(ConsultancyContext context)
-        {
-            this.context = context;
-        }
         public async Task<int> GetOrCreateClient(CourseRegistrationDto request)
         {
             var clientId = 0;
@@ -21,8 +17,8 @@ namespace CustomsConsultancy.Admin.Api.Services
                 var newClient = new Client
                 {
                     Email = request.Email,
-                    Name = request.FirstName + " " + request.LastName,
-
+                    Name = request.FirstName,
+                    LastName = request.LastName,
                 };
                 context.Clients.Add(newClient);
                 await context.SaveChangesAsync();

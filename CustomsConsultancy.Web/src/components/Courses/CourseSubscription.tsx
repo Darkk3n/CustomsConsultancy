@@ -108,26 +108,26 @@ export const CourseSubscription = () => {
 							<Row>
 								<Col md={6}>
 									<Form.Select className="dropdown-style">
-										<option>-- SELECCIONE --</option>
-										<option>601 General de Ley Personas Morales</option>
-										<option>603 Personas Morales con Fines no Lucrativos</option>
-										<option>605 Sueldos y Salarios e Ingresos Asimilados a Salarios</option>
-										<option>606 Arrendamiento</option>
-										<option>607 Régimen de Enajenación o Adquisición de Bienes</option>
-										<option>608 Demás ingresos</option>
-										<option>610 Residentes en el Extranjero sin Establecimiento Permanente en México</option>
-										<option>611 Ingresos por Dividendos (socios y accionistas)</option>
-										<option>612 Personas Físicas con Actividades Empresariales y Profesionales</option>
-										<option>614 Ingresos por intereses</option>
-										<option>615 Régimen de los ingresos por obtención de premios</option>
-										<option>616 Sin obligaciones fiscales</option>
-										<option>620 Sociedades Cooperativas de Producción que optan por diferir sus ingresos</option>
-										<option>621 Incorporación Fiscal</option>
-										<option>622 Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras</option>
-										<option>623 Opcional para Grupos de Sociedades</option>
-										<option>624 Coordinados</option>
-										<option>625 Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
-										<option>626 Régimen Simplificado de Confianza</option>
+										<option value={0}>-- SELECCIONE --</option>
+										<option value={1}>601 General de Ley Personas Morales</option>
+										<option value={2}>603 Personas Morales con Fines no Lucrativos</option>
+										<option value={3}>605 Sueldos y Salarios e Ingresos Asimilados a Salarios</option>
+										<option value={4}>606 Arrendamiento</option>
+										<option value={5}>607 Régimen de Enajenación o Adquisición de Bienes</option>
+										<option value={6}>608 Demás ingresos</option>
+										<option value={7}>610 Residentes en el Extranjero sin Establecimiento Permanente en México</option>
+										<option value={8}>611 Ingresos por Dividendos (socios y accionistas)</option>
+										<option value={9}>612 Personas Físicas con Actividades Empresariales y Profesionales</option>
+										<option value={10}>614 Ingresos por intereses</option>
+										<option value={11}>615 Régimen de los ingresos por obtención de premios</option>
+										<option value={12}>616 Sin obligaciones fiscales</option>
+										<option value={13}>620 Sociedades Cooperativas de Producción que optan por diferir sus ingresos</option>
+										<option value={14}>621 Incorporación Fiscal</option>
+										<option value={15}>622 Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras</option>
+										<option value={16}>623 Opcional para Grupos de Sociedades</option>
+										<option value={17}>624 Coordinados</option>
+										<option value={18}>625 Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
+										<option value={19}>626 Régimen Simplificado de Confianza</option>
 									</Form.Select>
 								</Col>
 								<Col md={6}>

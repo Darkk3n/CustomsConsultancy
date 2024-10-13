@@ -40,6 +40,9 @@ export const CourseDetails = () => {
 					setDueDate(new Date(r.dateDue));
 				})
 		}
+		else {
+			setValue("dateDue", new Date().toLocaleDateString());
+		}
 	}, [numCourseId, setDueDate, setValue])
 
 	const navigate = useNavigate();

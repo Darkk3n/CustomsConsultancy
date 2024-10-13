@@ -1,10 +1,11 @@
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { CourseModel } from "../../Models";
+import { CourseModel, CourseSubscriptionModel } from "../../Models";
 import http from "../../api/agent";
 import { CourseSubscriptionAgreement, PrivacyAgreement } from "../Contact";
 import './CourseSubscription.css';
+import { useForm } from "react-hook-form";
 
 export const CourseSubscription = () => {
 	const { courseId } = useParams();
@@ -28,6 +29,11 @@ export const CourseSubscription = () => {
 		setPaymentForm(e.target.value);
 	}
 
+	const { handleSubmit } = useForm<CourseSubscriptionModel>();
+
+	const onSubmit = (data: CourseSubscriptionModel) => {
+		console.log(data)
+	}
 
 	return (
 		<Container style={{ color: 'black' }} className="w-100">
@@ -232,7 +238,7 @@ export const CourseSubscription = () => {
 						</span>
 					} name='courseInscriptionPolicy' />
 				</Row>
-				<Button variant="primary" type="submit">Enviar</Button>
+				<Button variant="primary" type="submit" disabled onClick={() => handleSubmit(onSubmit)}>Enviar</Button>
 			</form>
 			{displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
 			{displayCourseSubscriptionAgreement && <CourseSubscriptionAgreement showModal={displayCourseSubscriptionAgreement} hideModal={setDisplayCourseSubscriptionAgreement} />}

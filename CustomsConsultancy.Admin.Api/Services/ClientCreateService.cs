@@ -26,6 +26,7 @@ namespace CustomsConsultancy.Admin.Api.Services
                 };
                 context.Clients.Add(newClient);
                 await context.SaveChangesAsync();
+                clientId = newClient.Id;
             }
             else
                 clientId = existingClient.Id;

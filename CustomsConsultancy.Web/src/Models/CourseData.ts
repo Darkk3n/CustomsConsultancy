@@ -19,6 +19,9 @@ export interface CourseModel {
 
 export interface CourseSubscriptionModel {
 	courseId: number;
+	firstName: string;
+	lastName: string;
+	email: string;
 	requiresInvoice: boolean;
 	rfc?: string;
 	personOrCompanyName?: string;

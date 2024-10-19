@@ -27,17 +27,25 @@ export const CourseSubscription = () => {
 
 	const handlePaymentFormChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setPaymentForm(e.target.value);
+		setValue("paymentMethod", e.target.value);
 	}
 
-	const { handleSubmit } = useForm<CourseSubscriptionModel>();
+	const { handleSubmit, setValue, register } = useForm<CourseSubscriptionModel>();
 
 	const onSubmit = (data: CourseSubscriptionModel) => {
 		console.log(data)
 	}
 
+	const handleChecks = (value: boolean) => {
+		setShowInvoiceData(value);
+		setCheckYesValue(value);
+		setCheckNoValue(!value);
+		setValue("requiresInvoice", value);
+	}
+
 	return (
 		<Container style={{ color: 'black' }} className="w-100">
-			<form>
+			<Form>
 				<h3>Datos del curso</h3>
 				<hr />
 				<Row className="left-margin">
@@ -58,20 +66,17 @@ export const CourseSubscription = () => {
 				</Row>
 				<Row className="left-margin">
 					Si
-					<input style={{ marginLeft: '0.75rem', height: "1.5rem", width: "1.5rem" }} type="checkbox" onChange={() => {
-						setShowInvoiceData(true);
-						setCheckYesValue(true);
-						setCheckNoValue(false);
-					}}
+					<input style={{ marginLeft: '0.75rem', height: "1.5rem", width: "1.5rem" }}
+						type="checkbox"
+						onChange={() => handleChecks(true)}
 						checked={checkYesValue} />
 				</Row>
 				<Row className="left-margin">
 					No
-					<input className="left-margin" style={{ height: "1.5rem", width: "1.5rem", marginTop: '0.5rem' }} type="checkbox" onChange={() => {
-						setShowInvoiceData(false);
-						setCheckYesValue(false);
-						setCheckNoValue(true);
-					}}
+					<input
+						className="left-margin"
+						style={{ height: "1.5rem", width: "1.5rem", marginTop: '0.5rem' }} type="checkbox"
+						onChange={() => handleChecks(false)}
 						checked={checkNoValue} />
 				</Row>
 				{
@@ -84,7 +89,7 @@ export const CourseSubscription = () => {
 							</Row>
 							<Row>
 								<Col md={12}>
-									<input type="text" className="w-100" />
+									<input type="text" className="w-100" {...register("rfc")} />
 								</Col>
 							</Row>
 							<Row>
@@ -97,10 +102,10 @@ export const CourseSubscription = () => {
 							</Row>
 							<Row>
 								<Col md={6}>
-									<input type="text" className="w-100" />
+									<input type="text" className="w-100" {...register("personOrCompanyName")} />
 								</Col>
 								<Col md={6}>
-									<input type="text" className="w-100" />
+									<input type="text" className="w-100" {...register("postalCode")} />
 								</Col>
 							</Row>
 							<Row>
@@ -113,7 +118,7 @@ export const CourseSubscription = () => {
 							</Row>
 							<Row>
 								<Col md={6}>
-									<Form.Select className="dropdown-style">
+									<Form.Select className="dropdown-style" {...register("taxRegime")}>
 										<option value={0}>-- SELECCIONE --</option>
 										<option value={1}>601 General de Ley Personas Morales</option>
 										<option value={2}>603 Personas Morales con Fines no Lucrativos</option>
@@ -137,7 +142,7 @@ export const CourseSubscription = () => {
 									</Form.Select>
 								</Col>
 								<Col md={6}>
-									<input type="text" className="w-100" />
+									<input type="text" className="w-100" {...register("taxPayerEmail")} />
 								</Col>
 							</Row>
 							<Row>
@@ -152,7 +157,7 @@ export const CourseSubscription = () => {
 						</>
 						: undefined
 				}
-				<Row>
+				<Row className="mt-2">
 					<h3>Datos de participante</h3>
 				</Row>
 				<hr />
@@ -166,13 +171,13 @@ export const CourseSubscription = () => {
 				</Row>
 				<Row>
 					<Col md={3}>
-						<input type="text" className="w-100" />
+						<input type="text" className="w-100"  {...register("firstName")} />
 					</Col>
 					<Col md={3}>
-						<input type="text" className="w-100" />
+						<input type="text" className="w-100" {...register("lastName")} />
 					</Col>
 					<Col md={6}>
-						<input type="text" className="w-100" />
+						<input type="text" className="w-100" {...register("email")} />
 					</Col>
 				</Row>
 				<Row>
@@ -238,8 +243,8 @@ export const CourseSubscription = () => {
 						</span>
 					} name='courseInscriptionPolicy' />
 				</Row>
-				<Button variant="primary" type="submit" disabled onClick={() => handleSubmit(onSubmit)}>Enviar</Button>
-			</form>
+				<Button variant="primary" onClick={() => handleSubmit(onSubmit)}>Enviar</Button>
+			</Form>
 			{displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
 			{displayCourseSubscriptionAgreement && <CourseSubscriptionAgreement showModal={displayCourseSubscriptionAgreement} hideModal={setDisplayCourseSubscriptionAgreement} />}
 		</Container>

@@ -11,7 +11,14 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             toReturn.AddRange(registrations.Select(r => new CourseRegistrationDto
             {
                 ClientId = r.ClientId,
-                CourseId = r.CourseId
+                CourseId = r.CourseId,
+                PaymentMethod = r.PaymentMethod.ToString(),
+                PersonOrCompanyName = r.PersonOrCompanyName,
+                PostalCode = r.PostalCode,
+                RequiresInvoice = r.RequiresInvoice,
+                Rfc = r.Rfc,
+                TaxPayerEmail = r.TaxPayerEmail,
+                TaxRegime = r.TaxRegime,
             }));
             return toReturn;
         }
@@ -33,7 +40,7 @@ namespace CustomsConsultancy.Admin.Api.Mappers
             => paymentMethod switch
             {
                 "transfer" => 1,
-                "deposit" => 2,
+                "cash" => 2,
                 _ => 0
             };
     }

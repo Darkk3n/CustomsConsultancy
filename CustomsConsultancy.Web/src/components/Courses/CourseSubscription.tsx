@@ -1,11 +1,12 @@
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CourseModel, CourseSubscriptionModel } from "../../Models";
 import http from "../../api/agent";
 import { CourseSubscriptionAgreement, PrivacyAgreement } from "../Contact";
 import './CourseSubscription.css';
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export const CourseSubscription = () => {
 	const { courseId } = useParams();
@@ -32,11 +33,20 @@ export const CourseSubscription = () => {
 		setValue("paymentMethod", e.target.value);
 	}
 
+	const navigate = useNavigate();
+
 	const { handleSubmit, setValue, register, watch } = useForm<CourseSubscriptionModel>();
 	const formValues = watch();
 
 	const onSubmit = (data: CourseSubscriptionModel) => {
-		console.log(data)
+		data.courseId = parsedCourseId;
+		http.CourseRegistration
+			.create(data)
+			.then(() => toast.success('Registro realizado con exito.'))
+			.then(() => navigate(`../${courseId}`))
+			.catch((err) => {
+				toast.error(`Ocurrio un error: ${err}`)
+			});
 	}
 
 	useEffect(() => {

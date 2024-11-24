@@ -29,7 +29,7 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
                 }
                 catch (Exception)
                 {
-                    return Results.Problem("El cliente ya se encuentra registrado a este curso");
+                    return Results.Problem(detail: "El cliente ya se encuentra registrado a este curso.", statusCode: 400);
                 }
                 return Results.Ok();
             });

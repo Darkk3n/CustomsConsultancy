@@ -284,6 +284,7 @@ export const CourseSubscription = () => {
 					} name='courseInscriptionPolicy' />
 				</Row>
 				<Button disabled={!canSubmit} type='submit' variant="primary">Enviar</Button>
+				<Button className="ms-2" variant="secondary" onClick={() => navigate(`/courses/${courseId}`)}>Cancelar</Button>
 			</Form>
 			{displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
 			{displayCourseSubscriptionAgreement && <CourseSubscriptionAgreement showModal={displayCourseSubscriptionAgreement} hideModal={setDisplayCourseSubscriptionAgreement} />}

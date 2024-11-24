@@ -15,9 +15,11 @@ export const CourseSubscription = () => {
 	const [checkYesValue, setCheckYesValue] = useState<boolean>(false);
 	const [checkNoValue, setCheckNoValue] = useState<boolean>(true);
 	const [paymentForm, setPaymentForm] = useState<string>('');
-	const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState(false);
-	const [displayCourseSubscriptionAgreement, setDisplayCourseSubscriptionAgreement] = useState(false);
-
+	const [displayPrivacyAgreement, setDisplayPrivacyAgreement] = useState<boolean>(false);
+	const [displayCourseSubscriptionAgreement, setDisplayCourseSubscriptionAgreement] = useState<boolean>(false);
+	const [canSubmit, setCanSubmit] = useState<boolean>(false);
+	const [readPrivacyAgreement, setReadPrivacyAgreement] = useState<boolean>(false);
+	const [readCourseSubscriptionAgreement, setReadCourseSubscriptionAgreement] = useState<boolean>(false);
 
 	useEffect(() => {
 		http.Courses
@@ -30,11 +32,39 @@ export const CourseSubscription = () => {
 		setValue("paymentMethod", e.target.value);
 	}
 
-	const { handleSubmit, setValue, register } = useForm<CourseSubscriptionModel>();
+	const { handleSubmit, setValue, register, watch } = useForm<CourseSubscriptionModel>();
+	const formValues = watch();
 
 	const onSubmit = (data: CourseSubscriptionModel) => {
 		console.log(data)
 	}
+
+	useEffect(() => {
+		if (showInvoiceData) {
+			setCanSubmit(
+				!!formValues.rfc &&
+				!!formValues.personOrCompanyName &&
+				!!formValues.postalCode &&
+				!!formValues.taxRegime &&
+				!!formValues.taxPayerEmail &&
+				!!formValues.firstName &&
+				!!formValues.lastName &&
+				!!formValues.email &&
+				!!paymentForm &&
+				!!readPrivacyAgreement &&
+				!!readCourseSubscriptionAgreement
+			);
+		} else {
+			setCanSubmit(
+				!!formValues.firstName &&
+				!!formValues.lastName &&
+				!!formValues.email &&
+				!!paymentForm &&
+				!!readPrivacyAgreement &&
+				!!readCourseSubscriptionAgreement
+			);
+		}
+	}, [formValues, paymentForm, readCourseSubscriptionAgreement, readPrivacyAgreement, showInvoiceData]);
 
 	const handleChecks = (value: boolean) => {
 		setShowInvoiceData(value);
@@ -45,7 +75,7 @@ export const CourseSubscription = () => {
 
 	return (
 		<Container style={{ color: 'black' }} className="w-100">
-			<Form>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<h3>Datos del curso</h3>
 				<hr />
 				<Row className="left-margin">
@@ -227,7 +257,7 @@ export const CourseSubscription = () => {
 				<hr />
 				<Row>
 					<p>Leer el aviso de privacidad <span className="mandatory">(Obligatorio)</span></p>
-					<Form.Check type="radio" label={
+					<Form.Check type="radio" onClick={() => setReadPrivacyAgreement(true)} label={
 						<span>
 							He leido y estoy de acuerdo con el
 							{" "}<Button className="btn btn-link p-0" onClick={() => setDisplayPrivacyAgreement(true)}>acuerdo de privacidad</Button>
@@ -236,14 +266,14 @@ export const CourseSubscription = () => {
 				</Row>
 				<Row>
 					<p className="pt-2">Politicas de inscripcion a cursos <span className="mandatory">(Obligatorio)</span></p>
-					<Form.Check type="radio" label={
+					<Form.Check type="radio" onClick={() => setReadCourseSubscriptionAgreement(true)} label={
 						<span>
 							He leido y estoy de acuerdo con las
 							{" "}<Button className="btn btn-link p-0" onClick={() => setDisplayCourseSubscriptionAgreement(true)}>políticas de inscripción a cursos</Button>
 						</span>
 					} name='courseInscriptionPolicy' />
 				</Row>
-				<Button variant="primary" onClick={() => handleSubmit(onSubmit)}>Enviar</Button>
+				<Button disabled={!canSubmit} type='submit' variant="primary">Enviar</Button>
 			</Form>
 			{displayPrivacyAgreement && <PrivacyAgreement showModal={displayPrivacyAgreement} hideModal={setDisplayPrivacyAgreement} />}
 			{displayCourseSubscriptionAgreement && <CourseSubscriptionAgreement showModal={displayCourseSubscriptionAgreement} hideModal={setDisplayCourseSubscriptionAgreement} />}

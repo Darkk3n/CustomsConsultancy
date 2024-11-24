@@ -1,6 +1,7 @@
 using CustomsConsultancy.Admin.Api.Contracts;
 using CustomsConsultancy.Admin.Api.Dtos;
 using CustomsConsultancy.Admin.Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CustomsConsultancy.Admin.Api.Services
 {
@@ -11,7 +12,7 @@ namespace CustomsConsultancy.Admin.Api.Services
         public async Task<int> GetOrCreateClient(CourseRegistrationDto request)
         {
             var clientId = 0;
-            var existingClient = context.Clients.FirstOrDefault(r => r.Email == request.Email);
+            var existingClient = await context.Clients.FirstOrDefaultAsync(r => r.Email == request.Email);
             if (existingClient == null)
             {
                 var newClient = new Client

@@ -23,7 +23,14 @@ namespace CustomsConsultancy.Admin.Api.Endpoints
             {
                 var resultClientId = await clientCreateService.GetOrCreateClient(registration);
                 context.CourseClients.Add(CourseRegistrationMapper.ToModel(registration, resultClientId));
-                await context.SaveChangesAsync();
+                try
+                {
+                    await context.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+                    return Results.Problem("El cliente ya se encuentra registrado a este curso");
+                }
                 return Results.Ok();
             });
         }

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { CourseModel } from "../Models";
+import { CourseModel, CourseSubscriptionModel } from "../Models";
 import { InquiryModel } from "../Models/InquiryModel";
 import { PotentialClientModel } from "../Models/PotentialClientModel";
 
@@ -24,13 +24,18 @@ const PotentialClients = {
 
 const Courses = {
 	list: () => requests.get<CourseModel[]>("/courses"),
-	getById: (courseId: number) => requests.get<CourseModel>(`/courses/${courseId}`)
-}
+	getById: (courseId: number) => requests.get<CourseModel>(`/courses/${courseId}`),
+};
+
+const CourseRegistration = {
+	create: (data: CourseSubscriptionModel) => requests.post<CourseSubscriptionModel>("/courseRegistration", data),
+};
 
 const http = {
 	Inquiries,
 	PotentialClients,
-	Courses
+	Courses,
+	CourseRegistration,
 };
 
 export default http;

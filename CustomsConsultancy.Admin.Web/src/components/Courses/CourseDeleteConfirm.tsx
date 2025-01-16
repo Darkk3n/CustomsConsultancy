@@ -3,7 +3,7 @@ import { CourseIndexModel } from '../../models/Courses/CourseIndexModel';
 
 type CourseDeleteConfirmProps =
 	{
-		closeModal: () => void;
+		closeModal: VoidFunction;
 		course: CourseIndexModel | undefined;
 		onConfirm: (courseId: number | undefined) => void;
 		visible: boolean;

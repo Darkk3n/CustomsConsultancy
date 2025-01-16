@@ -7,7 +7,7 @@ interface IProps {
 	clientList: PotentialClientModel[];
 	isContacted: boolean;
 	handleCheck: (id: number, checked: boolean) => void;
-	showModal?: () => void;
+	showModal?: VoidFunction;
 	buttonEnabled?: boolean;
 }
 

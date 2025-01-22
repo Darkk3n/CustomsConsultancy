@@ -29,4 +29,5 @@ export interface CourseSubscriptionModel {
 	taxRegime?: number;
 	taxPayerEmail?: string;
 	paymentMethod?: string;
+	proofOfPayment?: FileList | null;
 }

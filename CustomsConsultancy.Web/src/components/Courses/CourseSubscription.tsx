@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { CourseModel, CourseSubscriptionModel } from "../../Models";
@@ -21,6 +21,8 @@ export const CourseSubscription = () => {
 	const [canSubmit, setCanSubmit] = useState<boolean>(false);
 	const [readPrivacyAgreement, setReadPrivacyAgreement] = useState<boolean>(false);
 	const [readCourseSubscriptionAgreement, setReadCourseSubscriptionAgreement] = useState<boolean>(false);
+	const fileInputRef = useRef<HTMLInputElement>(null);
+
 
 	useEffect(() => {
 		http.Courses
@@ -36,6 +38,7 @@ export const CourseSubscription = () => {
 	const navigate = useNavigate();
 
 	const { handleSubmit, setValue, register, watch } = useForm<CourseSubscriptionModel>();
+	const files = watch('proofOfPayment');
 	const formValues = watch();
 
 	const onSubmit = (data: CourseSubscriptionModel) => {
@@ -82,6 +85,21 @@ export const CourseSubscription = () => {
 		setCheckNoValue(!value);
 		setValue("requiresInvoice", value);
 	}
+
+	const handleInputFileChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+		if (!target.files) return;
+
+		setValue('proofOfPayment', target.files);
+	}
+
+	const exceedsMaxSize = useMemo(() => {
+		if (!files) return false;
+
+		const maxSize = 64 * 1024 * 1024;
+		const itemsSize = Array.from(files!).reduce((prev, curr) => prev + curr.size, 0);
+
+		return itemsSize > maxSize;
+	}, [files]);
 
 	return (
 		<Container style={{ color: 'black' }} className="w-100">
@@ -254,13 +272,15 @@ export const CourseSubscription = () => {
 						["cash", "transfer"].includes(paymentForm) &&
 						<Col md={6}>
 							<p>Adjuntar comprobante de pago. <span className="mandatory">(Obligatorio)</span></p>
-							<p>Tama;o maximo de archivo: 64MB.</p>
+							<p>Tamaño maximo de archivo: 64MB.</p>
 							<p>No se procesaran inscripciones sin comprobante de pago</p>
 							<p>INFORMACION DE PAGO:</p>
 							<p>BBVA Cta: 11111111</p>
 							<p>Titular: Andres Aguilar Sanchez</p>
 							<p>CLABE:111111111111111</p>
 							<p>RFC:XXXXXXXXX</p>
+							<Button variant="primary" onClick={() => fileInputRef.current?.click()}>Subir archivo</Button>
+							{exceedsMaxSize && <p className="text-danger pt-2">Excedido limite de tamaño de archivo. Por favor, seleccione un archivo mas chico para continuar.</p>}
 						</Col>
 					}
 				</Row>
@@ -283,6 +303,8 @@ export const CourseSubscription = () => {
 						</span>
 					} name='courseInscriptionPolicy' />
 				</Row>
+				<input {...register('proofOfPayment')} ref={fileInputRef} multiple type="file" accept="application/pdf" hidden={true} onChange={handleInputFileChange} />
+
 				<Button disabled={!canSubmit} type='submit' variant="primary">Enviar</Button>
 				<Button className="ms-2" variant="secondary" onClick={() => navigate(`/courses/${courseId}`)}>Cancelar</Button>
 			</Form>
